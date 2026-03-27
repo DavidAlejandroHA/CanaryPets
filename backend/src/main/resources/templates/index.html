@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>CanaryPets</title>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<!-- HERO -->
+<div class="container mt-4">
+  <div class="p-5 bg-light text-center">
+    <h1>Todo para tu mascota</h1>
+    <p>Descubre los mejores productos para cuidar de ellos</p>
+  </div>
+</div>
+
+<!-- CATEGORÍAS DESTACADAS -->
+<div class="container mt-5">
+  <h3 class="text-center">Categorías</h3>
+
+  <div class="row justify-content-center g-4">
+
+    <div class="col-6 col-md-3 col-lg-2"> <!--Móvil → 2 por fila / Tablet → 3-4 / Desktop → más compactos-->
+      <a th:href="@{/categoria/perros}" class="card p-3 text-center">Perros</a>
+    </div>
+
+    <div class="col-6 col-md-3 col-lg-2">
+      <a th:href="@{/categoria/gatos}" class="card p-3 text-center">Gatos</a>
+    </div>
+
+    <div class="col-6 col-md-3 col-lg-2">
+      <a th:href="@{/categoria/roedores}" class="card p-3 text-center">Roedores</a>
+    </div>
+
+    <div class="col-6 col-md-3 col-lg-2">
+      <a th:href="@{/categoria/peces}" class="card p-3 text-center">Peces</a>
+    </div>
+
+    <div class="col-6 col-md-3 col-lg-2">
+      <a th:href="@{/categoria/pajaros}" class="card p-3 text-center">Pájaros</a>
+    </div>
+
+    <div class="col-6 col-md-3 col-lg-2">
+      <a th:href="@{/categoria/reptiles}" class="card p-3 text-center">Reptiles</a>
+    </div>
+
+  </div>
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+<script th:src="@{/js/main.js}"></script>
+</html>

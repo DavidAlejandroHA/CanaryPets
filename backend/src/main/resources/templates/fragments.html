@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>CanaryPets</title>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER START -->
+<div th:fragment="header">
+
+  <!-- TOP BAR -->
+  <div class="bg-dark text-white small py-1 px-3 d-flex justify-content-between">
+    <div>📧 info@canarypets.com</div>
+    <div>📞 123456789</div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <div class="container-fluid py-3 main-header gap-2">
+
+    <!-- 🔹 FILA 1 -->
+    <div class="d-flex align-items-center justify-content-between header-row-1">
+
+      <!-- LOGO -->
+      <a th:href="@{/}" class="navbar-brand fw-bold">
+        CanaryPets
+      </a>
+
+      <!-- SEARCH -->
+      <form class="d-flex mx-3 header-search"
+            th:action="@{/search}" method="get">
+
+        <input class="form-control me-2"
+               type="search"
+               name="searchBar"
+               id="searchBar"
+               placeholder="Buscar productos...">
+
+        <button class="btn btn-outline-primary">Buscar</button>
+      </form>
+
+      <!-- ACCIONES PRINCIPALES -->
+      <div class="d-flex align-items-center gap-3">
+
+        <!-- PREMIUM -->
+        <a th:href="@{/premium}"
+           class="btn btn-warning"
+           sec:authorize="!hasRole('PREMIUM') and !hasRole('ADMIN')">
+          Hazte Premium
+        </a>
+
+        <!-- CART -->
+        <a th:href="@{/cart}">🛒</a>
+
+      </div>
+
+    </div>
+
+    <!-- 🔹 FILA 2 -->
+    <div class="d-flex align-items-center justify-content-end gap-3 header-row-2">
+
+      <!-- AUTH ANÓNIMO -->
+      <div sec:authorize="isAnonymous()"
+           class="d-flex align-items-center gap-2">
+
+        <a th:href="@{/auth/login}" class="btn btn-primary">Login</a>
+        <a th:href="@{/auth/register}" class="btn btn-secondary">Register</a>
+
+      </div>
+
+      <!-- AUTH LOGEADO -->
+      <div sec:authorize="isAuthenticated()"
+           class="d-flex align-items-center gap-2">
+
+        <a th:href="@{/profile}">
+          Perfil:
+          <span class="me-1" sec:authentication="name">Usuario</span>
+        </a>
+
+        <form th:action="@{/auth/logout}" method="post">
+          <input type="submit"
+                 value="Logout"
+                 class="btn btn-primary p-2"/>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- NAVBAR -->
+  <!--Bootstrap usa breakpoints estándar:
+          Tamaño	Breakpoint
+          sm	576px
+          md	768px
+          lg	992px
+          xl	1200px-->
+  <nav class="navbar navbar-expand-lg bg-light border-top">
+    <div class="container-fluid">
+
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        ☰
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="menu">
+        <ul class="navbar-nav w-100 d-flex justify-content-between">
+
+          <!-- PERROS -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" th:href="@{/categoria/perros}">Perros</a>
+            <div class="dropdown-menu mega-menu p-3 row">
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/perros/comida}">Comida</a></h5>
+                <a th:href="@{/categoria/perros/comida(tipo='pienso')}">Pienso</a>
+                <a th:href="@{/categoria/perros/comida(tipo='humeda')}">Comida húmeda</a>
+                <a th:href="@{/categoria/perros/comida(tipo='snacks')}">Snacks</a>
+                <a th:href="@{/categoria/perros/comida(tipo='veterinaria')}">Dieta veterinaria</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/perros/accesorios}">Accesorios</a></h5>
+                <a th:href="@{/categoria/perros/accesorios(tipo='camas')}">Camas</a>
+                <a th:href="@{/categoria/perros/accesorios(tipo='transportines')}">Transportines</a>
+                <a th:href="@{/categoria/perros/accesorios(tipo='correas')}">Correas y arneses</a>
+                <a th:href="@{/categoria/perros/accesorios(tipo='comederos')}">Comederos y bebederos</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/perros/juguetes}">Juguetes</a></h5>
+                <a th:href="@{/categoria/perros/juguetes(tipo='mordedores')}">Mordedores</a>
+                <a th:href="@{/categoria/perros/juguetes(tipo='interactivos')}">Interactivos</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/perros/salud}">Salud</a></h5>
+                <a th:href="@{/categoria/perros/salud(tipo='antiparasitarios')}">Antiparasitarios</a>
+                <a th:href="@{/categoria/perros/salud(tipo='suplementos')}">Suplementos</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/perros/higiene}">Higiene</a></h5>
+                <a th:href="@{/categoria/perros/higiene(tipo='champu')}">Champús</a>
+                <a th:href="@{/categoria/perros/higiene(tipo='cepillos')}">Cepillos</a>
+                <a th:href="@{/categoria/perros/higiene(tipo='toallitas')}">Toallitas</a>
+              </div>
+
+            </div>
+          </li>
+
+          <!-- 🐱 GATOS -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" th:href="@{/categoria/gatos}">Gatos</a>
+            <div class="dropdown-menu mega-menu p-3 row">
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/gatos/comida}">Comida</a></h5>
+                <a th:href="@{/categoria/gatos/comida(tipo='pienso')}">Pienso</a>
+                <a th:href="@{/categoria/gatos/comida(tipo='humeda')}">Comida húmeda</a>
+                <a th:href="@{/categoria/gatos/comida(tipo='snacks')}">Snacks</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/gatos/accesorios}">Accesorios</a></h5>
+                <a th:href="@{/categoria/gatos/accesorios(tipo='areneros')}">Areneros</a>
+                <a th:href="@{/categoria/gatos/accesorios(tipo='rascadores')}">Rascadores</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/gatos/juguetes}">Juguetes</a></h5>
+                <a th:href="@{/categoria/gatos/juguetes(tipo='pelotas')}">Pelotas</a>
+                <a th:href="@{/categoria/gatos/juguetes(tipo='ratones')}">Ratones</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/gatos/salud}">Salud</a></h5>
+                <a th:href="@{/categoria/gatos/salud(tipo='antiparasitarios')}">Antiparasitarios</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/gatos/higiene}">Higiene</a></h5>
+                <a th:href="@{/categoria/gatos/higiene(tipo='arena')}">Arenas absorbentes</a>
+                <a th:href="@{/categoria/gatos/higiene(tipo='cepillos')}">Cepillos</a>
+              </div>
+
+            </div>
+          </li>
+
+          <!-- 🐰 ROEDORES -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" th:href="@{/categoria/roedores}">Conejos y Roedores</a>
+            <div class="dropdown-menu mega-menu p-3 row">
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/roedores/comida}">Comida</a></h5>
+                <a th:href="@{/categoria/roedores/comida(tipo='pienso')}">Pienso</a>
+                <a th:href="@{/categoria/roedores/comida(tipo='heno')}">Heno</a>
+                <a th:href="@{/categoria/roedores/comida(tipo='snacks')}">Snacks</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/roedores/accesorios}">Accesorios</a></h5>
+                <a th:href="@{/categoria/roedores/accesorios(tipo='jaulas')}">Jaulas</a>
+                <a th:href="@{/categoria/roedores/accesorios(tipo='bebederos')}">Bebederos</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/roedores/higiene}">Higiene</a></h5>
+                <a th:href="@{/categoria/roedores/higiene(tipo='lechos')}">Lechos</a>
+                <a th:href="@{/categoria/roedores/higiene(tipo='limpieza')}">Limpieza jaulas</a>
+              </div>
+
+            </div>
+          </li>
+
+          <!-- 🐟 PECES -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" th:href="@{/categoria/peces}">Peces</a>
+            <div class="dropdown-menu mega-menu p-3 row">
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/peces/comida}">Comida</a></h5>
+                <a th:href="@{/categoria/peces/comida(tipo='escamas')}">Escamas</a>
+                <a th:href="@{/categoria/peces/comida(tipo='granulado')}">Granulado</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/peces/accesorios}">Accesorios</a></h5>
+                <a th:href="@{/categoria/peces/accesorios(tipo='acuarios')}">Acuarios</a>
+                <a th:href="@{/categoria/peces/accesorios(tipo='filtros')}">Filtros</a>
+                <a th:href="@{/categoria/peces/accesorios(tipo='iluminacion')}">Iluminación</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/peces/salud}">Salud</a></h5>
+                <a th:href="@{/categoria/peces/salud(tipo='tratamientos')}">Tratamientos</a>
+              </div>
+
+            </div>
+          </li>
+
+          <!-- 🐦 PÁJAROS -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" th:href="@{/categoria/pajaros}">Pájaros</a>
+            <div class="dropdown-menu mega-menu p-3 row">
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/pajaros/comida}">Comida</a></h5>
+                <a th:href="@{/categoria/pajaros/comida(tipo='semillas')}">Semillas</a>
+                <a th:href="@{/categoria/pajaros/comida(tipo='pienso')}">Pienso</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/pajaros/accesorios}">Accesorios</a></h5>
+                <a th:href="@{/categoria/pajaros/accesorios(tipo='jaulas')}">Jaulas</a>
+                <a th:href="@{/categoria/pajaros/accesorios(tipo='perchas')}">Perchas</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/pajaros/higiene}">Higiene</a></h5>
+                <a th:href="@{/categoria/pajaros/higiene(tipo='limpieza')}">Limpieza jaulas</a>
+              </div>
+
+            </div>
+          </li>
+
+          <!-- 🐢 REPTILES -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" th:href="@{/categoria/reptiles}">Reptiles y Tortugas</a>
+            <div class="dropdown-menu mega-menu p-3 row">
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/reptiles/comida}">Comida</a></h5>
+                <a th:href="@{/categoria/reptiles/comida(tipo='pienso')}">Pienso</a>
+                <a th:href="@{/categoria/reptiles/comida(tipo='insectos')}">Insectos</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/reptiles/accesorios}">Accesorios</a></h5>
+                <a th:href="@{/categoria/reptiles/accesorios(tipo='terrarios')}">Terrarios</a>
+                <a th:href="@{/categoria/reptiles/accesorios(tipo='calefaccion')}">Calefacción</a>
+                <a th:href="@{/categoria/reptiles/accesorios(tipo='uv')}">Iluminación UV</a>
+              </div>
+
+              <div class="col">
+                <h5><a th:href="@{/categoria/reptiles/salud}">Salud</a></h5>
+                <a th:href="@{/categoria/reptiles/salud(tipo='suplementos')}">Suplementos</a>
+              </div>
+
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</div>
+<!-- HEADER END -->
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white mt-5 p-4 text-center" th:fragment="footer">
+  <p>© CanaryPets - Tu tienda de confianza para mascotas</p>
+  <p>Contacto: info@canarypets.com</p>
+</footer>
+
+</body>
+<script th:src="@{/js/main.js}"></script>
+</html>
