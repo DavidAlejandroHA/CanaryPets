@@ -1,5 +1,6 @@
 package com.canarypets.backend.models;
 
+import com.canarypets.backend.utils.SlugUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
@@ -8,8 +9,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "PRODUCTOS")
@@ -25,6 +29,12 @@ public class Product {
     @Size(min=1, max=70, message = "El nombre ha de tener entre {min} y {max} caracteres")
     @Column(name = "nombre")
     private String name;
+
+    @NotNull(message = "Este campo es obligatorio")
+    @NotBlank(message = "Este campo no puede estar vacío")
+    @Column(nullable = false, unique = true, length = 150)
+    //@Pattern(regexp = "^[a-z0-9-]+$", message = "Slug inválido")
+    private String slug; // "nombre a guardar en la base de datos
 
     private String imageUrl;
 
@@ -77,7 +87,7 @@ public class Product {
             name = "products_tags",
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "tag_id")})
-    private List<Tag> tags = new ArrayList<>();
+    private Set<Tag> tags = new HashSet<>();
 
     // Opcional: Dado que no interesa saber en qué carritos está un producto, no es necesario hacer una relación bidireccional (no es obligatorio anotarlo),
     // por lo que se puede prescindir de anotar la relación y automáticamente se detecta como una relación unidireccional (CartItem -> Product)
@@ -86,11 +96,32 @@ public class Product {
 
     public Product(){}
 
+    public String getTagValue(String type) {
+        return tags.stream()
+                .filter(t -> t.getType().equals(type))
+                .map(Tag::getName) // Importante: pasar a name, no slug
+                .findFirst()
+                .orElse("");
+    }
+
+    public String generateSlug(String input) {
+        /*return Normalizer.normalize(input.toLowerCase(), Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
+                .replaceAll("[^a-z0-9\\s-]", "")
+                .replaceAll("\\s+", "-")
+                .replaceAll("-+", "-")
+                .replaceAll("^-|-$", "");*/
+        return SlugUtils.generateSlug(this.name);
+    }
+
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
+
+    public String getSlug() {return slug;}
+    public void setSlug(String slug) {this.slug = slug;}
 
     public String getImageUrl() {return imageUrl;}
     public void setImageUrl(String imageUrl) {this.imageUrl = imageUrl;}
@@ -105,7 +136,7 @@ public class Product {
     public void setDescription(String description) {this.description = description;}
 
     public int getStock() {return stock;}
-    public void updateStock(int stock) {this.stock = stock;}
+    public void setStock(int stock) {this.stock = stock;}
 
     public boolean getSolidaryProduct() {return solidaryProduct;}
     public void setSolidaryProduct(boolean solidaryProduct) {this.solidaryProduct = solidaryProduct;}
@@ -123,8 +154,20 @@ public class Product {
     public Category getCategory() {return category;}
     public void setCategory(Category category) {this.category = category;}
 
-    public List<Tag> getTags() {return tags;}
-    public void setTags(List<Tag> tags) {this.tags = tags;}
+    public Set<Tag> getTags() {return tags;}
+    public void setTags(Set<Tag> tags) {this.tags = tags;}
+    public void addTag(Tag tag) {
+        //if (this.tags == null) this.tags = new HashSet<>(); // Inicializar
+        //if (tag.getProducts() == null) tag.setProducts(new HashSet<>()); // Por si algo fallase en la inicialización
+
+        this.tags.add(tag);
+        tag.getProducts().add(this); // Importante: sincronizar ambos lados -> relación bidireccional
+    }
+
+    public void removeTag(Tag tag) {
+        this.tags.remove(tag);
+        tag.getProducts().remove(this);
+    }
 
     public List<User> getUsersThatHasProductAsFavorite() {return usersThatHasProductAsFavorite;}
     public void setUsersThatHasProductAsFavorite(List<User> usersThatHasProductAsFavorite) {this.usersThatHasProductAsFavorite = usersThatHasProductAsFavorite;}

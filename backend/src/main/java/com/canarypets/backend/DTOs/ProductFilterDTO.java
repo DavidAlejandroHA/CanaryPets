@@ -1,17 +1,19 @@
 package com.canarypets.backend.DTOs;
 
+import java.util.List;
+
 public class ProductFilterDTO {
 
-    private String tipoComida;
-    private String marca;
-    private String edad;
+    private List<String> marcas;
+    private List<String> tipos;
+    private List<String> edades;
 
-    public String getTipoComida() {return tipoComida;}
-    public void setTipoComida(String tipoComida) {this.tipoComida = tipoComida;}
+    public List<String> getTipos() {return tipos;}
+    public void setTipos(List<String> tipos) {this.tipos = tipos;}
 
-    public String getMarca() {return marca;}
-    public void setMarca(String marca) {this.marca = marca;}
+    public List<String> getMarcas() {return marcas;}
+    public void setMarcas(List<String> marcas) {this.marcas = marcas;}
 
-    public String getEdad() {return edad;}
-    public void setEdad(String edad) {this.edad = edad;}
+    public List<String> getEdades() {return edades;}
+    public void setEdades(List<String> edades) {this.edades = edades;}
 }

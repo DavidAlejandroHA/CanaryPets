@@ -11,4 +11,5 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
         JpaSpecificationExecutor<Product> {
     List<Product> findByCategory(Category category);
     List<Product> findByCategoryIn(List<Category> categories); // Para categorías padre
+    boolean existsBySlug(String slug);
 }

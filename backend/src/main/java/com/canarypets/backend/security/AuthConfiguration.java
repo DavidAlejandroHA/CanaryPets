@@ -94,19 +94,4 @@ public class AuthConfiguration {
         TermsAndExamplesSeeder.seedTermsAndExamples(exampleRepository, termRepository);
         return "Terms y examples creados";
     }*/
-
-    // Añadiendo un usuario de testeo en memoria, sin persistir en la base de datos
-    /*@Bean
-    public UserDetailsService userDetailsService() {
-        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        PasswordEncoder encoder = AuthConfiguration.passwordEncoder();
-        UserDetails user =
-                org.springframework.security.core.userdetails.User.builder()
-                        .username("user")
-                        .password(encoder.encode("password"))
-                        .roles("BASIC")
-                        .build();
-
-        return new InMemoryUserDetailsManager(user);
-    }*/
 }

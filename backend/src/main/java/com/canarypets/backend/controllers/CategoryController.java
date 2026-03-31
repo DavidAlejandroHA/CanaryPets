@@ -3,11 +3,16 @@ package com.canarypets.backend.controllers;
 import com.canarypets.backend.DTOs.ProductFilterDTO;
 import com.canarypets.backend.models.Category;
 import com.canarypets.backend.models.Product;
+import com.canarypets.backend.models.Tag;
 import com.canarypets.backend.repositories.ProductRepository;
 import com.canarypets.backend.services.CategoryService;
 import com.canarypets.backend.services.ProductService;
 import com.canarypets.backend.specifications.ProductSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/categoria")
@@ -35,66 +42,69 @@ public class CategoryController {
     @GetMapping("/{parentSlug}")
     public String viewParentCategory(
             @PathVariable String parentSlug,
+            ProductFilterDTO filter,
+            Pageable pageable,
             Model model) {
 
-        // Obtener categoría padre
-        Category parent = categoryService.getBySlug(parentSlug);
-
-        // Subcategorías
-        List<Category> subcategories = parent.getSubcategories();
-
-        // Productos de TODAS las subcategorías
-        List<Product> products = productService.getAllByParentSlug(parentSlug);
-
-        model.addAttribute("category", parent);
-        model.addAttribute("subcategories", subcategories);
-        model.addAttribute("products", products);
-
-        return "category/category"; // vista (puede ser products también)
+        Category category = categoryService.getBySlug(parentSlug); // <- Categorías padre
+        //categoryService.findBySlugAndParentIsNull(parentSlug);
+        return buildCategoryView(category, filter, pageable, model);
     }
-
-    // Ver subcategoría (ej: /categoria/perros/comida) // Nota: De esto ya se encarga el endpoint que tiene los filtros
-    /*@GetMapping("/{parentSlug}/{childSlug}")
-    public String viewSubcategory(
-            @PathVariable String parentSlug,
-            @PathVariable String childSlug,
-            Model model) {
-
-        // Validar y obtener subcategoría
-        Category category = categoryService
-                .getSubcategory(parentSlug, childSlug);
-
-        // Productos de esa subcategoría
-        List<Product> products = productService
-                .getByParentAndChildSlug(parentSlug, childSlug);
-
-        model.addAttribute("category", category);
-        model.addAttribute("products", products);
-
-        return "products";
-    }*/
 
     // Ver subcategoría (ej: /categoria/perros/comida) + Filtros (si los hay)
     @GetMapping("/{parent}/{child}")
-    public String filterProducts(
+    public String viewSubCategory(
             @PathVariable String parent,
             @PathVariable String child,
-            @RequestParam(required = false) String tipoComida,
-            @RequestParam(required = false) String marca,
-            @RequestParam(required = false) String edad,
+            ProductFilterDTO filter,
+            Pageable pageable,
             Model model) {
 
-        ProductFilterDTO filter = new ProductFilterDTO();
-        filter.setTipoComida(tipoComida);
-        filter.setMarca(marca);
-        filter.setEdad(edad);
+        //Category category = categoryService.getBySlug(child);
+        Category category = categoryService.getBySlugAndParent_Slug(parent, child);
+        return buildCategoryView(category, filter, pageable, model);
+    }
 
-        Specification<Product> spec = ProductSpecification.filter(filter);
+    private String buildCategoryView(Category category, ProductFilterDTO filter, Pageable pageable, Model model) {
 
-        List<Product> products = productRepository.findAll(spec);
+        List<Category> categories =
+                categoryService.getCategoryWithSubcategories(category);
 
-        model.addAttribute("products", products);
+        Specification<Product> spec =
+                ProductSpecification.filter(filter, categories);
 
-        return "products";
+        // Al final no se va a incluir para no añadir mayor complejidad / no es necesario del todo_
+        //Sort sort = Sort.by("price").ascending(); // Ordenar por precio
+
+        /*if ("price_desc".equals(filter.getSort())) {
+            sort = Sort.by("price").descending();
+        }*/
+
+        PageRequest pageRequest = PageRequest.of(
+                pageable.getPageNumber(),
+                pageable.getPageSize()
+                //, sort
+        );
+
+        Page<Product> page =
+                //productRepository.findAll(spec, pageable); // Con Page
+                productRepository.findAll(spec, pageRequest); // Con PageRequest
+
+        //List<Product> products = productRepository.findAll(spec); // Sin Page
+
+        // Importante: filtros también con subcategorías - Obtener los filtros disponibles que hay en cada categoría
+        Map<String, List<Tag>> filters =
+                productService.getAvailableFilters(categories);
+
+        Map<String, Map<String, Long>> filterCounts = // Contador de filtros
+                productService.getFilterCounts(categories);
+
+        model.addAttribute("products", page.getContent());
+        model.addAttribute("page", page);
+        model.addAttribute("filters", filters);
+        model.addAttribute("filterCounts", filterCounts);
+        model.addAttribute("selectedFilters", filter);
+
+        return "category/category";
     }
 }

@@ -1,0 +1,20 @@
+.product-card {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: scale(1.03);
+}
+
+.product-img {
+    height: 180px;
+    object-fit: contain;
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Para que el aside no crezca demasiado */
+/*.filter-aside {
+    max-width: 260px;
+}*/
