@@ -1,7 +1,11 @@
 services:
   db:
     image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password #Evita problemas con Spring Boot (y algunos drivers JDBC)
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+    # Lo de utf8mb4 es importante para evitar que caracteres como ñ puedan lanzar MalformedInputException (para evitar trabajar con diferentes charsets)
     container_name: canarypets_mysql
     restart: unless-stopped
     environment:
@@ -14,11 +18,11 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-    healthcheck:
+    healthcheck: # Con esto Spring no arranca hasta que la BD esté lista, así se evitan errores al inicio de la aplicación
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD}"]
       interval: 5s
       timeout: 5s
-      retries: 20
+      retries: 10
 
   backend:
     build:

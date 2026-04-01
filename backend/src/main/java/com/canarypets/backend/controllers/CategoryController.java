@@ -15,11 +15,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +36,37 @@ public class CategoryController {
     @Autowired
     private ProductRepository productRepository;
 
+//    @GetMapping("") // Sería válido para búsqueda simple, pero esto no soporta caracteres especiales como "ñ", "ç", etc
+//    public String redirectCategory(
+//            @RequestParam String parent,
+//            @RequestParam(required = false) String search
+//    ) {
+//        String url = "/categoria/" + parent;
+//
+//        if (search != null && !search.isBlank()) {
+//            url += "?search=" + search;
+//        }
+//        System.out.println("REDIRECTING TO: " + url);
+//        return "redirect:" + url;
+//        // Redirigir de /categoria?parent=perros&search=pienso
+//        // a -> /categoria/perros?search=pienso
+//    }
+
+    // Para la barra de búsqueda
+    @PostMapping("") // Es necesario usar POST para enviar datos más complejos y bien codificados
+    public String redirectCategoryPost(
+            @RequestParam String parent,
+            @RequestParam(required = false) String search
+    ) throws UnsupportedEncodingException {
+        String url = "/categoria/" + parent;
+
+        if (search != null && !search.isBlank()) {
+            url += "?search=" + URLEncoder.encode(search, StandardCharsets.UTF_8);
+        }
+
+        return "redirect:" + url;
+    }
+
     // Ver categoría padre (ej: /categoria/perros)
     @GetMapping("/{parent}") // Importante: No usar {parentSlug}, ya que este ya se usa como dato en el modelo
     // (se mezcla con "parentSlug" y spring no enlaza bien, lo que hace que se rompa el flujo y lleve hacia el login)
@@ -50,6 +81,8 @@ public class CategoryController {
         Category category = categoryService.getBySlug(parent); // <- Categorías padre
         //categoryService.findBySlugAndParentIsNull(parentSlug);
         model.addAttribute("parentSlug", parent);
+        model.addAttribute("currentCategory", parent);
+        //model.addAttribute("allCategories", categoryService.getParentCategories()); // Definido en el controller GlobalModelAttributtes
         return buildCategoryView(category, filter, pageable, model, search, tipo);
     }
 
@@ -68,6 +101,7 @@ public class CategoryController {
         Category category = categoryService.getBySlugAndParent_Slug(parent, child);
         model.addAttribute("parentSlug", parent);
         model.addAttribute("childSlug", child);
+        model.addAttribute("currentCategory", parent);
         return buildCategoryView(category, filter, pageable, model, search, tipo);
     }
 

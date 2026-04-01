@@ -30,10 +30,23 @@
       </a>
 
       <!-- SEARCH -->
-      <form class="d-flex mx-3 header-search"
-            th:action="@{/categoria/{parent}(parent=${parentSlug})}" method="get">
+      <form class="d-flex mx-3 header-search d-flex"
+            th:action="@{/categoria}" method="post"> <!--accept-charset="UTF-8"-->
+        <!-- 🔽 DROPDOWN + Texto-->
+        <!--Importante: Si se hicieran cambios con JS (ya no es el caso), quitar name="parent" del select para evitar que se envíe como query param-->
+        <div class="d-flex align-items-center">
+          <label class="me-2 mb-0 fw-semibold">Buscar en categoría:</label>
 
-        <input class="form-control me-2"
+          <select name="parent" class="form-select w-auto"> <!-- onchange="changeCategory(this)"-->
+            <option th:each="cat : ${allCategories}"
+                    th:value="${cat.slug}"
+                    th:text="${cat.name}"
+                    th:selected="${cat.slug == currentCategory}">
+            </option>
+          </select>
+        </div>
+
+        <input class="form-control me-2 flex-grow-1"
                type="search"
                name="search"
                id="search"

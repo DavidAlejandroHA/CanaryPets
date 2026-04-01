@@ -87,19 +87,20 @@
                 </form>
             </aside>
 
+
+
             <!-- 🔥 GRID PRODUCTOS -->
             <main class="col-12 col-md-9">
+
+                <div th:if="${page.content.isEmpty()}" class="text-center mt-5">
+                    <h4>Sin resultados</h4>
+                    <p>Prueba con otros filtros o búsqueda</p>
+                </div>
 
                 <div class="row g-3">
 
                     <div class="col-6 col-md-4 col-lg-3"
                          th:each="product : ${products}">
-
-                        <div th:if="${page.content.isEmpty()}" class="text-center mt-5">
-                            <h4>Sin resultados</h4>
-                            <p>Prueba con otros filtros o búsqueda</p>
-                        </div>
-
 
                         <!-- 🔥 LINK ENVOLVIENDO TODA LA CARD -->
                         <a th:href="@{'/producto/' + ${product.slug}}"
@@ -140,7 +141,7 @@
                 </div>
 
                 <!-- 🔥 PAGINACIÓN -->
-                <nav class="mt-4">
+                <nav class="mt-4" th:if="${page.totalPages > 0}">
                     <ul class="pagination justify-content-center">
 
                         <li class="page-item"
@@ -153,10 +154,12 @@
                         <li class="page-item"
                             th:classappend="${page.first} ? 'disabled'">
                             <button class="page-link"
-                                    th:onclick="'goToPage(' + ${page.number - 1} + ')'">
+                                    th:onclick="'goToPage(' + ${page.number > 0 ? page.number - 1 : 0} + ')'">
                                 Anterior
                             </button>
                         </li>
+
+                        <span th:if="${page.totalPages == 0}">1</span> <!--Solo si no hay resultados-->
 
                         <li class="page-item"
                             th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
@@ -171,8 +174,15 @@
                         <li class="page-item"
                             th:classappend="${page.last} ? 'disabled'">
                             <button class="page-link"
-                                    th:onclick="'goToPage(' + ${page.number + 1} + ')'">
+                                    th:onclick="'goToPage(' + ${page.number < page.totalPages - 1 ? page.number + 1 : page.number} + ')'">
                                 Siguiente
+                            </button>
+                        </li>
+
+                        <li class="page-item" th:classappend="${page.last} ? 'disabled'">
+                            <button class="page-link"
+                                    th:onclick="'goToPage(' + ${page.totalPages - 1} + ')'">
+                                Última
                             </button>
                         </li>
 

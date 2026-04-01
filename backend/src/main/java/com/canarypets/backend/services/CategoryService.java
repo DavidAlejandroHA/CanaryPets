@@ -48,4 +48,8 @@ public class CategoryService {
 
         return categories;
     }
+
+    public List<Category> getParentCategories() {
+        return categoryRepository.findByParentIsNull();
+    }
 }

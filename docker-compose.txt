@@ -14,11 +14,11 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-    healthcheck:
+    healthcheck: # Con esto Spring no arranca hasta que la BD esté lista, así se evitan errores al inicio de la aplicación
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD}"]
       interval: 5s
       timeout: 5s
-      retries: 20
+      retries: 10
 
   backend:
     build:
