@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/categoria")
@@ -39,16 +37,20 @@ public class CategoryController {
     private ProductRepository productRepository;
 
     // Ver categoría padre (ej: /categoria/perros)
-    @GetMapping("/{parentSlug}")
+    @GetMapping("/{parent}") // Importante: No usar {parentSlug}, ya que este ya se usa como dato en el modelo
+    // (se mezcla con "parentSlug" y spring no enlaza bien, lo que hace que se rompa el flujo y lleve hacia el login)
     public String viewParentCategory(
-            @PathVariable String parentSlug,
+            @PathVariable String parent,
+            @RequestParam(required = false) String search,
+            @RequestParam(required = false) List<String> tipo,
             ProductFilterDTO filter,
             Pageable pageable,
             Model model) {
 
-        Category category = categoryService.getBySlug(parentSlug); // <- Categorías padre
+        Category category = categoryService.getBySlug(parent); // <- Categorías padre
         //categoryService.findBySlugAndParentIsNull(parentSlug);
-        return buildCategoryView(category, filter, pageable, model);
+        model.addAttribute("parentSlug", parent);
+        return buildCategoryView(category, filter, pageable, model, search, tipo);
     }
 
     // Ver subcategoría (ej: /categoria/perros/comida) + Filtros (si los hay)
@@ -56,16 +58,21 @@ public class CategoryController {
     public String viewSubCategory(
             @PathVariable String parent,
             @PathVariable String child,
+            @RequestParam(required = false) String search,
+            @RequestParam(required = false) List<String> tipo,
             ProductFilterDTO filter,
             Pageable pageable,
             Model model) {
 
         //Category category = categoryService.getBySlug(child);
         Category category = categoryService.getBySlugAndParent_Slug(parent, child);
-        return buildCategoryView(category, filter, pageable, model);
+        model.addAttribute("parentSlug", parent);
+        model.addAttribute("childSlug", child);
+        return buildCategoryView(category, filter, pageable, model, search, tipo);
     }
 
-    private String buildCategoryView(Category category, ProductFilterDTO filter, Pageable pageable, Model model) {
+    private String buildCategoryView(Category category, ProductFilterDTO filter, Pageable pageable, Model model,
+                                     String search, List<String> tipos) {
 
         List<Category> categories =
                 categoryService.getCategoryWithSubcategories(category);
@@ -99,12 +106,17 @@ public class CategoryController {
         Map<String, Map<String, Long>> filterCounts = // Contador de filtros
                 productService.getFilterCounts(categories);
 
+        filter.setSearch(search);
+        filter.setTipo(tipos);
+        model.addAttribute("search", search); // Añadir búsqueda
         model.addAttribute("products", page.getContent());
         model.addAttribute("page", page);
         model.addAttribute("filters", filters);
         model.addAttribute("filterCounts", filterCounts);
         model.addAttribute("selectedFilters", filter);
-
+        //model.addAttribute("parent", category); // objeto Category
+        // /* Se podría hacer parent.slug en las vistas para obtener el slug del parent, pero es más siempre utilizar
+        // el String "parent" de los métodos del controller */
         return "category/category";
     }
 }

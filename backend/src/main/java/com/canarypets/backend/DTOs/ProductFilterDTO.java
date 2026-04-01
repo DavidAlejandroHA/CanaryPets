@@ -4,16 +4,21 @@ import java.util.List;
 
 public class ProductFilterDTO {
 
-    private List<String> marcas;
-    private List<String> tipos;
-    private List<String> edades;
+    private List<String> marca;
+    private List<String> tipo;
+    private List<String> edad;
 
-    public List<String> getTipos() {return tipos;}
-    public void setTipos(List<String> tipos) {this.tipos = tipos;}
+    private String search;
 
-    public List<String> getMarcas() {return marcas;}
-    public void setMarcas(List<String> marcas) {this.marcas = marcas;}
+    public List<String> getTipo() {return tipo;}
+    public void setTipo(List<String> tipo) {this.tipo = tipo;}
 
-    public List<String> getEdades() {return edades;}
-    public void setEdades(List<String> edades) {this.edades = edades;}
+    public List<String> getMarca() {return marca;}
+    public void setMarca(List<String> marca) {this.marca = marca;}
+
+    public List<String> getEdad() {return edad;}
+    public void setEdad(List<String> edad) {this.edad = edad;}
+
+    public String getSearch() {return search;}
+    public void setSearch(String search) {this.search = search;}
 }

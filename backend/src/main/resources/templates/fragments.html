@@ -31,12 +31,13 @@
 
       <!-- SEARCH -->
       <form class="d-flex mx-3 header-search"
-            th:action="@{/search}" method="get">
+            th:action="@{/categoria/{parent}(parent=${parentSlug})}" method="get">
 
         <input class="form-control me-2"
                type="search"
-               name="searchBar"
-               id="searchBar"
+               name="search"
+               id="search"
+               th:value="${search}"
                placeholder="Buscar productos...">
 
         <button class="btn btn-outline-primary">Buscar</button>
@@ -126,7 +127,7 @@
                 <h5><a th:href="@{/categoria/perros/accesorios}">Accesorios</a></h5>
                 <a th:href="@{/categoria/perros/accesorios(tipo='camas')}">Camas</a>
                 <a th:href="@{/categoria/perros/accesorios(tipo='transportines')}">Transportines</a>
-                <a th:href="@{/categoria/perros/accesorios(tipo='correas')}">Correas y arneses</a>
+                <a th:href="@{/categoria/perros/accesorios(tipo='correas-y-arneses')}">Correas y arneses</a>
                 <a th:href="@{/categoria/perros/accesorios(tipo='comederos-y-bebederos')}">Comederos y bebederos</a>
               </div>
 
@@ -140,13 +141,15 @@
                 <h5><a th:href="@{/categoria/perros/salud}">Salud</a></h5>
                 <a th:href="@{/categoria/perros/salud(tipo='antiparasitarios')}">Antiparasitarios</a>
                 <a th:href="@{/categoria/perros/salud(tipo='suplementos')}">Suplementos</a>
+                <a th:href="@{/categoria/perros/salud(tipo='tratamientos')}">Tratamientos</a>
               </div>
 
               <div class="col">
                 <h5><a th:href="@{/categoria/perros/higiene}">Higiene</a></h5>
-                <a th:href="@{/categoria/perros/higiene(tipo='champus')}">Champús</a>
+                <a th:href="@{/categoria/perros/higiene(tipo='champu')}">Champú</a>
                 <a th:href="@{/categoria/perros/higiene(tipo='cepillos')}">Cepillos</a>
                 <a th:href="@{/categoria/perros/higiene(tipo='toallitas')}">Toallitas</a>
+                <a th:href="@{/categoria/perros/higiene(tipo='higiene')}">Higiene general</a>
               </div>
 
             </div>
@@ -166,25 +169,33 @@
 
               <div class="col">
                 <h5><a th:href="@{/categoria/gatos/accesorios}">Accesorios</a></h5>
+                <a th:href="@{/categoria/gatos/accesorios(tipo='camas')}">Camas</a>
+                <a th:href="@{/categoria/gatos/accesorios(tipo='transportines')}">Transportines</a>
                 <a th:href="@{/categoria/gatos/accesorios(tipo='areneros')}">Areneros</a>
                 <a th:href="@{/categoria/gatos/accesorios(tipo='rascadores')}">Rascadores</a>
+                <a th:href="@{/categoria/gatos/accesorios(tipo='comederos-y-bebederos')}">Comederos y bebederos</a>
               </div>
 
               <div class="col">
                 <h5><a th:href="@{/categoria/gatos/juguetes}">Juguetes</a></h5>
                 <a th:href="@{/categoria/gatos/juguetes(tipo='pelotas')}">Pelotas</a>
                 <a th:href="@{/categoria/gatos/juguetes(tipo='ratones')}">Ratones</a>
+                <a th:href="@{/categoria/gatos/juguetes(tipo='interactivos')}">Interactivos</a>
               </div>
 
               <div class="col">
                 <h5><a th:href="@{/categoria/gatos/salud}">Salud</a></h5>
                 <a th:href="@{/categoria/gatos/salud(tipo='antiparasitarios')}">Antiparasitarios</a>
+                <a th:href="@{/categoria/gatos/salud(tipo='suplementos')}">Suplementos</a>
+                <a th:href="@{/categoria/gatos/salud(tipo='tratamientos')}">Tratamientos</a>
               </div>
 
               <div class="col">
                 <h5><a th:href="@{/categoria/gatos/higiene}">Higiene</a></h5>
                 <a th:href="@{/categoria/gatos/higiene(tipo='arena')}">Arenas absorbentes</a>
                 <a th:href="@{/categoria/gatos/higiene(tipo='cepillos')}">Cepillos</a>
+                <a th:href="@{/categoria/gatos/higiene(tipo='champu')}">Champú</a>
+                <a th:href="@{/categoria/perros/higiene(tipo='higiene')}">Higiene general</a>
               </div>
 
             </div>
@@ -200,12 +211,14 @@
                 <a th:href="@{/categoria/roedores/comida(tipo='pienso')}">Pienso</a>
                 <a th:href="@{/categoria/roedores/comida(tipo='heno')}">Heno</a>
                 <a th:href="@{/categoria/roedores/comida(tipo='snacks')}">Snacks</a>
+                <a th:href="@{/categoria/roedores/comida(tipo='semillas')}">Semillas</a>
               </div>
 
               <div class="col">
                 <h5><a th:href="@{/categoria/roedores/accesorios}">Accesorios</a></h5>
                 <a th:href="@{/categoria/roedores/accesorios(tipo='jaulas')}">Jaulas</a>
                 <a th:href="@{/categoria/roedores/accesorios(tipo='comederos-y-bebederos')}">Comederos y bebederos</a>
+                <a th:href="@{/categoria/roedores/accesorios(tipo='refugios')}">Refugios</a>
               </div>
 
               <div class="col">
@@ -230,9 +243,10 @@
 
               <div class="col">
                 <h5><a th:href="@{/categoria/peces/accesorios}">Accesorios</a></h5>
-                <a th:href="@{/categoria/peces/accesorios(tipo='acuarios')}">Acuarios</a>
+                <a th:href="@{/categoria/peces/accesorios(tipo='acuarios')}">Acuarios y accesorios</a>
                 <a th:href="@{/categoria/peces/accesorios(tipo='filtros')}">Filtros</a>
                 <a th:href="@{/categoria/peces/accesorios(tipo='iluminacion')}">Iluminación</a>
+                <a th:href="@{/categoria/peces/accesorios(tipo='decoracion')}">Decoración</a>
               </div>
 
               <div class="col">
@@ -252,17 +266,22 @@
                 <h5><a th:href="@{/categoria/pajaros/comida}">Comida</a></h5>
                 <a th:href="@{/categoria/pajaros/comida(tipo='semillas')}">Semillas</a>
                 <a th:href="@{/categoria/pajaros/comida(tipo='pienso')}">Pienso</a>
+                <a th:href="@{/categoria/pajaros/comida(tipo='snacks')}">Snacks</a>
+                <a th:href="@{/categoria/pajaros/comida(tipo='pasta')}">Pasta</a>
               </div>
 
               <div class="col">
                 <h5><a th:href="@{/categoria/pajaros/accesorios}">Accesorios</a></h5>
                 <a th:href="@{/categoria/pajaros/accesorios(tipo='jaulas')}">Jaulas</a>
                 <a th:href="@{/categoria/pajaros/accesorios(tipo='perchas')}">Perchas</a>
+                <a th:href="@{/categoria/pajaros/accesorios(tipo='comederos-y-bebederos')}">Comederos y bebederos</a>
               </div>
 
               <div class="col">
                 <h5><a th:href="@{/categoria/pajaros/higiene}">Higiene</a></h5>
                 <a th:href="@{/categoria/pajaros/higiene(tipo='limpieza')}">Limpieza jaulas</a>
+                <a th:href="@{/categoria/pajaros/higiene(tipo='higiene')}">Higiene general</a>
+                <a th:href="@{/categoria/pajaros/higiene(tipo='lechos')}">Lechos</a>
               </div>
 
             </div>
@@ -277,18 +296,24 @@
                 <h5><a th:href="@{/categoria/reptiles/comida}">Comida</a></h5>
                 <a th:href="@{/categoria/reptiles/comida(tipo='pienso')}">Pienso</a>
                 <a th:href="@{/categoria/reptiles/comida(tipo='insectos')}">Insectos</a>
+                <a th:href="@{/categoria/reptiles/comida(tipo='sticks')}">Sticks</a>
+                <a th:href="@{/categoria/reptiles/comida(tipo='snacks')}">Snacks</a>
               </div>
 
               <div class="col">
                 <h5><a th:href="@{/categoria/reptiles/accesorios}">Accesorios</a></h5>
                 <a th:href="@{/categoria/reptiles/accesorios(tipo='terrarios')}">Terrarios</a>
                 <a th:href="@{/categoria/reptiles/accesorios(tipo='calefaccion')}">Calefacción</a>
-                <a th:href="@{/categoria/reptiles/accesorios(tipo='uv')}">Iluminación UV</a>
+                <a th:href="@{/categoria/reptiles/accesorios(tipo='iluminacion')}">Iluminación UV</a>
+                <a th:href="@{/categoria/reptiles/accesorios(tipo='humedad')}">Humedad</a>
+                <a th:href="@{/categoria/reptiles/accesorios(tipo='refugios')}">Refugios</a>
+                <a th:href="@{/categoria/reptiles/accesorios(tipo='decoracion')}">Decoración</a>
               </div>
 
               <div class="col">
                 <h5><a th:href="@{/categoria/reptiles/salud}">Salud</a></h5>
                 <a th:href="@{/categoria/reptiles/salud(tipo='suplementos')}">Suplementos</a>
+                <a th:href="@{/categoria/reptiles/salud(tipo='tratamientos')}">Tratamientos</a>
               </div>
 
             </div>

@@ -28,9 +28,9 @@
                              th:if="${filterCounts['marca'][marca.slug] > 0}">
                             <label class="d-block">
                                 <input type="checkbox"
-                                       name="marcas"
+                                       name="marca"
                                        th:value="${marca.slug}"
-                                       th:checked="${selectedFilters.marcas != null and selectedFilters.marcas.contains(marca.slug)}"
+                                       th:checked="${selectedFilters.marca != null and selectedFilters.marca.contains(marca.slug)}"
                                        th:disabled="${filterCounts['marca'][marca.slug] == 0}">
 
                                 <!-- Mostrar nombre bonito -->
@@ -51,9 +51,9 @@
                              th:if="${filterCounts['tipo'][tipo.slug] > 0}">
                             <label class="d-block">
                                 <input type="checkbox"
-                                       name="tipos"
+                                       name="tipo"
                                        th:value="${tipo.slug}"
-                                       th:checked="${selectedFilters.tipos != null and selectedFilters.tipos.contains(tipo.slug)}"
+                                       th:checked="${selectedFilters.tipo != null and selectedFilters.tipo.contains(tipo.slug)}"
                                        th:disabled="${filterCounts['tipo'][tipo.slug] == 0}">
 
                                 <span th:text="${tipo.name}"></span>
@@ -71,9 +71,9 @@
                              th:if="${filterCounts['edad'][edad.slug] > 0}">
                             <label class="d-block">
                                 <input type="checkbox"
-                                       name="edades"
+                                       name="edad"
                                        th:value="${edad.slug}"
-                                       th:checked="${selectedFilters.edades != null and selectedFilters.edades.contains(edad.slug)}"
+                                       th:checked="${selectedFilters.edad != null and selectedFilters.edad.contains(edad.slug)}"
                                        th:disabled="${filterCounts['edad'][edad.slug] == 0}">
 
                                 <span th:text="${edad.name}"></span>
@@ -94,6 +94,11 @@
 
                     <div class="col-6 col-md-4 col-lg-3"
                          th:each="product : ${products}">
+
+                        <div th:if="${page.content.isEmpty()}" class="text-center mt-5">
+                            <h4>Sin resultados</h4>
+                            <p>Prueba con otros filtros o búsqueda</p>
+                        </div>
 
 
                         <!-- 🔥 LINK ENVOLVIENDO TODA LA CARD -->

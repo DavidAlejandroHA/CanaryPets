@@ -20,9 +20,9 @@ public class ProductSpecification { // Para construir la query en tiempo real se
             List<Predicate> predicates = new ArrayList<>();
 
             // Reutilizar método_
-            addTagFilter(predicates, root, cb, "tipo", filter.getTipos());
-            addTagFilter(predicates, root, cb, "marca", filter.getMarcas());
-            addTagFilter(predicates, root, cb, "edad", filter.getEdades());
+            addTagFilter(predicates, root, cb, "tipo", filter.getTipo());
+            addTagFilter(predicates, root, cb, "marca", filter.getMarca());
+            addTagFilter(predicates, root, cb, "edad", filter.getEdad());
 
             return cb.and(predicates.toArray(new Predicate[0]));
             // Se une todo_, por ejemplo: WHERE tipo = pienso AND marca = purina AND edad = cachorro
@@ -42,9 +42,9 @@ public class ProductSpecification { // Para construir la query en tiempo real se
             }
 
             // Tags
-            addTagFilter(predicates, root, cb, "tipo", filter.getTipos());
-            addTagFilter(predicates, root, cb, "marca", filter.getMarcas());
-            addTagFilter(predicates, root, cb, "edad", filter.getEdades());
+            addTagFilter(predicates, root, cb, "tipo", filter.getTipo());
+            addTagFilter(predicates, root, cb, "marca", filter.getMarca());
+            addTagFilter(predicates, root, cb, "edad", filter.getEdad());
 
             return cb.and(predicates.toArray(new Predicate[0]));
         };
@@ -62,9 +62,24 @@ public class ProductSpecification { // Para construir la query en tiempo real se
             }
 
             // Tags
-            addTagFilter(predicates, root, cb, "tipo", filter.getTipos());
-            addTagFilter(predicates, root, cb, "marca", filter.getMarcas());
-            addTagFilter(predicates, root, cb, "edad", filter.getEdades());
+            addTagFilter(predicates, root, cb, "tipo", filter.getTipo());
+            addTagFilter(predicates, root, cb, "marca", filter.getMarca());
+            addTagFilter(predicates, root, cb, "edad", filter.getEdad());
+
+            // Search
+            if (filter.getSearch() != null && !filter.getSearch().isBlank()) {
+                String like = "%" + filter.getSearch().toLowerCase() + "%";
+
+                Join<Product, Tag> tags = root.join("tags", JoinType.LEFT);
+
+                predicates.add(
+                        cb.or(
+                                cb.like(cb.lower(root.get("name")), like),
+                                cb.like(cb.lower(root.get("description")), like),
+                                cb.like(cb.lower(tags.get("name")), like) // Buscar también por marca
+                        )
+                );
+            }
 
             return cb.and(predicates.toArray(new Predicate[0]));
         };

@@ -32,8 +32,8 @@ public class TagsSeeder implements CommandLineRunner {
 
         createTag("type", "Camas");
         createTag("type", "Transportines");
-        createTag("type", "Correas y arneses", "correas");
-        createTag("type", "Comederos y bebederos", "comederos");
+        createTag("type", "Correas y arneses");
+        createTag("type", "Comederos y bebederos");
 
         createTag("type", "Mordedores");
         createTag("type", "Interactivos");
@@ -53,24 +53,29 @@ public class TagsSeeder implements CommandLineRunner {
 
         createTag("type", "Heno");
         createTag("type", "Jaulas");
+        createTag("type", "Refugios");
         /*createTag("type", "bebederos");*/
         createTag("type", "Lechos");
         createTag("type", "Limpieza");
 
-        createTag("type", "Escamas", "comida-escamas");
+        createTag("type", "Escamas");
         createTag("type", "Granulado");
-        createTag("type", "Acuarios");
+        createTag("type", "Acuarios y accesorios", "acuarios");
+        createTag("type", "Decoración");
         createTag("type", "Filtros");
-        createTag("type", "Iluminación");
+        //createTag("type", "Iluminación");
         createTag("type", "Tratamientos agua","tratamientos");
 
         createTag("type", "Semillas");
+        createTag("type", "Pasta");
         createTag("type", "Perchas");
 
         createTag("type", "Insectos");
+        createTag("type", "Humedad");
+        createTag("type", "Sticks");
         createTag("type", "Terrarios");
         createTag("type", "Calefacción");
-        createTag("type", "Iluminación UV", "uv");
+        createTag("type", "Iluminación UV", "iluminacion");
 
         // Marcas
         createTag("marca", "Royal Canin");
