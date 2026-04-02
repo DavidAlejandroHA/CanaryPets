@@ -113,6 +113,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
 }
 
 /* FILAS */
@@ -120,7 +121,6 @@
 .header-row-2 {
     display: flex;
     align-items: center;
-    width: 100%;
 }
 
 /* FILA 1 */
@@ -140,6 +140,10 @@
     min-width: 120px;
 }
 
+.header-search label {
+    white-space: wrap;
+}
+
 /* FILA 2 */
 .header-row-2 {
     justify-content: space-between;
@@ -157,8 +161,8 @@
     }
 
     .header-row-1 {
-        width: auto;
-        flex-wrap: nowrap;
+        /*width: auto;
+        flex-wrap: nowrap;*/
         flex: 1;
         min-width: 0; /* Evita romper layout */
     }
@@ -168,14 +172,20 @@
         order: 0;
         margin-top: 0;
         flex: 1;
-        max-width: 500px;
+        /*max-width: 500px;*/
+        min-width: 200px;
     }
 
     .header-row-2 {
-        width: auto;
+        /*width: auto;
         margin-top: 0;
         flex-wrap: nowrap;
-        justify-content: flex-end;
+        justify-content: flex-end;*/
+        flex-shrink: 0;
+    }
+
+    .header-search label {
+        white-space: nowrap;
     }
     
     /* Ocultar dropdowns */

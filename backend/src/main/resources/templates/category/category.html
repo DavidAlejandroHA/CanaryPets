@@ -106,10 +106,15 @@
                     <div class="col-6 col-md-4 col-lg-3"
                          th:each="product : ${products}">
 
-                        <article class="card h-100 product-card"
-                                 th:attr="data-slug=${product.slug}"
-                                 th:onclick="goToProduct(this)"
-                                 style="cursor: pointer;">
+                        <article class="card h-100 product-card position-relative"
+                                 th:attr="data-slug=${product.slug}">
+                            <!--th:onclick="goToProduct(this)"
+                            style="cursor: pointer;"
+                            - Necesario si se hiciera con js -->
+
+                            <!--Overlay clickable-->
+                            <a th:href="@{'/producto/' + ${product.slug}}"
+                               class="stretched-link"></a>
 
                             <!-- 🔹 HEADER (IMAGEN) -->
                             <header>
@@ -137,19 +142,22 @@
                                         th:text="${product.price + ' €'}">
                                 </strong>
 
-                                <div th:if="${product.solidaryProduct}"
-                                     class="badge bg-success border border-success-subtle mb-2">
-                                    Producto solidario
-                                </div>
+                                <!--<div class="text-center">-->
+                                    <span th:if="${product.solidaryProduct}"
+                                          class="badge align-self-start bg-success border border-success-subtle mb-2"> <!--badge bg-success-subtle text-success mb-2 align-self-start-->
+                                        Producto solidario
+                                    </span>
+                                <!--</div>-->
 
                             </div>
 
-                            <!-- 🔹 FOOTER -->
-                            <footer class="card-footer bg-white border-0">
-                                <button class="btn btn-primary w-100"
+                            <!-- 🔹 FOOTER --> <!--Importante el position-relative para poder clickar luego el boton-->
+                            <footer class="card-footer bg-white border-0 position-relative">
+                                <button class="btn btn-primary w-100 position-relative"
                                         data-bs-toggle="modal"
-                                        th:data-bs-target="'#addToCartModal__' + ${product.id}"
-                                        onclick="event.stopPropagation()">
+                                        style="z-index: 2;"
+                                        th:data-bs-target="'#addToCartModal__' + ${product.id}">
+                                    <!--onclick="event.stopPropagation()" - Necesario si se hiciera con js-->
                                     <!--th:attr="data-bs-target='#addToCartModal__' + ${product.id}"-->
                                     Añadir al carrito
                                 </button>
