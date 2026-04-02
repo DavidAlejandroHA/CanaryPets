@@ -19,45 +19,18 @@
   </div>
 
   <!-- MAIN HEADER -->
-  <div class="container-fluid py-3 main-header gap-2">
+  <div class="container-fluid py-3 main-header">
 
     <!-- 🔹 FILA 1 -->
-    <div class="d-flex align-items-center justify-content-between header-row-1">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
 
       <!-- LOGO -->
       <a th:href="@{/}" class="navbar-brand fw-bold">
         CanaryPets
       </a>
 
-      <!-- SEARCH -->
-      <form class="d-flex mx-3 header-search d-flex"
-            th:action="@{/categoria}" method="post"> <!--accept-charset="UTF-8"-->
-        <!-- 🔽 DROPDOWN + Texto-->
-        <!--Importante: Si se hicieran cambios con JS (ya no es el caso), quitar name="parent" del select para evitar que se envíe como query param-->
-        <div class="d-flex align-items-center">
-          <label class="me-2 mb-0 fw-semibold">Buscar en categoría:</label>
-
-          <select name="parent" class="form-select w-auto"> <!-- onchange="changeCategory(this)"-->
-            <option th:each="cat : ${allCategories}"
-                    th:value="${cat.slug}"
-                    th:text="${cat.name}"
-                    th:selected="${cat.slug == currentCategory}">
-            </option>
-          </select>
-        </div>
-
-        <input class="form-control me-2 flex-grow-1"
-               type="search"
-               name="search"
-               id="search"
-               th:value="${search}"
-               placeholder="Buscar productos...">
-
-        <button class="btn btn-outline-primary">Buscar</button>
-      </form>
-
-      <!-- ACCIONES PRINCIPALES -->
-      <div class="d-flex align-items-center gap-3">
+      <!-- ACCIONES (todo_ junto) -->
+      <div class="d-flex align-items-center gap-2 flex-wrap">
 
         <!-- PREMIUM -->
         <a th:href="@{/premium}"
@@ -67,40 +40,65 @@
         </a>
 
         <!-- CART -->
-        <a th:href="@{/cart}">🛒</a>
+        <a th:href="@{/cart}" class="fs-5">🛒</a>
+
+        <!-- AUTH ANÓNIMO -->
+        <div sec:authorize="isAnonymous()" class="d-flex gap-2">
+          <a th:href="@{/auth/login}" class="btn btn-primary">Login</a>
+          <a th:href="@{/auth/register}" class="btn btn-secondary">Register</a>
+        </div>
+
+        <!-- AUTH LOGEADO -->
+        <div sec:authorize="isAuthenticated()" class="d-flex align-items-center gap-2">
+          <a th:href="@{/profile}">
+            Perfil: <span sec:authentication="name"></span>
+          </a>
+
+          <form th:action="@{/auth/logout}" method="post">
+            <input type="submit" value="Logout" class="btn btn-primary"/>
+          </form>
+        </div>
 
       </div>
-
     </div>
 
-    <!-- 🔹 FILA 2 -->
-    <div class="d-flex align-items-center justify-content-end gap-3 header-row-2">
+    <!-- 🔹 FILA 2 (BUSCADOR) -->
+    <div class="mt-3">
 
-      <!-- AUTH ANÓNIMO -->
-      <div sec:authorize="isAnonymous()"
-           class="d-flex align-items-center gap-2">
+      <form class="d-flex align-items-center flex-nowrap gap-2 header-search"
+            th:action="@{/categoria}"
+            method="post">
 
-        <a th:href="@{/auth/login}" class="btn btn-primary">Login</a>
-        <a th:href="@{/auth/register}" class="btn btn-secondary">Register</a>
+        <!-- DROPDOWN -->
+        <div class="d-flex align-items-center flex-shrink-0">
+          <label class="me-2 mb-0 fw-semibold d-none d-md-inline">
+            Buscar en categoría:
+          </label>
 
-      </div>
+          <select name="parent" class="form-select w-auto">
+            <option th:each="cat : ${allCategories}"
+                    th:value="${cat.slug}"
+                    th:text="${cat.name}"
+                    th:selected="${cat.slug == currentCategory}">
+            </option>
+          </select>
+        </div>
 
-      <!-- AUTH LOGEADO -->
-      <div sec:authorize="isAuthenticated()"
-           class="d-flex align-items-center gap-2">
+        <!-- INPUT -->
+        <input class="form-control flex-grow-1"
+               style="min-width: 0;"
+               type="search"
+               name="search"
+               th:value="${search}"
+               placeholder="Buscar productos...">
+        <!--El style evita que el input empuje al botón hacia abajo-->
 
-        <a th:href="@{/profile}">
-          Perfil:
-          <span class="me-1" sec:authentication="name">Usuario</span>
-        </a>
+        <!-- BOTÓN -->
+        <button class="btn btn-outline-primary flex-shrink-0">
+          Buscar
+        </button>
 
-        <form th:action="@{/auth/logout}" method="post">
-          <input type="submit"
-                 value="Logout"
-                 class="btn btn-primary p-2"/>
-        </form>
-
-      </div>
+      </form>
 
     </div>
 
