@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -54,17 +55,50 @@ public class CategoryController {
 
     // Para la barra de búsqueda
     @PostMapping("") // Es necesario usar POST para enviar datos más complejos y bien codificados
-    public String redirectCategoryPost(
+    public String filterRedirect(
             @RequestParam String parent,
-            @RequestParam(required = false) String search
-    ) throws UnsupportedEncodingException {
-        String url = "/categoria/" + parent;
+            @RequestParam(required = false) String child,
+            @RequestParam(required = false) String search,
+            ProductFilterDTO filter
+    ) {
 
-        if (search != null && !search.isBlank()) {
-            url += "?search=" + URLEncoder.encode(search, StandardCharsets.UTF_8);
+        StringBuilder url = new StringBuilder("/categoria/" + parent);
+
+        if (child != null && !child.isBlank()) {
+            url.append("/").append(child);
         }
 
-        return "redirect:" + url;
+        List<String> params = new ArrayList<>();
+
+        // 🔍 búsqueda
+        if (search != null && !search.isBlank()) {
+            params.add("search=" + URLEncoder.encode(search, StandardCharsets.UTF_8));
+        }
+
+        // 🏷️ filtros (IMPORTANTE)
+        if (filter.getMarca() != null) {
+            filter.getMarca().forEach(m -> params.add("marcas=" + m));
+        }
+
+        if (filter.getTipo() != null) {
+            filter.getTipo().forEach(t -> params.add("tipos=" + t));
+        }
+
+        if (filter.getEdad() != null) {
+            filter.getEdad().forEach(e -> params.add("edades=" + e));
+        }
+        // ejemplo precio
+//        if (filter.getMinPrice() != null) {
+//            params.add("minPrice=" + filter.getMinPrice());
+//        }
+//        if (filter.getMaxPrice() != null) {
+//            params.add("maxPrice=" + filter.getMaxPrice());
+//        }
+        if (!params.isEmpty()) {
+            url.append("?").append(String.join("&", params));
+        }
+
+        return "redirect:" + url.toString();
     }
 
     // Ver categoría padre (ej: /categoria/perros)
