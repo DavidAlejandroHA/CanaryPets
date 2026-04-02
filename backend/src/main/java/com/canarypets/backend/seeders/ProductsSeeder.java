@@ -121,7 +121,7 @@ public class ProductsSeeder implements CommandLineRunner {
         Category saludGatos = categoryRepository.findBySlugAndParent_Slug("salud", "gatos").orElseThrow();
         Category higieneGatos = categoryRepository.findBySlugAndParent_Slug("higiene", "gatos").orElseThrow();
 
-        createProduct("Hill’s Pienso gato adulto", "Alimento equilibrado", new BigDecimal("24.99"), 40, false, "30x20x10 cm", "Hill’s", "productos/gatos/hills-pienso.jpg", comidaGatos, "Hill’s", "Pienso", "Adulto");
+        createProduct("Hill’s Pienso gato adulto", "Alimento equilibrado", new BigDecimal("24.99"), 40, false, "30x20x10 cm", "Hill’s", "productos/gatos/hills-pienso.png", comidaGatos, "Hill’s", "Pienso", "Adulto");
         createProduct("Royal Canin Pienso gato esterilizado", "Control de peso", new BigDecimal("26.99"), 35, false, "30x20x10 cm", "Royal Canin", "productos/gatos/rc-esterilizado.jpg", comidaGatos, "Royal Canin", "Pienso", "Adulto");
         createProduct("Purina Gourmet húmedo gato", "Comida húmeda premium", new BigDecimal("18.99"), 50, false, "20x10x5 cm", "Purina", "productos/gatos/purina-humedo.jpg", comidaGatos, "Purina", "Húmeda", null);
         createProduct("Advance Snacks gato", "Snacks saludables", new BigDecimal("9.99"), 60, true, "10x5x5 cm", "Advance", "productos/gatos/advance-snacks.jpg", comidaGatos, "Advance", "Snacks", null);

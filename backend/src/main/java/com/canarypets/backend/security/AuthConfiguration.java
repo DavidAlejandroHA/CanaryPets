@@ -56,7 +56,8 @@ public class AuthConfiguration {
             // Definir endpoints accesibles para todos los usuarios, es decir, que no requieran autentificación
             requests.requestMatchers("/", "/home", "/auth/login", "/auth/register",
                             "/auth/logout", "/css/**", "/js/**",
-                            "/categoria/**", "/categoria").permitAll()
+                            "/categoria/**", "/categoria", "/images/**",
+                            "/producto/**").permitAll()
                     .anyRequest().authenticated();
         });
 

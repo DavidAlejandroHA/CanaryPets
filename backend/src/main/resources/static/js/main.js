@@ -19,3 +19,15 @@ function changeCategory(select) {
 
     window.location.href = url.toString();
 }
+
+function setQuantity(productId) {
+    const qtyInput = document.getElementById("qty__" + productId);
+    const hiddenInput = document.getElementById("hiddenQty__" + productId);
+
+    hiddenInput.value = qtyInput.value;
+}
+
+function goToProduct(element) {
+    const slug = element.dataset.slug;
+    window.location.href = "/producto/" + slug;
+}
