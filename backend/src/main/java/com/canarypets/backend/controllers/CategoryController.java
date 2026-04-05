@@ -77,15 +77,15 @@ public class CategoryController {
 
         // 🏷️ filtros (IMPORTANTE)
         if (filter.getMarca() != null) {
-            filter.getMarca().forEach(m -> params.add("marcas=" + m));
+            filter.getMarca().forEach(m -> params.add("marca=" + m));
         }
 
         if (filter.getTipo() != null) {
-            filter.getTipo().forEach(t -> params.add("tipos=" + t));
+            filter.getTipo().forEach(t -> params.add("tipo=" + t));
         }
 
         if (filter.getEdad() != null) {
-            filter.getEdad().forEach(e -> params.add("edades=" + e));
+            filter.getEdad().forEach(e -> params.add("edad=" + e));
         }
         // ejemplo precio
 //        if (filter.getMinPrice() != null) {
@@ -136,6 +136,7 @@ public class CategoryController {
         model.addAttribute("parentSlug", parent);
         model.addAttribute("childSlug", child);
         model.addAttribute("currentCategory", parent);
+        model.addAttribute("currentSubCategory", child);
         return buildCategoryView(category, filter, pageable, model, search, tipo);
     }
 

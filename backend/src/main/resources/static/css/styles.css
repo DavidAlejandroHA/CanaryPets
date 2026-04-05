@@ -1,10 +1,12 @@
+/* Header anterior:*/
 .main-header {
-    border-bottom: 1px solid #eee;
+    /*border-bottom: 1px solid #eee;*/
+    margin: 10px;
 }
 
-.header-search {
+/*.header-search {
     width: 100%;
-}
+}*/
 
 .header-search input {
     min-width: 150px;
@@ -15,7 +17,11 @@
 }
 
 .header-search {
-    display: flex;
-    flex-wrap: wrap;
+    /*display: flex;
+    flex-wrap: wrap;*/
     gap: 8px;
 }
+
+
+
+

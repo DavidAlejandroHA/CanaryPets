@@ -5,7 +5,9 @@
   <title>CanaryPets</title>
   <meta charset="UTF-8">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <link th:href="@{/css/fragments/header.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -19,86 +21,73 @@
   </div>
 
   <!-- MAIN HEADER -->
-  <div class="container-fluid py-3 main-header">
+  <div class="main-header d-flex align-items-center justify-content-between flex-wrap gap-2">
 
-    <!-- 🔹 FILA 1 -->
-    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+    <!-- LOGO -->
+    <a th:href="@{/}" class="navbar-brand fw-bold">
+      CanaryPets
+    </a>
 
-      <!-- LOGO -->
-      <a th:href="@{/}" class="navbar-brand fw-bold">
-        CanaryPets
+    <!-- BUSCADOR -->
+    <form class="d-flex align-items-center flex-grow-1 mx-3 gap-2 header-search"
+          th:action="@{/categoria}"
+          method="post">
+
+      <!-- DROPDOWN -->
+      <div class="d-flex align-items-center flex-shrink-0">
+        <label class="me-2 mb-0 fw-semibold d-none d-md-inline">
+          Buscar en categoría:
+        </label>
+
+        <select name="parent" class="form-select w-auto">
+          <option th:each="cat : ${allCategories}"
+                  th:value="${cat.slug}"
+                  th:text="${cat.name}"
+                  th:selected="${cat.slug == currentCategory}">
+          </option>
+        </select>
+      </div>
+
+      <!-- INPUT -->
+      <input class="form-control flex-grow-1"
+             style="min-width: 0;"
+             type="search"
+             name="search"
+             th:value="${search}"
+             placeholder="Buscar productos...">
+
+      <!-- BOTÓN -->
+      <button class="btn btn-outline-primary flex-shrink-0">
+        Buscar
+      </button>
+
+    </form>
+
+    <!-- ACCIONES -->
+    <div class="d-flex align-items-center gap-2 flex-wrap ms-auto justify-content-end">
+
+      <a th:href="@{/premium}"
+         class="btn btn-warning"
+         sec:authorize="!hasRole('PREMIUM') and !hasRole('ADMIN')">
+        Hazte Premium
       </a>
 
-      <!-- ACCIONES (todo_ junto) -->
-      <div class="d-flex align-items-center gap-2 flex-wrap">
+      <a th:href="@{/cart}" class="fs-5">🛒</a>
 
-        <!-- PREMIUM -->
-        <a th:href="@{/premium}"
-           class="btn btn-warning"
-           sec:authorize="!hasRole('PREMIUM') and !hasRole('ADMIN')">
-          Hazte Premium
+      <div sec:authorize="isAnonymous()" class="d-flex gap-2">
+        <a th:href="@{/auth/login}" class="btn btn-primary">Login</a>
+        <a th:href="@{/auth/register}" class="btn btn-secondary">Register</a>
+      </div>
+
+      <div sec:authorize="isAuthenticated()" class="d-flex align-items-center gap-2">
+        <a th:href="@{/profile}">
+          Perfil: <span sec:authentication="name"></span>
         </a>
 
-        <!-- CART -->
-        <a th:href="@{/cart}" class="fs-5">🛒</a>
-
-        <!-- AUTH ANÓNIMO -->
-        <div sec:authorize="isAnonymous()" class="d-flex gap-2">
-          <a th:href="@{/auth/login}" class="btn btn-primary">Login</a>
-          <a th:href="@{/auth/register}" class="btn btn-secondary">Register</a>
-        </div>
-
-        <!-- AUTH LOGEADO -->
-        <div sec:authorize="isAuthenticated()" class="d-flex align-items-center gap-2">
-          <a th:href="@{/profile}">
-            Perfil: <span sec:authentication="name"></span>
-          </a>
-
-          <form th:action="@{/auth/logout}" method="post">
-            <input type="submit" value="Logout" class="btn btn-primary"/>
-          </form>
-        </div>
-
+        <form th:action="@{/auth/logout}" method="post">
+          <input type="submit" value="Logout" class="btn btn-primary"/>
+        </form>
       </div>
-    </div>
-
-    <!-- 🔹 FILA 2 (BUSCADOR) -->
-    <div class="mt-3">
-
-      <form class="d-flex align-items-center flex-nowrap gap-2 header-search"
-            th:action="@{/categoria}"
-            method="post">
-
-        <!-- DROPDOWN -->
-        <div class="d-flex align-items-center flex-shrink-0">
-          <label class="me-2 mb-0 fw-semibold d-none d-md-inline">
-            Buscar en categoría:
-          </label>
-
-          <select name="parent" class="form-select w-auto">
-            <option th:each="cat : ${allCategories}"
-                    th:value="${cat.slug}"
-                    th:text="${cat.name}"
-                    th:selected="${cat.slug == currentCategory}">
-            </option>
-          </select>
-        </div>
-
-        <!-- INPUT -->
-        <input class="form-control flex-grow-1"
-               style="min-width: 0;"
-               type="search"
-               name="search"
-               th:value="${search}"
-               placeholder="Buscar productos...">
-        <!--El style evita que el input empuje al botón hacia abajo-->
-
-        <!-- BOTÓN -->
-        <button class="btn btn-outline-primary flex-shrink-0">
-          Buscar
-        </button>
-
-      </form>
 
     </div>
 

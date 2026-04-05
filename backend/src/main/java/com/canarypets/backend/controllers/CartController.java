@@ -15,14 +15,18 @@ public class CartController {
             @RequestParam int quantity,
             Authentication authentication
     ) {
-
-        if (authentication == null || !authentication.isAuthenticated()) {
+        if (!isUserLogged(authentication)) {
             return "redirect:/auth/login";
         }
 
         // FUTURO:
+        // Añadir producto al carrito
         // cartService.addProduct(authentication.getName(), productId, quantity);
 
         return "redirect:/cart"; // o volver atrás
+    }
+
+    private boolean isUserLogged(Authentication authentication) {
+        return !(authentication == null || !authentication.isAuthenticated());
     }
 }

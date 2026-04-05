@@ -118,4 +118,9 @@ public class ProductService {
 //            }
 //        }
 //    }
+
+    public Product getBySlug(String slug) {
+        return productRepository.findBySlug(slug)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+    }
 }

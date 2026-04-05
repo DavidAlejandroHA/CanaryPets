@@ -1,0 +1,151 @@
+/* =========================
+   🔹 MEGA MENU
+========================= */
+.mega-menu { /* Listas/menus de subcategorías */
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+    min-width: 200px;
+    max-width: 400px;
+    flex-wrap: wrap; /* Evita overflow */
+}
+
+/*.mega-menu div {
+    min-width: 120px;
+}*/
+
+.mega-menu a { /* Enlaces -> Subcategorías y tipos */
+    display: block;
+    padding: 0px 0;      /* antes probablemente más alto */
+    margin: 0;           /* elimina separación extra */
+    line-height: 1.1;    /* compacta altura del texto */
+    /*font-size: 0.9rem;*/   /* opcional: ligeramente más pequeño */
+    color: #333;
+    text-decoration: none;
+
+    margin-bottom: 2px;
+    /*font-size: 0.9rem;*/
+}
+
+.mega-menu a:hover {
+    color: #0d6efd;
+}
+
+.mega-menu .col:not(:last-child) {
+    margin-bottom: 20px; /* reduce separación vertical entre columnas*/
+}
+
+.mega-menu h5,
+.mega-menu h6 {
+    margin-bottom: 5px; /* menos espacio debajo del título */
+}
+
+/* =========================
+   🔹 DROPDOWN
+========================= */
+.nav-item.dropdown {
+    position: relative;
+}
+
+/* Visibilidad de los dropdowns en caso de estar en móvil */
+.dropdown-menu {
+    /*position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    transition: all 0.2s ease-in-out;*/
+    display: block;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/*.dropdown-menu.show {
+    display: block;
+}*/
+
+/* Visibilidad de los dropdowns en caso de estar en móvil */
+/*.nav-item.dropdown > .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}*/
+
+/* Hover */
+.nav-item.dropdown:hover > .dropdown-menu {
+    /*display: block;*/
+    /*margin-top: 0;*/
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto; /* Vuelve a activar interacción */
+}
+
+/* Click activo */
+/*.nav-item.dropdown.active > .dropdown-menu {
+    display: block;
+}*/
+
+/* Navbar fix */
+.navbar {
+    position: relative;
+    z-index: 1000;
+}
+
+.dropdown-menu.mega-menu {
+    left: 0;
+    right: auto;
+    /*top: 0;*/
+    max-width: 90vw;
+    overflow-x: auto;  /* por si acaso */
+}
+
+/* Importante: para breakpoints de boostrap (en este caso lg == 992px), siempre usar breakpoint - 0.02px */
+@media (max-width: 991.98px) {
+
+    .dropdown-menu {
+        position: static;      /* 🔥 clave */
+        visibility: visible;   /* siempre visible */
+        opacity: 1;
+        pointer-events: auto;
+
+        display: block;        /* vuelve a usar display aquí */
+        width: 100%;
+
+        /*box-shadow: none;
+        border: none;*/
+        padding: 5px 10px;
+    }
+
+    .mega-menu {
+        flex-direction: row;
+    }
+}
+
+/* =========================
+   📱 EXTRA MOBILE (MEGA MENU)
+========================= */
+/*@media (min-width: 768px) {
+    .mega-menu {
+        flex-direction: row;
+    }*/
+
+    /*.dropdown-menu.mega-menu {
+        left: 100%;
+        top: 0%;
+    }*/
+/*}*/
+
+/* =========================
+   🔹 LINKS
+========================= */
+.nav-link {
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+}
