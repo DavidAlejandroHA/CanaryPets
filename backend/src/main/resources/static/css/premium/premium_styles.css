@@ -1,0 +1,11 @@
+.btn-success {
+    transition: all 0.2s ease;
+}
+
+.btn-success:hover {
+    transform: scale(1.03);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}

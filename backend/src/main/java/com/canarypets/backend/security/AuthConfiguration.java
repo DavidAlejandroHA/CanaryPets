@@ -45,16 +45,17 @@ public class AuthConfiguration {
 
         //Filtro para evitar que usuarios autenticados puedan acceder al formulario de login al introducir la url
         // Importante definirlo antes que el resto de métodos
-        httpSecurity.addFilterBefore(new LoginPageFilter(), UsernamePasswordAuthenticationFilter.class);
+        //httpSecurity.addFilterBefore(new LoginPageFilter(), UsernamePasswordAuthenticationFilter.class);
         // Lo mismo pero para /register
-        httpSecurity.addFilterBefore(new RegisterPageFilter(), UsernamePasswordAuthenticationFilter.class);
+        //httpSecurity.addFilterBefore(new RegisterPageFilter(), UsernamePasswordAuthenticationFilter.class);
         //Nota: también se puede cambiar por DefaultLoginPageGeneratingFilter.class);
 
 
         // Definición de endpoints accesibles
         httpSecurity.authorizeHttpRequests(requests -> {
             // Definir endpoints accesibles para todos los usuarios, es decir, que no requieran autentificación
-            requests.requestMatchers("/", "/home", "/auth/login", "/auth/register",
+            requests.requestMatchers("/premium/**").permitAll()
+            .requestMatchers("/", "/home", "/auth/login", "/auth/register",
                             "/auth/logout", "/css/**", "/js/**",
                             "/categoria/**", "/categoria", "/images/**",
                             "/producto/**").permitAll()

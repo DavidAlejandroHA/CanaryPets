@@ -94,19 +94,21 @@
     z-index: 1000;
 }
 
-.dropdown-menu.mega-menu {
+.dropdown-menu {
     left: 0;
     right: auto;
-    /*top: 0;*/
-    max-width: 90vw;
-    overflow-x: auto;  /* por si acaso */
+}
+
+.nav-item.dropdown.end .dropdown-menu {
+    right: 0;
+    left: auto;
 }
 
 /* Importante: para breakpoints de boostrap (en este caso lg == 992px), siempre usar breakpoint - 0.02px */
 @media (max-width: 991.98px) {
 
     .dropdown-menu {
-        position: static;      /* 🔥 clave */
+        position: static;      /* clave */
         visibility: visible;   /* siempre visible */
         opacity: 1;
         pointer-events: auto;

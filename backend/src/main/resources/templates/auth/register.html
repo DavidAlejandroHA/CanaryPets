@@ -12,6 +12,9 @@
   <h2 class="text-center mb-4">Crear cuenta</h2>
 
   <form th:action="@{/auth/register}" method="post" th:object="${user}">
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}" />
 
     <div class="mb-3">
       <label>Email</label>
