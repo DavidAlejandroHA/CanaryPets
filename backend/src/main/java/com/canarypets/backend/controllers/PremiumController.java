@@ -35,11 +35,13 @@ public class PremiumController {
     //@PreAuthorize("isAuthenticated()") // Se podría haber hecho con esto pero esto es otra forma de hacerlo
     public String premium(Authentication authentication, RedirectAttributes redirectAttributes) {
 
+        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         // Si no está logueado
         if (authentication == null || !(authentication.getPrincipal() instanceof UserDetails userDetails)) {
             return "redirect:/auth/login"; // Si está logueado, existe userDetails
         }
-        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
 
         userService.addRole(userDetails.getUsername(), "PREMIUM");
 
@@ -57,8 +59,8 @@ public class PremiumController {
         // Actualizar la autenticación del usuario
         SecurityContextHolder.getContext().setAuthentication(reAuth);
 
-        // mensaje flash
-        //redirectAttributes.addFlashAttribute("toastSuccess", "¡Ahora eres usuario premium! 🎉");
+        // Mensaje flash
+        redirectAttributes.addFlashAttribute("toastSuccess", "¡Ya eres un usuario premium! 🎉");
 
         // Volver a la misma página
         return "redirect:/premium";

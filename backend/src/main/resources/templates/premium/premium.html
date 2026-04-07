@@ -31,8 +31,11 @@
                         <li class="text-muted">❌ Sin envío prioritario</li>
                     </ul>
 
-                    <button class="btn btn-outline-secondary w-100" disabled>
+                    <button class="btn btn-outline-secondary w-100" disabled sec:authorize="!hasRole('PREMIUM')">
                         Plan actual
+                    </button>
+                    <button class="btn btn-outline-secondary w-100" disabled sec:authorize="hasRole('PREMIUM')">
+                        Plan gratuito
                     </button>
 
                 </div>
@@ -87,5 +90,7 @@
     </main>
 
     <footer th:insert="~{fragments :: footer}"></footer>
+
+    <div th:insert="~{fragments :: toast}"></div>
 </body>
 </html>

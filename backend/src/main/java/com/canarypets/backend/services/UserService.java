@@ -59,7 +59,7 @@ public class UserService implements UserDetailsService/*, EntityService<User>*/ 
 
 
     public void addRole(String username, String roleName) {
-        User user = userRepository.findByNickName(username);
+        User user = userRepository.findByEmail(username);
         Role role = roleRepository.findByName("ROLE_" + roleName);
 
         List<Role> userRoles = user.getRoles();

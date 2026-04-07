@@ -11,290 +11,291 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-    <div th:replace="fragments :: header"></div>
+<header th:insert="~{fragments :: header}"></header>
 
-    <div class="container mt-4 px-3 px-md-4 px-lg-5 flex-grow-1">
-        <div class="row">
+<div class="container mt-4 px-3 px-md-4 px-lg-5 flex-grow-1">
+    <div class="row">
 
-            <!-- ASIDE FILTROS -->
-            <aside class="col-12 col-md-3 col-lg-2 mb-4 filter-aside">
+        <!-- ASIDE FILTROS -->
+        <aside class="col-12 col-md-3 col-lg-2 mb-4 filter-aside">
 
-                <form method="post" th:action="@{/categoria}">
-                    <input type="hidden"
-                           th:name="${_csrf.parameterName}"
-                           th:value="${_csrf.token}" />
+            <form method="post" th:action="@{/categoria}">
+                <input type="hidden"
+                       th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}"/>
 
-                    <input type="hidden" name="parent" th:value="${currentCategory}">
-                    <input type="hidden" name="child" th:value="${currentSubCategory}">
-                    <input type="hidden" name="search" th:value="${search}">
+                <input type="hidden" name="parent" th:value="${currentCategory}">
+                <input type="hidden" name="child" th:value="${currentSubCategory}">
+                <input type="hidden" name="search" th:value="${search}">
 
-                    <!-- MARCAS -->
-                    <div class="mb-4"
-                         th:if="${filters['marca'] != null}">
-                        <h5>Marca</h5>
+                <!-- MARCAS -->
+                <div class="mb-4"
+                     th:if="${filters['marca'] != null}">
+                    <h5>Marca</h5>
 
-                        <div th:each="marca : ${filters['marca']}"
-                             th:if="${filterCounts['marca'][marca.slug] > 0}">
-                            <label class="d-block">
-                                <input type="checkbox"
-                                       name="marca"
-                                       th:value="${marca.slug}"
-                                       th:checked="${selectedFilters.marca != null and selectedFilters.marca.contains(marca.slug)}"
-                                       th:disabled="${filterCounts['marca'][marca.slug] == 0}">
+                    <div th:each="marca : ${filters['marca']}"
+                         th:if="${filterCounts['marca'][marca.slug] > 0}">
+                        <label class="d-block">
+                            <input type="checkbox"
+                                   name="marca"
+                                   th:value="${marca.slug}"
+                                   th:checked="${selectedFilters.marca != null and selectedFilters.marca.contains(marca.slug)}"
+                                   th:disabled="${filterCounts['marca'][marca.slug] == 0}">
 
-                                <!-- Mostrar nombre bonito -->
-                                <span th:text="${marca.name}"></span>
+                            <!-- Mostrar nombre bonito -->
+                            <span th:text="${marca.name}"></span>
 
-                                <!-- Count sigue usando slug -->
-                                (<span th:text="${filterCounts['marca'][marca.slug]}"></span>)
-                            </label>
-                        </div>
+                            <!-- Count sigue usando slug -->
+                            (<span th:text="${filterCounts['marca'][marca.slug]}"></span>)
+                        </label>
                     </div>
-
-                    <!-- TIPOS -->
-                    <div class="mb-4"
-                         th:if="${filters['tipo'] != null}">
-                        <h5>Tipo</h5>
-
-                        <div th:each="tipo : ${filters['tipo']}"
-                             th:if="${filterCounts['tipo'][tipo.slug] > 0}">
-                            <label class="d-block">
-                                <input type="checkbox"
-                                       name="tipo"
-                                       th:value="${tipo.slug}"
-                                       th:checked="${selectedFilters.tipo != null and selectedFilters.tipo.contains(tipo.slug)}"
-                                       th:disabled="${filterCounts['tipo'][tipo.slug] == 0}">
-
-                                <span th:text="${tipo.name}"></span>
-                                (<span th:text="${filterCounts['tipo'][tipo.slug]}"></span>)
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- EDADES -->
-                    <div class="mb-4"
-                         th:if="${filters['edad'] != null}">
-                        <h5>Edad</h5>
-
-                        <div th:each="edad : ${filters['edad']}"
-                             th:if="${filterCounts['edad'][edad.slug] > 0}">
-                            <label class="d-block">
-                                <input type="checkbox"
-                                       name="edad"
-                                       th:value="${edad.slug}"
-                                       th:checked="${selectedFilters.edad != null and selectedFilters.edad.contains(edad.slug)}"
-                                       th:disabled="${filterCounts['edad'][edad.slug] == 0}">
-
-                                <span th:text="${edad.name}"></span>
-                                (<span th:text="${filterCounts['edad'][edad.slug]}"></span>)
-                            </label>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary w-100">Filtrar</button>
-
-                </form>
-            </aside>
-
-
-
-            <!-- GRID PRODUCTOS -->
-            <main class="col-12 col-md-9">
-
-                <div th:if="${page.content.isEmpty()}" class="text-center mt-5">
-                    <h4>Sin resultados</h4>
-                    <p>Prueba con otros filtros o búsqueda</p>
                 </div>
 
-                <div class="row g-3">
+                <!-- TIPOS -->
+                <div class="mb-4"
+                     th:if="${filters['tipo'] != null}">
+                    <h5>Tipo</h5>
 
-                    <div class="col-6 col-md-4 col-lg-3"
-                         th:each="product : ${products}">
+                    <div th:each="tipo : ${filters['tipo']}"
+                         th:if="${filterCounts['tipo'][tipo.slug] > 0}">
+                        <label class="d-block">
+                            <input type="checkbox"
+                                   name="tipo"
+                                   th:value="${tipo.slug}"
+                                   th:checked="${selectedFilters.tipo != null and selectedFilters.tipo.contains(tipo.slug)}"
+                                   th:disabled="${filterCounts['tipo'][tipo.slug] == 0}">
 
-                        <article class="card h-100 product-card position-relative"
-                                 th:attr="data-slug=${product.slug}">
-                            <!--th:onclick="goToProduct(this)"
-                            style="cursor: pointer;"
-                            - Necesario si se hiciera con js -->
+                            <span th:text="${tipo.name}"></span>
+                            (<span th:text="${filterCounts['tipo'][tipo.slug]}"></span>)
+                        </label>
+                    </div>
+                </div>
 
-                            <!--Overlay clickable-->
-                            <a th:href="@{'/producto/' + ${product.slug}}"
-                               class="stretched-link"></a>
+                <!-- EDADES -->
+                <div class="mb-4"
+                     th:if="${filters['edad'] != null}">
+                    <h5>Edad</h5>
 
-                            <!-- HEADER (IMAGEN) -->
-                            <header>
-                                <a th:href="@{'/producto/' + ${product.slug}}">
-                                    <img th:src="@{'/images/' + ${product.imageUrl}}"
-                                         class="card-img-top product-img"
-                                         alt="product">
-                                </a>
-                            </header>
+                    <div th:each="edad : ${filters['edad']}"
+                         th:if="${filterCounts['edad'][edad.slug] > 0}">
+                        <label class="d-block">
+                            <input type="checkbox"
+                                   name="edad"
+                                   th:value="${edad.slug}"
+                                   th:checked="${selectedFilters.edad != null and selectedFilters.edad.contains(edad.slug)}"
+                                   th:disabled="${filterCounts['edad'][edad.slug] == 0}">
 
-                            <!-- BODY -->
-                            <div class="card-body d-flex flex-column">
+                            <span th:text="${edad.name}"></span>
+                            (<span th:text="${filterCounts['edad'][edad.slug]}"></span>)
+                        </label>
+                    </div>
+                </div>
 
-                                <h2 th:text="${product.name}" class="fs-5"></h2>
+                <button class="btn btn-primary w-100">Filtrar</button>
 
-                                <small class="text-muted"
-                                       th:text="${product.getTagValue('marca')}">
-                                </small>
+            </form>
+        </aside>
 
-                                <p class="card-text flex-grow-1"
-                                   th:text="${product.description}">
-                                </p>
 
-                                <strong class="mt-auto"
-                                        th:text="${product.price + ' €'}">
-                                </strong>
+        <!-- GRID PRODUCTOS -->
+        <main class="col-12 col-md-9">
 
-                                <!--<div class="text-center">-->
-                                    <span th:if="${product.solidaryProduct}"
-                                          class="badge bg-success border border-success-subtle mb-2 text-wrap align-self-start"> <!--badge bg-success-subtle text-success mb-2 align-self-start-->
+            <div th:if="${page.content.isEmpty()}" class="text-center mt-5">
+                <h4>Sin resultados</h4>
+                <p>Prueba con otros filtros o búsqueda</p>
+            </div>
+
+            <div class="row g-3">
+
+                <div class="col-6 col-md-4 col-lg-3"
+                     th:each="product : ${products}">
+
+                    <article class="card h-100 product-card position-relative"
+                             th:attr="data-slug=${product.slug}">
+                        <!--th:onclick="goToProduct(this)"
+                        style="cursor: pointer;"
+                        - Necesario si se hiciera con js -->
+
+                        <!--Overlay clickable-->
+                        <a th:href="@{'/producto/' + ${product.slug}}"
+                           class="stretched-link"></a>
+
+                        <!-- HEADER (IMAGEN) -->
+                        <header>
+                            <a th:href="@{'/producto/' + ${product.slug}}">
+                                <img th:src="@{'/images/' + ${product.imageUrl}}"
+                                     class="card-img-top product-img"
+                                     alt="product">
+                            </a>
+                        </header>
+
+                        <!-- BODY -->
+                        <div class="card-body d-flex flex-column">
+
+                            <h2 th:text="${product.name}" class="fs-5"></h2>
+
+                            <small class="text-muted"
+                                   th:text="${product.getTagValue('marca')}">
+                            </small>
+
+                            <p class="card-text flex-grow-1"
+                               th:text="${product.description}">
+                            </p>
+
+                            <strong class="mt-auto"
+                                    th:text="${product.price + ' €'}">
+                            </strong>
+
+                            <!--<div class="text-center">-->
+                            <span th:if="${product.solidaryProduct}"
+                                  class="badge bg-success border border-success-subtle mb-2 text-wrap align-self-start"> <!--badge bg-success-subtle text-success mb-2 align-self-start-->
                                         Producto solidario
                                     </span>
-                                <!--</div>-->
+                            <!--</div>-->
 
-                            </div>
+                        </div>
 
-                            <!-- FOOTER --> <!--Importante el position-relative para poder clickar luego el boton-->
-                            <footer class="card-footer bg-white border-0 position-relative">
-                                <button class="btn btn-primary w-100 position-relative"
-                                        data-bs-toggle="modal"
-                                        style="z-index: 2;"
-                                        th:data-bs-target="'#addToCartModal__' + ${product.id}">
-                                    <!--onclick="event.stopPropagation()" - Necesario si se hiciera con js-->
-                                    <!--th:attr="data-bs-target='#addToCartModal__' + ${product.id}"-->
-                                    Añadir al carrito
-                                </button>
-                            </footer>
+                        <!-- FOOTER --> <!--Importante el position-relative para poder clickar luego el boton-->
+                        <footer class="card-footer bg-white border-0 position-relative">
+                            <button class="btn btn-primary w-100 position-relative"
+                                    data-bs-toggle="modal"
+                                    style="z-index: 2;"
+                                    th:data-bs-target="'#addToCartModal__' + ${product.id}">
+                                <!--onclick="event.stopPropagation()" - Necesario si se hiciera con js-->
+                                <!--th:attr="data-bs-target='#addToCartModal__' + ${product.id}"-->
+                                Añadir al carrito
+                            </button>
+                        </footer>
 
-                        </article>
+                    </article>
 
 
-                        <div class="modal fade"
-                             th:id="'addToCartModal__' + ${product.id}"
-                             tabindex="-1">
+                    <div class="modal fade"
+                         th:id="'addToCartModal__' + ${product.id}"
+                         tabindex="-1">
 
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
 
-                                    <!-- HEADER -->
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Añadir al carrito</h5>
-                                        <button type="button" class="btn-close"
-                                                data-bs-dismiss="modal"></button>
-                                    </div>
+                                <!-- HEADER -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Añadir al carrito</h5>
+                                    <button type="button" class="btn-close"
+                                            data-bs-dismiss="modal"></button>
+                                </div>
 
-                                    <!-- BODY -->
-                                    <div class="modal-body d-flex align-items-center">
+                                <!-- BODY -->
+                                <div class="modal-body d-flex align-items-center">
 
-                                        <!-- Imagen -->
-                                        <img th:src="@{'/images/' + ${product.imageUrl}}"
-                                             style="width: 80px; height: 80px; object-fit: cover;"
-                                             class="me-3">
+                                    <!-- Imagen -->
+                                    <img th:src="@{'/images/' + ${product.imageUrl}}"
+                                         style="width: 80px; height: 80px; object-fit: cover;"
+                                         class="me-3">
 
-                                        <div>
-                                            <strong th:text="${product.name}"></strong>
-                                            <br>
+                                    <div>
+                                        <strong th:text="${product.name}"></strong>
+                                        <br>
 
-                                            <a th:href="@{'/producto/' + ${product.slug}}">
-                                                Ir a la ficha del producto
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- FOOTER -->
-                                    <div class="modal-footer d-flex justify-content-between">
-
-                                        <!-- Cantidad -->
-                                        <input type="number"
-                                               min="1"
-                                               th:max="${product.stock}"
-                                               value="1"
-                                               class="form-control w-25"
-                                               th:id="'qty__' + ${product.id}">
-
-                                        <!-- Botón -->
-                                        <form method="post" th:action="@{/cart/add}">
-                                            <input type="hidden"
-                                                   th:name="${_csrf.parameterName}"
-                                                   th:value="${_csrf.token}" />
-
-                                            <input type="hidden" name="productId" th:value="${product.id}">
-                                            <input type="hidden" name="quantity"
-                                                   th:id="'hiddenQty__' + ${product.id}">
-
-                                            <button class="btn btn-success"
-                                                    onclick="setQuantity([[${product.id}]])">
-                                                Añadir
-                                            </button>
-                                        </form>
-
+                                        <a th:href="@{'/producto/' + ${product.slug}}">
+                                            Ir a la ficha del producto
+                                        </a>
                                     </div>
 
                                 </div>
+
+                                <!-- FOOTER -->
+                                <div class="modal-footer d-flex justify-content-between">
+
+                                    <!-- Cantidad -->
+                                    <input type="number"
+                                           min="1"
+                                           th:max="${product.stock}"
+                                           value="1"
+                                           class="form-control w-25"
+                                           th:id="'qty__' + ${product.id}">
+
+                                    <!-- Botón -->
+                                    <form method="post" th:action="@{/cart/add}">
+                                        <input type="hidden"
+                                               th:name="${_csrf.parameterName}"
+                                               th:value="${_csrf.token}"/>
+
+                                        <input type="hidden" name="productId" th:value="${product.id}">
+                                        <input type="hidden" name="quantity"
+                                               th:id="'hiddenQty__' + ${product.id}">
+
+                                        <button class="btn btn-success"
+                                                onclick="setQuantity([[${product.id}]])">
+                                            Añadir
+                                        </button>
+                                    </form>
+
+                                </div>
+
                             </div>
                         </div>
-
                     </div>
 
                 </div>
 
-                <!-- PAGINACIÓN -->
-                <nav class="mt-4" th:if="${page.totalPages > 0}">
-                    <ul class="pagination justify-content-center">
+            </div>
 
-                        <li class="page-item"
-                            th:classappend="${page.first} ? 'disabled'">
-                            <button class="page-link" onclick="goToPage(0)">
-                                Primera
-                            </button>
-                        </li>
+            <!-- PAGINACIÓN -->
+            <nav class="mt-4" th:if="${page.totalPages > 0}">
+                <ul class="pagination justify-content-center">
 
-                        <li class="page-item"
-                            th:classappend="${page.first} ? 'disabled'">
-                            <button class="page-link"
-                                    th:onclick="'goToPage(' + ${page.number > 0 ? page.number - 1 : 0} + ')'">
-                                Anterior
-                            </button>
-                        </li>
+                    <li class="page-item"
+                        th:classappend="${page.first} ? 'disabled'">
+                        <button class="page-link" onclick="goToPage(0)">
+                            Primera
+                        </button>
+                    </li>
 
-                        <span th:if="${page.totalPages == 0}">1</span> <!--Solo si no hay resultados-->
+                    <li class="page-item"
+                        th:classappend="${page.first} ? 'disabled'">
+                        <button class="page-link"
+                                th:onclick="'goToPage(' + ${page.number > 0 ? page.number - 1 : 0} + ')'">
+                            Anterior
+                        </button>
+                    </li>
 
-                        <li class="page-item"
-                            th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
-                            th:classappend="${i == page.number} ? 'active'">
+                    <span th:if="${page.totalPages == 0}">1</span> <!--Solo si no hay resultados-->
 
-                            <button class="page-link"
-                                    th:text="${i + 1}"
-                                    th:onclick="'goToPage(' + ${i} + ')'">
-                            </button>
-                        </li>
+                    <li class="page-item"
+                        th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
+                        th:classappend="${i == page.number} ? 'active'">
 
-                        <li class="page-item"
-                            th:classappend="${page.last} ? 'disabled'">
-                            <button class="page-link"
-                                    th:onclick="'goToPage(' + ${page.number < page.totalPages - 1 ? page.number + 1 : page.number} + ')'">
-                                Siguiente
-                            </button>
-                        </li>
+                        <button class="page-link"
+                                th:text="${i + 1}"
+                                th:onclick="'goToPage(' + ${i} + ')'">
+                        </button>
+                    </li>
 
-                        <li class="page-item" th:classappend="${page.last} ? 'disabled'">
-                            <button class="page-link"
-                                    th:onclick="'goToPage(' + ${page.totalPages - 1} + ')'">
-                                Última
-                            </button>
-                        </li>
+                    <li class="page-item"
+                        th:classappend="${page.last} ? 'disabled'">
+                        <button class="page-link"
+                                th:onclick="'goToPage(' + ${page.number < page.totalPages - 1 ? page.number + 1 : page.number} + ')'">
+                            Siguiente
+                        </button>
+                    </li>
 
-                    </ul>
-                </nav>
+                    <li class="page-item" th:classappend="${page.last} ? 'disabled'">
+                        <button class="page-link"
+                                th:onclick="'goToPage(' + ${page.totalPages - 1} + ')'">
+                            Última
+                        </button>
+                    </li>
 
-            </main>
-        </div>
+                </ul>
+            </nav>
+
+        </main>
     </div>
+</div>
 
-    <div th:replace="fragments :: footer"></div>
+<footer th:insert="~{fragments :: footer}"></footer>
+
+<div th:insert="~{fragments :: toast}"></div>
 </body>
 <script th:src="@{/js/main.js}"></script>
 </html>
