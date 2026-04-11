@@ -1,0 +1,32 @@
+/* Eliminar suave */
+/*.fade-out {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+}*/
+
+/* Actualizar */
+.updated {
+    background-color: #e6ffed; /*e7f1ff*/
+    transition: background-color 0.3s ease;
+}
+
+/*.fade-out {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.3s ease;
+}*/
+
+/* Animación slide al eliminar*/
+.cart-item {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.slide-out {
+    transform: translateX(100%);
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
