@@ -102,11 +102,29 @@
                         <!-- 🔢 CANTIDAD -->
                         <div>
                             <small>Cantidad:</small>
-                            <input type="number"
-                                   min="1"
-                                   th:value="${item.quantity}"
-                                   class="form-control quantity-input"
-                                   style="width: 80px;">
+
+                            <!-- FORM fallback -->
+                            <form th:action="@{/cart/update}" method="post" class="update-form d-flex gap-2 align-items-center">
+
+                                <!-- ID del producto -->
+                                <input type="hidden" name="productId" th:value="${item.product.id}" />
+
+                                <!-- CSRF -->
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                                <!-- INPUT cantidad (JS lo usa también) -->
+                                <input type="number"
+                                       name="quantity"
+                                       min="1"
+                                       th:value="${item.quantity}"
+                                       class="form-control quantity-input"
+                                       style="width: 80px;">
+
+                                <!-- 🔘 BOTÓN fallback (sin JS) -->
+                                <button type="submit" class="btn btn-sm btn-primary update-btn-fallback">
+                                    Actualizar
+                                </button>
+                            </form>
                         </div>
 
                         <!-- 💵 TOTAL -->

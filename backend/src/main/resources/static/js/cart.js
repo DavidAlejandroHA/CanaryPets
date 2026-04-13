@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const productId = item.dataset.id;
             const quantity = this.value;
 
-            fetch(`/cart/update`, {
+            fetch(`/cart/update-ajax`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -102,6 +102,13 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(() => {
                 window.location.reload();
             });
+        });
+    });
+
+    // Evitar que el form haga submit al hacer update
+    document.querySelectorAll(".update-form").forEach(form => {
+        form.addEventListener("submit", e => {
+            e.preventDefault(); // Evita recarga
         });
     });
 

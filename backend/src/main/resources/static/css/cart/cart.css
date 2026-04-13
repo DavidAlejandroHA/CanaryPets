@@ -30,3 +30,12 @@
     margin: 0;
     padding: 0;
 }
+
+/* Ocultar elementos fallback */
+.update-btn-fallback {
+    display: inline-block;
+}
+
+.js-enabled .update-btn-fallback {
+    display: none;
+}

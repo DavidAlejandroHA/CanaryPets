@@ -98,8 +98,20 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
-    // Update AJAX
+    // Update fallback
     @PostMapping("/update")
+    public String updateFallback(@RequestParam Long productId,
+                                 @RequestParam int quantity,
+                                 Authentication auth) {
+
+        User user = userService.getUserByEmail(auth.getName());
+        cartService.updateQuantity(user, productId, quantity);
+
+        return "redirect:/cart";
+    }
+
+    // Update AJAX
+    @PostMapping("/update-ajax")
     @ResponseBody
     public ResponseEntity<?> update(@RequestBody Map<String, Object> body,
                        Authentication auth) {

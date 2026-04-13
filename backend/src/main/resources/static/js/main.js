@@ -44,3 +44,6 @@ function animateCart() {
         cart.classList.remove("cart-bounce");
     }, 500);
 }
+
+/* Ocultar elementos fallback */
+document.documentElement.classList.add("js-enabled");
