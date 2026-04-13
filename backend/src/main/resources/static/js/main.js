@@ -31,3 +31,16 @@ function goToProduct(element) {
     const slug = element.dataset.slug;
     window.location.href = "/producto/" + slug;
 }
+
+
+// Animar icono de carrito
+function animateCart() {
+    const cart = document.getElementById("cart-icon");
+    if (!cart) return;
+
+    cart.classList.add("cart-bounce");
+
+    setTimeout(() => {
+        cart.classList.remove("cart-bounce");
+    }, 500);
+}

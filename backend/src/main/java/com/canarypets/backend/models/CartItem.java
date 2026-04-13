@@ -15,7 +15,7 @@ public class CartItem {
     @Min(1)
     private int quantity;
 
-    private float subtotal;
+    //private float totalPrice; // En OrderItem
 
     @ManyToOne(fetch = FetchType.LAZY) /* Solo se carga lo necesario, mejor rendimiento */
     @JoinColumn(name = "id_carrito")
@@ -33,15 +33,24 @@ public class CartItem {
     public int getQuantity() {return quantity;}
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-        calculateSubtotal();
+        //calculateSubtotal();
     }
 
-    public void calculateSubtotal() {
+    // helpers (muy útiles)
+    public double getTotalPrice() {
+        return product.getPrice().floatValue() * quantity;
+    }
+
+    /*public void calculateSubtotal() {
         this.subtotal = product.getPrice().floatValue() * quantity;
+    }*/
+
+    public double getTotalPriceWithDiscount() {
+        return product.getPremiumDiscountPrice().floatValue() * quantity;
     }
 
-    public float getSubtotal() {return subtotal;}
-    public void setSubtotal(float subtotal) {this.subtotal = subtotal;}
+    //public float getSubtotal() {return subtotal;}
+    //public void setSubtotal(float subtotal) {this.subtotal = subtotal;}
 
     public ShoppingCart getCart() {return cart;}
     public void setCart(ShoppingCart cart) {this.cart = cart;}

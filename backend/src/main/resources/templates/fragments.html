@@ -78,7 +78,7 @@
         Hazte Premium
       </a>
 
-      <a th:href="@{/cart}" class="fs-5">🛒</a>
+      <a th:href="@{/cart}" class="fs-5" id="cart-icon">🛒</a>
 
       <div sec:authorize="isAnonymous()" class="d-flex gap-2">
         <a th:href="@{/auth/login}" class="btn btn-primary">Login</a>
@@ -345,7 +345,23 @@
 <!--Toast-->
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100" th:fragment="toast">
 
-  <!-- SUCCESS -->
+  <!-- TOAST BASE (SIEMPRE EXISTE) -->
+  <div id="live-toast"
+       class="toast align-items-center border-0 text-bg-success"
+       role="alert">
+
+    <div class="d-flex">
+      <div class="toast-body fs-5" id="toast-body">
+        <!-- contenido dinámico -->
+      </div>
+      <button type="button"
+              class="btn-close btn-close-white me-2 m-auto"
+              data-bs-dismiss="toast">
+      </button>
+    </div>
+  </div>
+
+  <!-- SUCCESS (SERVER) -->
   <div th:if="${toastSuccess}" class="toast align-items-center text-bg-success border-0 show" role="alert">
     <div class="d-flex">
       <div class="toast-body fs-5" th:text="${toastSuccess}"></div>
@@ -353,7 +369,7 @@
     </div>
   </div>
 
-  <!-- ERROR -->
+  <!-- ERROR (SERVER) -->
   <div th:if="${toastError}" class="toast align-items-center text-bg-danger border-0 show" role="alert">
     <div class="d-flex">
       <div class="toast-body fs-5" th:text="${toastError}"></div>

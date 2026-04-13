@@ -123,4 +123,9 @@ public class ProductService {
         return productRepository.findBySlug(slug)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
     }
+
+    public Product getById(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+    }
 }

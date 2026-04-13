@@ -64,7 +64,7 @@ public class User {
     )
     private List<Product> favorites = new ArrayList<>();
 
-    @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private ShoppingCart shoppingCart;
 
     public User() {}

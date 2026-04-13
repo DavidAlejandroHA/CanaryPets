@@ -91,7 +91,10 @@
                     Añadir al carrito
                 </button>
             </div>-->
-            <form th:action="@{/cart/add}" method="post" class="d-flex gap-2 mt-3">
+            <form id="add-to-cart-form"
+                  th:action="@{/cart/add}"
+                  method="post"
+                  class="d-flex gap-2 mt-3">
                 <input type="hidden"
                        th:name="${_csrf.parameterName}"
                        th:value="${_csrf.token}" />

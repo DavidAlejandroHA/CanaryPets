@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Mi carrito</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link th:href="@{/css/styles.css}" rel="stylesheet">
     <link th:href="@{/css/cart/cart.css}" rel="stylesheet">
+    <link th:href="@{/css/fragments/header.css}" rel="stylesheet">
 </head>
 
 <script>
@@ -15,7 +17,7 @@
 <body class="d-flex flex-column min-vh-100">
 
 <!-- HEADER -->
-<header th:insert="~{fragments :: cabecera}"></header>
+<header th:insert="~{fragments :: header}"></header>
 
 <!-- MAIN -->
 <main class="container my-4 flex-grow-1">
@@ -51,7 +53,7 @@
                 <div th:each="item : ${cartItems}"
                      class="border-bottom py-3 cart-item"
                      th:attr="
-                     data-id=${item.id},
+                     data-id=${item.product.id},
                      data-price=${item.product.price},
                      data-price-premium=${item.product.premiumDiscountPrice}
                      ">
@@ -82,7 +84,7 @@
                         <div class="ms-auto text-end">
 
                             <!-- NORMAL -->
-                            <div sec:authorize="!hasRole('PREMIUM')" class="price-normal">
+                            <div class="pt-4 price-normal" sec:authorize="!hasRole('PREMIUM')">
                                 <strong th:text="${item.product.price + ' €'}"></strong>
                             </div>
 
@@ -94,6 +96,8 @@
                                         th:text="${item.product.premiumDiscountPrice + ' €'}"></strong>
                             </div>
                         </div>
+
+                        <span class="pt-4">x</span>
 
                         <!-- 🔢 CANTIDAD -->
                         <div>
@@ -142,7 +146,7 @@
                                 <!-- 👇 IMPORTANTE: clase remove-btn -->
                                 <button type="submit"
                                         class="btn btn-outline-danger btn-sm remove-btn"
-                                        th:data-id="${item.id}">
+                                        th:data-id="${item.product.id}">
                                     🗑️
                                 </button>
                             </form>
@@ -247,9 +251,10 @@
 <!-- FOOTER -->
 <footer th:insert="~{fragments :: footer}"></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div th:insert="~{fragments :: toast}"></div>
 
 </body>
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/cart.js}"></script>
+<script th:src="@{/js/toast.js}"></script>
 </html>

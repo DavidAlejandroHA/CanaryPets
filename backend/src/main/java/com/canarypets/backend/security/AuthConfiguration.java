@@ -4,6 +4,7 @@ import com.canarypets.backend.repositories.RoleRepository;
 import com.canarypets.backend.repositories.UserRepository;
 import com.canarypets.backend.seeders.UsersAndRolesSeeder;
 import com.canarypets.backend.services.UserService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -55,12 +56,29 @@ public class AuthConfiguration {
         httpSecurity.authorizeHttpRequests(requests -> {
             // Definir endpoints accesibles para todos los usuarios, es decir, que no requieran autentificación
             requests.requestMatchers("/premium/**").permitAll()
+                    //.requestMatchers("/cart/**").authenticated()
+                    .requestMatchers("/cart/add-ajax").permitAll()
+                    .requestMatchers("/cart/**").authenticated()
             .requestMatchers("/", "/home", "/auth/login", "/auth/register",
                             "/auth/logout", "/css/**", "/js/**",
                             "/categoria/**", "/categoria", "/images/**",
                             "/producto/**").permitAll()
                     .anyRequest().authenticated();
+            //requests.requestMatchers("/cart/**").authenticated();
         });
+
+
+        httpSecurity // Evitar que Spring haga redirect en peticiones AJAX
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint((request, response,
+                                                   authException) -> {
+                            if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+                                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                            } else {
+                                response.sendRedirect("/auth/login");
+                            }
+                        })
+                );
 
         // https://stackoverflow.com/questions/39166920/spring-security-userdetailsservice-not-working
         // Importante: para definir el tipo de userDetailsService que utiliza spring security, se asocia
