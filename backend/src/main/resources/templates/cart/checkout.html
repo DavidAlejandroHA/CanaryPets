@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/cart/checkout.css}" rel="stylesheet">
+    <link th:href="@{/css/fragments/header.css}" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<!-- HEADER -->
+<header th:insert="~{fragments :: header}"></header>
+
+<!-- MAIN -->
+<main class="container my-4 flex-grow-1">
+    <section class="checkout py-4">
+
+        <h2 class="mb-4">Checkout</h2>
+
+        <!-- 🔹 STEPS NAV (solo con JS) -->
+        <div class="checkout-progress checkout-steps">
+
+            <div class="mainCheckoutWrapper">
+                <div class="statusBar">
+
+                    <!-- 🔹 Barra progreso -->
+                    <span class="pBar" id="progress-bar"></span>
+
+                    <!-- 🔹 Paso 1 -->
+                    <div class="node step-node active" data-step="0">
+                        <div class="main"></div>
+                        <span class="text">Dirección de envío</span>
+                    </div>
+
+                    <!-- 🔹 Paso 2 -->
+                    <div class="node step-node" data-step="1">
+                        <div class="main"></div>
+                        <span class="text">Método de pago</span>
+                    </div>
+
+                    <!-- 🔹 Paso 3 -->
+                    <div class="node step-node" data-step="2">
+                        <div class="main"></div>
+                        <span class="text">Confirmación</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- 🟢 STEP 1: ENVÍO -->
+        <!-- ========================= -->
+        <section id="step-1" class="checkout-step active">
+            <div class="step-container">
+
+                <h2>1. Dirección de envío</h2>
+                <p class="text-muted small">* Campos obligatorios</p>
+
+                <form id="shipping-form">
+
+                    <!-- EMAIL -->
+                    <div class="inputGroup">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" required placeholder="tu@email.com" class="form-control">
+                        <p class="error">Es obligatorio especificar el correo electrónico</p>
+                    </div>
+
+                    <!-- NOMBRE -->
+                    <div class="inputGroup">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Nombre" class="form-control">
+                        <p class="error">Es obligatorio especificar el nombre</p>
+                    </div>
+
+                    <!-- APELLIDOS -->
+                    <div class="inputGroup">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" required placeholder="Apellidos" class="form-control">
+                        <p class="error">Es obligatorio especificar los apellidos</p>
+                    </div>
+
+                    <!-- TELÉFONO -->
+                    <div class="inputGroup">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" id="telefono" name="telefono" required placeholder="Teléfono" class="form-control">
+                        <p class="error">Es obligatorio especificar el teléfono</p>
+                    </div>
+
+                    <!-- DIRECCIÓN -->
+                    <div class="inputGroup">
+                        <label for="direccionEnv">Dirección</label>
+                        <input type="text" id="direccionEnv" name="direccionEnv" required placeholder="Dirección de envío" class="form-control">
+                        <p class="error">Es obligatorio especificar la dirección</p>
+                    </div>
+
+                    <!-- DIRECCIÓN 2 -->
+                    <div class="inputGroup">
+                        <input type="text" id="direccionEnv2" name="direccionEnv2" placeholder="Piso, puerta, etc." class="form-control">
+                    </div>
+
+                    <!-- MUNICIPIO -->
+                    <div class="inputGroup">
+                        <label for="municipio">Municipio</label>
+                        <input type="text" id="municipio" name="municipio" required placeholder="Municipio" class="form-control">
+                        <p class="error">Es obligatorio especificar el municipio</p>
+                    </div>
+
+                    <!-- PROVINCIA -->
+                    <div class="inputGroup">
+                        <label for="provincia">Provincia</label>
+                        <select id="provincia" name="provincia" required class="form-select">
+                            <option value="" disabled selected>Selecciona una provincia</option>
+                            <option value="SC">Santa Cruz de Tenerife</option>
+                            <option value="LP">Las Palmas</option>
+                        </select>
+                        <p class="error">Es obligatorio especificar la provincia</p>
+                    </div>
+
+                    <!-- CP -->
+                    <div class="inputGroup">
+                        <label for="codPostal">Código postal</label>
+                        <input type="text" id="codPostal" name="codPostal" required placeholder="Código postal" class="form-control">
+                        <p class="error">Es obligatorio especificar el código postal</p>
+                    </div>
+
+                    <!-- CHECKBOX -->
+                    <div class="mt-3">
+                        <input type="checkbox" id="checkbox-domiciliar">
+                        <label for="checkbox-domiciliar">Usar como dirección de facturación</label>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- 💳 STEP 2: PAGO -->
+        <!-- ========================= -->
+        <section id="step-2" class="checkout-step d-none">
+
+            <div class="step-container">
+                <h2>2. Método de pago</h2>
+                <p>Procesamiento de pago seguro</p>
+
+                <!-- OPCIONES -->
+                <div class="paymentOptions">
+                    <button type="button" class="payment-option active" data-method="card">
+                        Tarjeta
+                    </button>
+                    <button type="button" class="payment-option" data-method="paypal">
+                        PayPal
+                    </button>
+                    <button type="button" class="payment-option" data-method="bank">
+                        Transferencia
+                    </button>
+                </div>
+
+                <!-- TARJETA -->
+                <div class="paymentBlock" id="payment-card">
+                    <div class="inputGroup">
+                        <label>Propietario</label>
+                        <input type="text" id="cardName" required>
+                        <p class="error">Campo obligatorio</p>
+                    </div>
+
+                    <div class="inputGroup">
+                        <label>Número</label>
+                        <input type="text" id="cardNumber" required>
+                        <p class="error">Campo obligatorio</p>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <div class="inputGroup">
+                            <label>Exp.</label>
+                            <input type="text" id="expDate" required>
+                            <p class="error">Campo obligatorio</p>
+                        </div>
+
+                        <div class="inputGroup">
+                            <label>CVV</label>
+                            <input type="text" id="cvv" required>
+                            <p class="error">Campo obligatorio</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAYPAL -->
+                <div class="paymentBlock d-none" id="payment-paypal">
+                    <button type="button" class="btn btn-primary pay-btn">
+                        Pagar con PayPal
+                    </button>
+                </div>
+
+                <!-- TRANSFERENCIA -->
+                <div class="paymentBlock d-none" id="payment-bank">
+                    <button type="button" class="btn btn-primary pay-btn">
+                        Pagar por transferencia
+                    </button>
+                </div>
+
+                <!-- CHECKBOX -->
+                <div class="mt-3 inputGroup">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Aceptar términos</label>
+                    <p class="error">Debes aceptar los términos</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- 📦 STEP 3: CONFIRM -->
+        <!-- ========================= -->
+        <section id="step-3" class="checkout-step d-none">
+
+            <div class="step-container">
+                <h2>3. Confirmación del pedido</h2>
+
+                <!-- 🛒 LISTA DE PRODUCTOS -->
+                <div class="checkout-summary">
+
+                    <!-- 🔁 CART ITEMS -->
+                    <div th:each="item : ${cartItems}"
+                         class="border-bottom py-3 cart-item"
+                         th:attr="
+                         data-id=${item.product.id},
+                         data-price=${item.product.price},
+                         data-price-premium=${item.product.premiumDiscountPrice}
+                         ">
+
+                        <!-- 🏷️ NOMBRE -->
+                        <h5 th:text="${item.product.name}" class="fw-semibold">nombre</h5>
+
+                        <!-- 🔹 FILA PRINCIPAL -->
+                        <div class="d-flex flex-wrap align-items-center gap-3 mt-2">
+
+                            <!-- 🖼️ IMAGEN -->
+                            <img th:src="@{'/images/' + ${item.product.imageUrl}}"
+                                 style="width: 80px; height: 80px; object-fit: cover;">
+
+                            <!-- 🏷️ INFO -->
+                            <div>
+                                <div class="text-muted small"
+                                     th:text="${item.product.getTagValue('marca')}">marca</div>
+                            </div>
+
+                            <!-- 💰 PRECIO -->
+                            <div class="ms-auto text-end">
+
+                                <!-- NORMAL -->
+                                <div class="pt-4 price-normal" sec:authorize="!hasRole('PREMIUM')">
+                                    <strong th:text="${item.product.price + ' €'}">precioN</strong>
+                                </div>
+
+                                <!-- PREMIUM -->
+                                <div sec:authorize="hasRole('PREMIUM')" class="price-premium">
+                        <span class="text-muted text-decoration-line-through small"
+                              th:text="${item.product.price + ' €'}">precioNold</span><br>
+                                    <strong class="text-success"
+                                            th:text="${item.product.premiumDiscountPrice + ' €'}">precioP</strong>
+                                </div>
+                            </div>
+
+                            <span class="pt-4">x</span>
+
+                            <!-- 🔢 CANTIDAD -->
+                            <div class="d-flex row">
+                                <small>Cantidad:</small>
+
+                                <strong class="mt-2"
+                                      th:text="${item.quantity}">cantidad</strong><br>
+                            </div>
+
+                            <!-- 💵 TOTAL -->
+                            <div class="text-end">
+                                <small>TOTAL:</small><br>
+
+                                <!-- NORMAL -->
+                                <div sec:authorize="!hasRole('PREMIUM')" class="price-normal">
+                                    <strong class="item-total"
+                                            th:text="${item.totalPrice + ' €'}">totalN</strong>
+                                </div>
+
+                                <!-- PREMIUM -->
+                                <div sec:authorize="hasRole('PREMIUM')" class="price-premium">
+                        <span class="text-muted text-decoration-line-through small"
+                              th:text="${item.totalPrice + ' €'}">totalNold</span><br>
+                                    <strong class="text-success item-total"
+                                            th:text="${item.totalPriceWithDiscount + ' €'}">totalP</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBTOTAL -->
+                <div class="d-flex justify-content-between mt-4">
+                    <span>Subtotal:</span>
+
+                    <div sec:authorize="!hasRole('PREMIUM')" class="price-normal">
+                        <span id="cart-subtotal"
+                                th:text="${cartSubtotal + ' €'}">subtotal</span>
+                    </div>
+
+                    <div sec:authorize="hasRole('PREMIUM')" class="price-premium">
+                <span class="text-muted text-decoration-line-through small"
+                      th:text="${cartSubtotal + ' €'}">subtotalOld</span>
+                        <strong id="cart-subtotal-premium"
+                                class="text-success"
+                                th:text="${cartSubtotalWithDiscount + ' €'}">subtotalP</strong>
+                    </div>
+                </div>
+
+                <!-- ENVÍO -->
+                <div class="d-flex justify-content-between mt-4">
+                    <span>Gastos de envío:</span>
+
+                    <div sec:authorize="!hasRole('PREMIUM')" class="price-normal">
+                        <span id="shipping-cost">3.99 €</span>
+                    </div>
+
+                    <div sec:authorize="hasRole('PREMIUM')" class="price-premium">
+                        <span class="text-muted text-decoration-line-through small">3.99 €</span>
+                        <strong class="text-success">GRATIS</strong>
+                    </div>
+                </div>
+
+                <!-- 💵 TOTAL -->
+                <div class="d-flex justify-content-between mt-2 fs-5 fw-bold border-top pt-3">
+                    <span>Total:</span>
+
+                    <!-- NORMAL -->
+                    <strong sec:authorize="!hasRole('PREMIUM')"
+                          th:text="${cartTotal + ' €'}">total</strong>
+                    <!--Incluir en el cartTotal el 3.99 en el backend-->
+
+                    <!-- PREMIUM -->
+                    <div sec:authorize="hasRole('PREMIUM')" class="price-premium">
+                        <span class="text-muted text-decoration-line-through small"
+                              th:text="${cartTotal + ' €'}">totalNormal</span>
+                        <strong class="text-success"
+                              th:text="${cartTotalWithDiscount + ' €'}">totalpremium</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================= -->
+        <!-- 🔘 BOTONES -->
+        <!-- ========================= -->
+        <div class="mt-4 d-flex justify-content-between">
+
+            <!-- fallback -->
+            <a href="/cart" class="btn btn-secondary no-js-only">
+                Volver al carrito
+            </a>
+
+            <button id="back-btn" class="btn btn-secondary d-none">
+                Atrás
+            </button>
+
+            <button id="next-btn" class="btn btn-primary d-none">
+                Siguiente
+            </button>
+
+            <!--<button id="finish-btn" class="btn btn-success">
+                Finalizar compra
+            </button>-->
+            <a href="/checkout-completed" class="btn btn-success">
+                Terminar compra
+            </a>
+
+        </div>
+
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer th:insert="~{fragments :: footer}"></footer>
+
+<div th:insert="~{fragments :: toast}"></div>
+
+</body>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/checkout.js}"></script>
+<script th:src="@{/js/toast.js}"></script>
+</html>

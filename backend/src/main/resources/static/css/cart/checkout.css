@@ -1,0 +1,118 @@
+.checkout-step {
+    margin-bottom: 2rem;
+}
+
+#checkout-steps {
+    display: flex;
+    gap: 1rem;
+}
+
+.step {
+    flex: 1;
+    padding: 10px;
+    background: #eee;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.step.active {
+    background: #0d6efd;
+    color: white;
+}
+
+.payment-options label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+
+
+
+/* Pago */
+
+.paymentOptions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.payment-option {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: white;
+}
+
+.payment-option.active {
+    border: 2px solid #0d6efd;
+}
+
+.paymentBlock {
+    margin-top: 10px;
+}
+
+.inputGroup.invalid input {
+    border-color: red;
+}
+
+.inputGroup .error {
+    display: none;
+    color: red;
+}
+
+.inputGroup.invalid .error {
+    display: block;
+}
+
+
+/* checkout-progress */
+
+.checkout-progress {
+    margin-bottom: 2rem;
+}
+
+.statusBar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statusBar .pBar {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: #28a745;
+    transition: width 0.3s ease;
+    z-index: 0;
+}
+
+.node {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.node .main {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ccc;
+    margin: auto;
+    transition: 0.3s;
+}
+
+.node.active .main {
+    background: #28a745;
+}
+
+.node.done .main {
+    background: #28a745;
+}
+
+.node .text {
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
