@@ -118,42 +118,32 @@ public class Order {
     public void setItems(List<OrderItem> items) {this.items = items;}
 
     public String getEmail() {return user.getEmail();}
-
-    //public void setEmail(String email) {this.email = email;}
+    public void setEmail(String email) {this.email = email;}
 
     public String getNombre() {return nombre;}
-
     public void setNombre(String nombre) {this.nombre = nombre;}
 
     public String getApellidos() {return apellidos;}
-
     public void setApellidos(String apellidos) {this.apellidos = apellidos;}
 
     public String getTelefono() {return telefono;}
-
     public void setTelefono(String telefono) {this.telefono = telefono;}
 
     public String getDireccionEnvio() {return direccionEnvio;}
-
     public void setDireccionEnvio(String direccionEnvio) {this.direccionEnvio = direccionEnvio;}
 
     public String getDireccionEnvio2() {return direccionEnvio2;}
-
     public void setDireccionEnvio2(String direccionEnvio2) {this.direccionEnvio2 = direccionEnvio2;}
 
     public String getMunicipio() {return municipio;}
-
     public void setMunicipio(String municipio) {this.municipio = municipio;}
 
     public String getProvincia() {return provincia;}
-
     public void setProvincia(String provincia) {this.provincia = provincia;}
 
     public String getCodigoPostal() {return codigoPostal;}
-
     public void setCodigoPostal(String codigoPostal) {this.codigoPostal = codigoPostal;}
 
     public boolean isSameAsShipping() {return sameAsShipping;}
-
     public void setSameAsShipping(boolean sameAsShipping) {this.sameAsShipping = sameAsShipping;}
 }

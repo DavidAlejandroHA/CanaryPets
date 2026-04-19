@@ -1,5 +1,6 @@
 package com.canarypets.backend.controllers;
 
+import com.canarypets.backend.models.CartItem;
 import com.canarypets.backend.models.ShoppingCart;
 import com.canarypets.backend.models.User;
 import com.canarypets.backend.services.CartService;
@@ -13,7 +14,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -47,7 +50,7 @@ public class CartController {
         if (!isUserLogged(auth)) {
             return "redirect:/auth/login";
         }
-        System.out.println("ENTRA EN ADD NORMAL");
+        //System.out.println("ENTRA EN ADD NORMAL");
         // Añadir producto al carrito
         addProductToCart(auth, productId, quantity);
         //User user = userService.getUserByEmail(auth.getName());
@@ -126,6 +129,45 @@ public class CartController {
         cartService.updateQuantity(user, productId, quantity);
 
         return ResponseEntity.ok().build();
+    }
+
+    // Validar carrito - Ajax
+    @PostMapping("/validate-ajax")
+    public ResponseEntity<?> validateCart_Ajax(Authentication auth) {
+
+        if (auth == null || !auth.isAuthenticated()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        User user = userService.getUserByEmail(auth.getName());
+
+        List<Map<String, Object>> errors = cartService.validateCart(user);
+
+        if (!errors.isEmpty()) {
+            return ResponseEntity.badRequest().body(errors);
+        }
+
+        return ResponseEntity.ok().build();
+    }
+
+    // Validar sin js (fallback)
+    @PostMapping("/validate")
+    public String validateCartFallback(Authentication auth, RedirectAttributes redirectAttributes) {
+        if (auth == null || !auth.isAuthenticated()) {
+            return "redirect:/auth/login";
+        }
+
+        User user = userService.getUserByEmail(auth.getName());
+
+        List<Map<String, Object>> errors = cartService.validateCart(user);
+
+        if (!errors.isEmpty()) {
+            // solo mostramos el primer error como fallback simple
+            redirectAttributes.addFlashAttribute("error", errors.get(0).get("message"));
+            return "redirect:/cart";
+        }
+
+        return "redirect:/checkout";
     }
 
     private void addProductToCart(Authentication auth, Long productId, int quantity) {

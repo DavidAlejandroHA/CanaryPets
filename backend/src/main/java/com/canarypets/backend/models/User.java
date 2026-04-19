@@ -128,6 +128,10 @@ public class User {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+    public boolean hasRole(String roleName) {
+        return roles.stream()
+                .anyMatch(r -> r.getName().equalsIgnoreCase("ROLE_" +roleName));
+    }
 
     public List<Product> getFavorites() {return favorites;}
     public void setFavorites(List<Product> favorites) {this.favorites = favorites;}

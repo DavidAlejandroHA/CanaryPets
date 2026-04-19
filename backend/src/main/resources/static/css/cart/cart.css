@@ -39,3 +39,18 @@
 .js-enabled .update-btn-fallback {
     display: none;
 }
+
+/* Destacar errores */
+.cart-item.border-danger {
+    border: 2px solid #dc3545 !important;
+    background-color: #fff5f5;
+}
+
+/*.border-danger {
+    border: 2px solid #dc3545 !important;
+    border-radius: 8px;
+}*/
+/*
+.is-invalid {
+  border: 2px solid #dc3545;
+}*/

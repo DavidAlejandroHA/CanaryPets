@@ -199,3 +199,77 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTotals();
 
 });
+
+/* Validar carrito */
+document.getElementById("checkout-btn").addEventListener("click", function () {
+    if (this.disabled) return; // evitar spam
+        this.disabled = true;
+    const csrfToken = document.querySelector('input[name="_csrf"]').value;
+
+    fetch("/cart/validate-ajax", {
+        method: "POST",
+        headers: {
+            "X-CSRF-TOKEN": csrfToken,
+            "X-Requested-With": "XMLHttpRequest"
+        }
+    })
+    .then(async res => {
+
+        // No logeado
+        if (res.status === 401) {
+            window.location.href = "/auth/login";
+            return;
+        }
+
+        // Errores de validación (ahora se usa json en vez de .text())
+        if (!res.ok) {
+            this.disabled = false;
+            const errors = await res.json();
+
+            // Limpiar estados previos
+            document.querySelectorAll(".cart-item").forEach(el => {
+                el.classList.remove("border-danger");
+            });
+
+            // errors[0]
+            errors.forEach(err => {
+
+                // Marcar producto visualmente
+                if (err.productId) {
+                    const el = document.querySelector(`.cart-item[data-id="${err.productId}"]`);
+                    if (el) el.classList.add("border-danger");
+                }
+
+                // En caso de ser necesario marcar el stock en exceso
+                if (err.productId && err.availableStock) {
+                    const input = document.querySelector(
+                        `.cart-item[data-id="${err.productId}"] .quantity-input`
+                    );
+                    //input.classList.add("is-invalid"); // No hace falta
+                    if (input) input.value = err.availableStock;
+                }
+
+                // Toast
+                showToast(err.message, "error");
+            });
+
+            // Si hay un error, se hace scroll hacia el primer error
+            if (errors.length > 0) {
+                const firstError = errors[0];
+                if (firstError.productId) {
+                    const el = document.querySelector(`.cart-item[data-id="${firstError.productId}"]`);
+                    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            }
+
+            return;
+        }
+
+        // Todo_ OK
+        window.location.href = "/checkout";
+    })
+    .catch(() => {
+        this.disabled = false;
+        showToast("Error de conexión", "error");
+    });
+});

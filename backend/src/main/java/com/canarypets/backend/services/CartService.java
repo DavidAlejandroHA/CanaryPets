@@ -9,7 +9,7 @@ import com.canarypets.backend.repositories.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CartService {
@@ -31,6 +31,10 @@ public class CartService {
                     cart.setUser(user);
                     return cartRepository.save(cart);
                 }); // Crear nuevo carrito si es que el usuario no lo tiene
+    }
+
+    public List<CartItem> getCartItems(User user) {
+        return cartItemRepository.findByUserWithProduct(user);
     }
 
     // Añadir producto
@@ -76,5 +80,104 @@ public class CartService {
                 .orElseThrow();
 
         cartItemRepository.delete(item);
+    }
+
+    // Limpiar carrito
+    public void clearCart(User user) {
+        ShoppingCart cart = getCart(user);
+        cart.getItems().clear();
+        cartRepository.save(cart);
+    }
+
+    // Validar carrito
+//    public void validateCart(User user) {
+//
+//        List<CartItem> items = cartItemRepository.findByUserWithProduct(user);
+//
+//        if (items.isEmpty()) {
+//            throw new IllegalStateException("El carrito está vacío");
+//        }
+//
+//        for (CartItem item : items) {
+//
+//            Product product = item.getProduct();
+//
+//            // Producto eliminado
+//            if (product == null) {
+//                throw new IllegalStateException("Producto no disponible");
+//            }
+//
+//            // Sin stock
+//            if (product.getStock() <= 0) {
+//                throw new IllegalStateException(
+//                        "El producto '" + product.getName() + "' está sin stock"
+//                );
+//            }
+//
+//            // Cantidad mayor que stock
+//            if (item.getQuantity() > product.getStock()) {
+//                throw new IllegalStateException(
+//                        "No hay suficiente stock para '" + product.getName() +
+//                                "'. Disponible: " + product.getStock()
+//                );
+//            }
+//
+//            // Cantidad inválida
+//            if (item.getQuantity() <= 0) {
+//                throw new IllegalStateException(
+//                        "Cantidad inválida para '" + product.getName() + "'"
+//                );
+//            }
+//        }
+//    }
+
+    public List<Map<String, Object>> validateCart(User user) {
+
+        List<CartItem> items = cartItemRepository.findByUserWithProduct(user);
+
+        List<Map<String, Object>> errors = new ArrayList<>();
+
+        if (items.isEmpty()) {
+            Map<String, Object> error = new HashMap<>();
+            error.put("message", "El carrito está vacío");
+            errors.add(error);
+            return errors;
+        }
+
+        for (CartItem item : items) {
+            Product product = item.getProduct();
+
+            if (product == null) {
+                errors.add(Map.of(
+                        "productId", null,
+                        "message", "Producto no disponible"
+                ));
+                continue;
+            }
+
+            if (product.getStock() <= 0) {
+                errors.add(Map.of(
+                        "productId", product.getId(),
+                        "message", "Sin stock"
+                ));
+            }
+
+            if (item.getQuantity() > product.getStock()) {
+                errors.add(Map.of(
+                        "productId", product.getId(),
+                        "message", "Stock insuficiente para " + product.getName(),
+                        "availableStock", product.getStock()
+                ));
+            }
+
+            if (item.getQuantity() <= 0) {
+                errors.add(Map.of(
+                        "productId", product.getId(),
+                        "message", "Cantidad inválida"
+                ));
+            }
+        }
+
+        return errors;
     }
 }

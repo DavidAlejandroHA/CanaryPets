@@ -116,6 +116,7 @@
                                 <input type="number"
                                        name="quantity"
                                        min="1"
+                                       th:max="${product.stock}"
                                        th:value="${item.quantity}"
                                        class="form-control quantity-input"
                                        style="width: 80px;">
@@ -253,15 +254,23 @@
 
                 <!-- BOTÓN -->
                 <div class="mt-4 text-center">
-                    <a th:href="@{/checkout}" class="btn btn-primary w-100">
-                        TRAMITAR PEDIDO
-                    </a>
+
+                    <form th:action="@{/cart/validate}" method="post" id="checkout-form">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                        <button type="submit" class="btn btn-primary" id="checkout-btn">
+                            Tramitar pedido
+                        </button>
+                    </form>
                 </div>
 
             </div>
 
         </aside>
 
+    </div>
+    <div th:if="${error}" class="alert alert-danger">
+        <span th:text="${error}"></span>
     </div>
 
 </main>

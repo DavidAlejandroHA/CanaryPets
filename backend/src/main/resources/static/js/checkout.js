@@ -176,3 +176,67 @@ function updateProgressBar() {
     const progressPercent = (currentStep) / (stepNodes.length - 1) * 100;
     progressBar.style.width = progressPercent + "%";
 }
+
+
+/* Mandar petición de crear pedido al controller */
+function submitOrder() {
+
+    const data = {
+        email: document.getElementById("correo").value,
+        nombre: document.getElementById("nombre").value,
+        apellidos: document.getElementById("apellidos").value,
+        telefono: document.getElementById("telefono").value,
+        direccionEnvio: document.getElementById("direccionEnv").value,
+        direccionEnvio2: document.getElementById("direccionEnv2").value,
+        municipio: document.getElementById("municipio").value,
+        provincia: document.getElementById("select-provincia").value,
+        codigoPostal: document.getElementById("codPostal").value,
+        sameAsShipping: document.getElementById("checkbox-domiciliar").checked,
+
+        paymentMethod: selectedPayment,
+
+        //items: getCartItems() // función tuya
+        // El backend al final es el que se encarga de gestionar los items
+    };
+
+    fetch("/orders/create", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": document.querySelector('[name="_csrf"]').value
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => {
+        if (res.status === 401) {
+            window.location.href = "/auth/login";
+            return;
+        }
+        if (!res.ok) throw new Error();
+        return res.text();
+    })
+    .then(orderId => {
+        window.location.href = `/order/success/${orderId}`;
+    })
+    .catch(() => {
+        alert("Error al procesar pedido");
+    });
+}
+
+function getCartItems() {
+    const items = [];
+
+    document.querySelectorAll(".cart-item").forEach(item => {
+        const productId = item.dataset.id;
+        const quantity = item.dataset.qty;
+
+        if (productId && quantity) {
+            items.push({
+                productId: parseInt(productId),
+                quantity: parseInt(quantity)
+            });
+        }
+    });
+
+    return items;
+}

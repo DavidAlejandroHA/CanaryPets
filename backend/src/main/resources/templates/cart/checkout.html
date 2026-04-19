@@ -231,7 +231,8 @@
                          th:attr="
                          data-id=${item.product.id},
                          data-price=${item.product.price},
-                         data-price-premium=${item.product.premiumDiscountPrice}
+                         data-price-premium=${item.product.premiumDiscountPrice},
+                         data-qty=${item.quantity}
                          ">
 
                         <!-- 🏷️ NOMBRE -->
@@ -374,7 +375,8 @@
             <!--<button id="finish-btn" class="btn btn-success">
                 Finalizar compra
             </button>-->
-            <a href="/checkout-completed" class="btn btn-success">
+            <a href="/checkout-completed" class="btn btn-success"
+            th:onclick="submitOrder()">
                 Terminar compra
             </a>
 
