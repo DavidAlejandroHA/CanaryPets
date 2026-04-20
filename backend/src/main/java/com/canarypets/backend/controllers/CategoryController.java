@@ -88,12 +88,12 @@ public class CategoryController {
             filter.getEdad().forEach(e -> params.add("edad=" + e));
         }
         // ejemplo precio
-//        if (filter.getMinPrice() != null) {
-//            params.add("minPrice=" + filter.getMinPrice());
-//        }
-//        if (filter.getMaxPrice() != null) {
-//            params.add("maxPrice=" + filter.getMaxPrice());
-//        }
+        /*if (filter.getMinPrice() != null) {
+            params.add("minPrice=" + filter.getMinPrice());
+        }
+        if (filter.getMaxPrice() != null) {
+            params.add("maxPrice=" + filter.getMaxPrice());
+        }*/
         if (!params.isEmpty()) {
             url.append("?").append(String.join("&", params));
         }

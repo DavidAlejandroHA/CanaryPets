@@ -6,13 +6,17 @@ import com.canarypets.backend.repositories.RoleRepository;
 import com.canarypets.backend.repositories.UserRepository;
 import com.canarypets.backend.security.AuthConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +26,29 @@ public class UserService implements UserDetailsService/*, EntityService<User>*/ 
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleRepository;
+
+    public void upgradeToPremium(Authentication authentication, String username) {
+
+        // 1. Actualizar en BD
+        addRole(username, "PREMIUM");
+
+        // 2. Actualizar sesión (Spring Security)
+        List<GrantedAuthority> authorities = new ArrayList<>(authentication.getAuthorities());
+        if (authorities.stream().noneMatch(a -> a.getAuthority().equals("ROLE_PREMIUM"))) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_PREMIUM"));
+        }
+        /*authorities.forEach(auth -> {
+            System.out.println(auth.getAuthority());
+        });*/
+
+        Authentication newAuth = new UsernamePasswordAuthenticationToken(
+                authentication.getPrincipal(),
+                authentication.getCredentials(),
+                authorities
+        );
+        // Actualizar la autenticación del usuario
+        SecurityContextHolder.getContext().setAuthentication(newAuth);
+    }
 
     /**
      * @param email

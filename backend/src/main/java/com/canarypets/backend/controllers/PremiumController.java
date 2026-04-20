@@ -31,33 +31,16 @@ public class PremiumController {
         return "premium/premium";
     }
 
-    @PostMapping
     //@PreAuthorize("isAuthenticated()") // Se podría haber hecho con esto pero esto es otra forma de hacerlo
+    @PostMapping
     public String premium(Authentication authentication, RedirectAttributes redirectAttributes) {
-
-        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         // Si no está logueado
         if (authentication == null || !(authentication.getPrincipal() instanceof UserDetails userDetails)) {
             return "redirect:/auth/login"; // Si está logueado, existe userDetails
         }
 
-
-        userService.addRole(userDetails.getUsername(), "PREMIUM");
-
-        // Actualizar roles en sesión
-        List<GrantedAuthority> authorities = new ArrayList<>(authentication.getAuthorities());
-        authorities.add(new SimpleGrantedAuthority("ROLE_PREMIUM"));
-        /*authorities.forEach(auth -> {
-            System.out.println(auth.getAuthority());
-        });*/
-
-        Authentication reAuth =
-                new UsernamePasswordAuthenticationToken(authentication.getPrincipal(),
-                        authentication.getCredentials(),
-                        authorities);
-        // Actualizar la autenticación del usuario
-        SecurityContextHolder.getContext().setAuthentication(reAuth);
+        // Actualizar a premium
+        userService.upgradeToPremium(authentication, userDetails.getUsername());
 
         // Mensaje flash
         redirectAttributes.addFlashAttribute("toastSuccess", "¡Ya eres un usuario premium! 🎉");

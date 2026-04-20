@@ -46,6 +46,7 @@ public class OrderService {
         order.setSameAsShipping(dto.isSameAsShipping());
 
         // Items
+
         List<OrderItem> items = new ArrayList<>();
         float total = 0f;
 
@@ -55,10 +56,13 @@ public class OrderService {
             throw new IllegalStateException("El carrito está vacío");
         }
 
-        for (CartItem cartItem : cart.getItems()) {
+        List<CartItem> cartItems = cartService.getCartItems(user);
+        //for (CartItem cartItem : cart.getItems()) {
+        // cart.getItems() es lazy -> Al estar fuera de transacción y no hacer fetch join -> LazyInitializationException
+        for (CartItem cartItem : cartItems) { // Manera correcta
 
-            Product product = productRepository./*findById*/
-            findByIdForUpdate(cartItem.getProduct().getId()) // Comprobar si existe por si acaso
+            Product product = productRepository./*findByIdForUpdate*/
+            findById(cartItem.getProduct().getId()) // Comprobar si existe por si acaso
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
             //Se usa findByIdForUpdate para evitar un race condition, de forma que
@@ -99,13 +103,13 @@ public class OrderService {
         float shipping = total > 0 ? 3.99f : 0f;
         order.setOrderTotal(BigDecimal.valueOf(total + shipping));
 
-        // Guardar
-        order = orderRepository.save(order);
-
-        // Guardar productos actualizados
+        // Guardar productos actualizados (útil solo al descontar stock)
         productRepository.saveAll(
                 items.stream().map(OrderItem::getProduct).toList()
         );
+
+        // Guardar pedido
+        order = orderRepository.save(order);
 
         // Vaciar carrito
         cartService.clearCart(user);

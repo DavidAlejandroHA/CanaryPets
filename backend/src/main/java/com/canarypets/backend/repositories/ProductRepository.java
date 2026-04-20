@@ -21,7 +21,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
 
 
     // PESSIMISTIC LOCK
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Query("SELECT p FROM Product p WHERE p.id = :id")
-    Optional<Product> findByIdForUpdate(@Param("id") Long id); // Para evitar race conditions
+    //@Lock(LockModeType.PESSIMISTIC_WRITE)
+    //@Query("SELECT p FROM Product p WHERE p.id = :id")
+    //Optional<Product> findByIdForUpdate(@Param("id") Long id); // Para evitar race conditions
 }

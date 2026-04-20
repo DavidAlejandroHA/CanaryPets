@@ -62,10 +62,46 @@ public class CartService {
         ShoppingCart cart = getCart(user);
         Product product = productService.getById(productId);
 
+        /*CartItem item = cartItemRepository
+                .findByUserAndProductId(user, productId)
+                .orElseThrow();*/
         CartItem item = cartItemRepository
                 .findByCartAndProduct(cart, product)
                 .orElseThrow();
 
+        // Comprobaciones:
+        // Comprobar si el producto es eliminado o null (extra seguridad)
+        if (product == null) {
+            throw new IllegalStateException("Producto no disponible");
+        }
+
+        // Sin stock
+        if (product.getStock() <= 0) {
+            throw new IllegalStateException(
+                    "El producto '" + product.getName() + "' está sin stock"
+            );
+        }
+
+        // Cantidad inválida
+        if (quantity <= 0) {
+            throw new IllegalStateException("Cantidad inválida");
+        }
+
+        // Cantidad mayor que stock
+        if (quantity > product.getStock()) {
+            /*throw new IllegalStateException(
+                    "Stock insuficiente para '" + product.getName() +
+                            "'. Disponible: " + product.getStock()
+            );*/
+            item.setQuantity(product.getStock());
+            cartItemRepository.save(item);
+
+            throw new IllegalStateException(
+                    "Cantidad ajustada al stock disponible (" + product.getStock() + ")"
+            );
+        }
+
+        // Si está todo_ correcto, se actualiza sin problemas
         item.setQuantity(quantity);
         cartItemRepository.save(item);
     }

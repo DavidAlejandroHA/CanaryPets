@@ -179,7 +179,8 @@ function updateProgressBar() {
 
 
 /* Mandar petición de crear pedido al controller */
-function submitOrder() {
+// A futuro
+/*function submitOrder() {
 
     const data = {
         email: document.getElementById("correo").value,
@@ -195,7 +196,7 @@ function submitOrder() {
 
         paymentMethod: selectedPayment,
 
-        //items: getCartItems() // función tuya
+        //items: getCartItems()
         // El backend al final es el que se encarga de gestionar los items
     };
 
@@ -215,13 +216,14 @@ function submitOrder() {
         if (!res.ok) throw new Error();
         return res.text();
     })
-    .then(orderId => {
-        window.location.href = `/order/success/${orderId}`;
-    })
+    //.then(orderId => {
+        //window.location.href = `/order/success/${orderId}`;
+    //    window.location.href = `/checkout-completed`;
+    //})/
     .catch(() => {
         alert("Error al procesar pedido");
     });
-}
+}*/
 
 function getCartItems() {
     const items = [];

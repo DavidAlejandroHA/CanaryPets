@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -105,11 +106,14 @@ public class CartController {
     @PostMapping("/update")
     public String updateFallback(@RequestParam Long productId,
                                  @RequestParam int quantity,
-                                 Authentication auth) {
-
+                                 Authentication auth,
+                                 RedirectAttributes redirectAttributes) {
         User user = userService.getUserByEmail(auth.getName());
-        cartService.updateQuantity(user, productId, quantity);
-
+        try {
+            cartService.updateQuantity(user, productId, quantity);
+        } catch (IllegalStateException e) {
+            redirectAttributes.addFlashAttribute("error", "Se ha producido un error: " + e.getMessage());
+        }
         return "redirect:/cart";
     }
 
@@ -126,16 +130,27 @@ public class CartController {
         int quantity = Integer.parseInt(body.get("quantity").toString());
 
         User user = userService.getUserByEmail(auth.getName());
-        cartService.updateQuantity(user, productId, quantity);
 
-        return ResponseEntity.ok().build();
+        try { // Comprobar si al intentar hacer fetch hay errores como que se agote el
+            // stock de un producto
+            cartService.updateQuantity(user, productId, quantity);
+            return ResponseEntity.ok().build();
+
+        } catch (IllegalStateException e) {
+
+            Map<String, Object> error = new HashMap<>();
+            error.put("productId", productId);
+            error.put("message", e.getMessage());
+
+            return ResponseEntity.badRequest().body(List.of(error));
+        }
+        //return ResponseEntity.ok().build();
     }
 
     // Validar carrito - Ajax
     @PostMapping("/validate-ajax")
     public ResponseEntity<?> validateCart_Ajax(Authentication auth) {
-
-        if (auth == null || !auth.isAuthenticated()) {
+        if (!isUserLogged(auth)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
@@ -153,7 +168,8 @@ public class CartController {
     // Validar sin js (fallback)
     @PostMapping("/validate")
     public String validateCartFallback(Authentication auth, RedirectAttributes redirectAttributes) {
-        if (auth == null || !auth.isAuthenticated()) {
+        //if (auth == null || !auth.isAuthenticated()) {
+        if (!isUserLogged(auth)) {
             return "redirect:/auth/login";
         }
 

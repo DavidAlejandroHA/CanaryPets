@@ -81,8 +81,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!response.ok) {
                     // fallback
-                    window.location.reload();
-                    return;
+                    //window.location.reload();
+                    response.json().then(errors => {
+
+                            errors.forEach(err => {
+
+                                // marcar producto
+                                const el = document.querySelector(
+                                    `.cart-item[data-id="${err.productId}"]`
+                                );
+                                if (el) el.classList.add("border-danger");
+
+                                // toast
+                                showToast(err.message, "error");
+                            });
+
+                        });
+
+                        return;
                 }
 
                 // Recalcular totales

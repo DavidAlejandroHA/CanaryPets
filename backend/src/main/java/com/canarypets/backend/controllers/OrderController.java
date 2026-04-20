@@ -13,14 +13,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import java.util.Map;
+
+/*@RestController
 @RequestMapping("/orders")
-@RequiredArgsConstructor
+@RequiredArgsConstructor*/
 public class OrderController {
 
-    private final OrderService orderService;
+    //private final OrderService orderService;
 
-    @PostMapping("/create")
+    // A futuro
+    /*@PostMapping("/create") // Ajax
     public ResponseEntity<?> createOrder(
             @RequestBody OrderRequestDTO dto,
             Authentication auth
@@ -32,8 +35,18 @@ public class OrderController {
 
         User user = (User) auth.getPrincipal();
 
-        Order order = orderService.createOrder(dto, user);
+        try {
+            Order order = orderService.createOrder(dto, user);
+            return ResponseEntity.ok(order.getId());
 
-        return ResponseEntity.ok(order.getId());
-    }
+        } catch (IllegalStateException e) {
+            // Errores de negocio (stock, carrito vacío, etc.)
+            return ResponseEntity.badRequest().body( Map.of("error", e.getMessage()));
+
+        } catch (Exception e) {
+            // Error inesperado (logs importantes aquí)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al procesar el pedido");
+        }
+    }*/
 }
