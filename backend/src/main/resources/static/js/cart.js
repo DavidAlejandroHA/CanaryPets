@@ -158,6 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ? parseFloat(item.dataset.pricePremium)
             : parseFloat(item.dataset.price);
 
+        //console.log("premium", isPremium);
+
         const quantity = parseInt(item.querySelector(".quantity-input").value);
 
         /*if (!price || !quantity) return;*/
@@ -166,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const total = (price * quantity).toFixed(2);
 
         // Actualizar TODOS los .item-total
-        item.querySelectorAll(".item-total").forEach(el => {
+        item.querySelectorAll(".price-premium .item-total").forEach(el => {
             el.textContent = total + " €";
         });
     }
@@ -182,9 +184,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const price = isPremium
                 ? parseFloat(item.dataset.pricePremium)
                 : parseFloat(item.dataset.price);
+
             const quantity = parseInt(item.querySelector(".quantity-input").value);
 
-            if (price && quantity) {
+            //if (price && quantity) {
+            if (!isNaN(price) && !isNaN(quantity)) {
                 subtotal += price * quantity;
             }
         });
@@ -197,12 +201,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const subtotalEl = document.getElementById("cart-subtotal");
         const subtotalPremiumEl = document.getElementById("cart-subtotal-premium");
         const totalEl = document.getElementById("cart-total");
+        const totalDiscountEl = document.getElementById("cart-total-with-discount");
 
         // Actualizar SUBTOTAL correctamente
         if (isPremium) {
             if (subtotalPremiumEl) {
                 subtotalPremiumEl.textContent = subtotal.toFixed(2) + " €";
             }
+            if (totalDiscountEl) {
+                totalDiscountEl.textContent = total.toFixed(2) + " €";
+              }
         } else {
             if (subtotalEl) {
                 subtotalEl.textContent = subtotal.toFixed(2) + " €";

@@ -22,9 +22,17 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
     @Query("""
         SELECT ci 
         FROM CartItem ci 
-        JOIN FETCH ci.product 
-        JOIN FETCH ci.cart c 
-        WHERE c.user = :user
+        JOIN FETCH ci.product
+        WHERE ci.cart.user = :user
     """)
     List<CartItem> findByUserWithProduct(@Param("user") User user);
+
+    // Mejor usar este
+    @Query("""
+     SELECT ci
+     FROM CartItem ci
+     JOIN FETCH ci.product
+     WHERE ci.cart = :cart
+    """)
+    List<CartItem> findByCartWithProduct(@Param("cart") ShoppingCart cart);
 }

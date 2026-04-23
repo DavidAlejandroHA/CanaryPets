@@ -10,8 +10,8 @@
     <link th:href="@{/css/fragments/header.css}" rel="stylesheet">
 </head>
 
-<script>
-    const isPremium = /*[[${#authorization.expression('hasRole(''PREMIUM'')')}]]*/ false;
+<script th:inline="javascript">
+    const isPremium = [[${#authorization.expression('hasRole(''PREMIUM'')')}]];
 </script>
 
 <body class="d-flex flex-column min-vh-100">
@@ -148,6 +148,14 @@
                             </div>
                         </div>
 
+                        <!--
+                        <p>Qty: <span th:text="${item.quantity}"></span></p>
+                        <p>Precio base: <span th:text="${item.product.price}"></span></p>
+                        <p>Precio premium: <span th:text="${item.product.premiumDiscountPrice}"></span></p>
+                        <p>Total normal: <span th:text="${item.totalPrice}"></span></p>
+                        <p>Total premium: <span th:text="${item.totalPriceWithDiscount}"></span></p>
+
+                        -->
                         <!-- 🗑️ ELIMINAR -->
                         <div class="text-end">
 
@@ -247,8 +255,17 @@
                 <!-- TOTAL -->
                 <div class="d-flex justify-content-between">
                     <strong>Total*</strong>
-                    <strong id="cart-total"
-                            th:text="${cartTotal + ' €'}"></strong>
+                    <div sec:authorize="!hasRole('PREMIUM')">
+                        <strong id="cart-total"
+                                th:text="${cartTotal + ' €'}"></strong>
+                    </div>
+                    <div sec:authorize="hasRole('PREMIUM')">
+                        <strong id="cart-total-with-discount"
+                                th:text="${cartTotalWithDiscount + ' €'}"></strong>
+                    </div>
+                    <!--<strong id="cart-total"
+                    th:text="${#authorization.expression('hasRole(''PREMIUM'')') ? cartTotalWithDiscount
+                     + ' €' : cartTotal + ' €'}"></strong>-->
                 </div>
 
                 <small class="text-muted">* Impuestos incluidos</small>

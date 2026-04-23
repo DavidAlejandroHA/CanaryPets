@@ -38,6 +38,11 @@ public class CartController {
 
         model.addAttribute("cartItems", cart.getItems());
 
+        model.addAttribute("cartSubtotal", cartService.getSubtotal(user));
+        model.addAttribute("cartSubtotalWithDiscount", cartService.getSubtotalWithDiscount(user));
+        model.addAttribute("cartTotal", cartService.getTotal(user));
+        model.addAttribute("cartTotalWithDiscount", cartService.getTotalWithDiscount(user));
+
         return "cart/cart";
     }
 

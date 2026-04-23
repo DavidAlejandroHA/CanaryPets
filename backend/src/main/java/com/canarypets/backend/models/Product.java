@@ -9,6 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -143,7 +144,8 @@ public class Product {
 
     public BigDecimal getPrice() {return price;}
     public BigDecimal getPremiumDiscountPrice() {
-        return this.price.multiply(new BigDecimal("0.9")); // 10% de descuento
+        return this.price.multiply(BigDecimal.valueOf(0.9)) // 10% de descuento
+                .setScale(2, RoundingMode.HALF_UP);
     }
     public void setPrice(float price) {this.price = BigDecimal.valueOf(price);}
     public void setPrice(BigDecimal price) {this.price = price;}

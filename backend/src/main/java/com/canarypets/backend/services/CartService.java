@@ -35,7 +35,8 @@ public class CartService {
     }
 
     public List<CartItem> getCartItems(User user) {
-        return cartItemRepository.findByUserWithProduct(user);
+        //return cartItemRepository.findByUserWithProduct(user);
+        return cartItemRepository.findByCartWithProduct(getCart(user));
     }
 
     // Añadir producto
@@ -128,7 +129,7 @@ public class CartService {
 
     public List<Map<String, Object>> validateCart(User user) {
 
-        List<CartItem> items = cartItemRepository.findByUserWithProduct(user);
+        List<CartItem> items = cartItemRepository.findByCartWithProduct(getCart(user));
 
         List<Map<String, Object>> errors = new ArrayList<>();
 
