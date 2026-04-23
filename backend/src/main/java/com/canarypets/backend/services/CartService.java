@@ -9,6 +9,7 @@ import com.canarypets.backend.repositories.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @Service
@@ -125,48 +126,6 @@ public class CartService {
         cartRepository.save(cart);
     }
 
-    // Validar carrito
-//    public void validateCart(User user) {
-//
-//        List<CartItem> items = cartItemRepository.findByUserWithProduct(user);
-//
-//        if (items.isEmpty()) {
-//            throw new IllegalStateException("El carrito está vacío");
-//        }
-//
-//        for (CartItem item : items) {
-//
-//            Product product = item.getProduct();
-//
-//            // Producto eliminado
-//            if (product == null) {
-//                throw new IllegalStateException("Producto no disponible");
-//            }
-//
-//            // Sin stock
-//            if (product.getStock() <= 0) {
-//                throw new IllegalStateException(
-//                        "El producto '" + product.getName() + "' está sin stock"
-//                );
-//            }
-//
-//            // Cantidad mayor que stock
-//            if (item.getQuantity() > product.getStock()) {
-//                throw new IllegalStateException(
-//                        "No hay suficiente stock para '" + product.getName() +
-//                                "'. Disponible: " + product.getStock()
-//                );
-//            }
-//
-//            // Cantidad inválida
-//            if (item.getQuantity() <= 0) {
-//                throw new IllegalStateException(
-//                        "Cantidad inválida para '" + product.getName() + "'"
-//                );
-//            }
-//        }
-//    }
-
     public List<Map<String, Object>> validateCart(User user) {
 
         List<CartItem> items = cartItemRepository.findByUserWithProduct(user);
@@ -215,5 +174,54 @@ public class CartService {
         }
 
         return errors;
+    }
+
+    public BigDecimal getSubtotal(User user) {
+        List<CartItem> items = getCartItems(user);
+
+        BigDecimal subtotal = BigDecimal.ZERO;
+
+        for (CartItem item : items) {
+            BigDecimal price = item.getProduct().getPrice();
+            BigDecimal quantity = BigDecimal.valueOf(item.getQuantity());
+
+            subtotal = subtotal.add(price.multiply(quantity));
+        }
+
+        return subtotal;
+    }
+
+    public BigDecimal getSubtotalWithDiscount(User user) {
+        List<CartItem> items = getCartItems(user);
+
+        BigDecimal subtotal = BigDecimal.ZERO;
+
+        for (CartItem item : items) {
+            BigDecimal price = user.hasRole("PREMIUM")
+                    ? item.getProduct().getPremiumDiscountPrice()
+                    : item.getProduct().getPrice();
+
+            BigDecimal quantity = BigDecimal.valueOf(item.getQuantity());
+
+            subtotal = subtotal.add(price.multiply(quantity));
+        }
+
+        return subtotal;
+    }
+
+    public BigDecimal getTotal(User user) {
+        BigDecimal subtotal = getSubtotal(user);
+        return subtotal.add(getShippingCost(user, subtotal));
+    }
+
+    public BigDecimal getTotalWithDiscount(User user) {
+        BigDecimal subtotal = getSubtotalWithDiscount(user);
+        return subtotal.add(getShippingCost(user, subtotal));
+    }
+
+    private BigDecimal getShippingCost(User user, BigDecimal subtotal) {
+        if (user.hasRole("PREMIUM")) return BigDecimal.ZERO;
+        if (subtotal.compareTo(BigDecimal.ZERO) == 0) return BigDecimal.ZERO;
+        return BigDecimal.valueOf(3.99);
     }
 }

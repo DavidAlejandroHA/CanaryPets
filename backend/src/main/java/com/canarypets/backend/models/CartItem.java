@@ -3,6 +3,9 @@ package com.canarypets.backend.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 @Entity
 @Table(name = "ITEMS_DE_CARRITO")
 public class CartItem {
@@ -37,16 +40,22 @@ public class CartItem {
     }
 
     // helpers (muy útiles)
-    public double getTotalPrice() {
-        return product.getPrice().floatValue() * quantity;
+    public BigDecimal getTotalPrice() {
+        return product.getPrice()
+                .multiply(BigDecimal.valueOf(quantity))
+                .setScale(2, RoundingMode.HALF_UP); // Redondear a 2 decimales
+        //return product.getPrice().floatValue() * quantity; // Devuelve muchos decimales
     }
 
     /*public void calculateSubtotal() {
         this.subtotal = product.getPrice().floatValue() * quantity;
     }*/
 
-    public double getTotalPriceWithDiscount() {
-        return product.getPremiumDiscountPrice().floatValue() * quantity;
+    public BigDecimal getTotalPriceWithDiscount() {
+        return product.getPremiumDiscountPrice()
+                .multiply(BigDecimal.valueOf(quantity))
+                .setScale(2, RoundingMode.HALF_UP); // Redondear a 2 decimales
+        //return product.getPremiumDiscountPrice().floatValue() * quantity;
     }
 
     //public float getSubtotal() {return subtotal;}

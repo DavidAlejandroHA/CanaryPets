@@ -72,18 +72,29 @@ public class CartController {
         Long productId = Long.valueOf(body.get("productId").toString());
         int quantity = Integer.parseInt(body.get("quantity").toString());
 
-        addProductToCart(auth, productId, quantity);
+        try {
+            addProductToCart(auth, productId, quantity);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            Map<String, Object> error = new HashMap<>();
+            error.put("productId", productId);
+            error.put("message", e.getMessage());
 
-        return ResponseEntity.ok().build();
+            return ResponseEntity.badRequest().body(List.of(error));
+        }
     }
 
     // Eliminar (JS + fallback)
     @PostMapping("/remove")
     public String remove(@RequestParam Long productId,
-                         Authentication auth) {
-
-        User user = userService.getUserByEmail(auth.getName());
-        cartService.removeProduct(user, productId);
+                         Authentication auth,
+                         RedirectAttributes redirectAttributes) {
+        try {
+            User user = userService.getUserByEmail(auth.getName());
+            cartService.removeProduct(user, productId);
+        } catch (IllegalStateException e) {
+            redirectAttributes.addFlashAttribute("error", "Se ha producido un error: " + e.getMessage());
+        }
 
         return "redirect:/cart";
     }
@@ -96,10 +107,20 @@ public class CartController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
-        User user = userService.getUserByEmail(auth.getName());
-        cartService.removeProduct(user, productId);
+        try {
+            User user = userService.getUserByEmail(auth.getName());
+            cartService.removeProduct(user, productId);
 
-        return ResponseEntity.ok().build();
+            return ResponseEntity.ok().build();
+
+        } catch (IllegalStateException e) {
+
+            Map<String, Object> error = new HashMap<>();
+            error.put("productId", productId);
+            error.put("message", e.getMessage());
+
+            return ResponseEntity.badRequest().body(List.of(error));
+        }
     }
 
     // Update fallback
@@ -129,10 +150,9 @@ public class CartController {
         Long productId = Long.valueOf(body.get("id").toString());
         int quantity = Integer.parseInt(body.get("quantity").toString());
 
-        User user = userService.getUserByEmail(auth.getName());
-
         try { // Comprobar si al intentar hacer fetch hay errores como que se agote el
             // stock de un producto
+            User user = userService.getUserByEmail(auth.getName());
             cartService.updateQuantity(user, productId, quantity);
             return ResponseEntity.ok().build();
 

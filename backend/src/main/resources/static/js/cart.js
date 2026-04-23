@@ -25,13 +25,32 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                if (!response.ok) {
+                /*if (!response.ok) {
                     return response.text().then(text => {
                         console.error("Error backend:", text);
                         // Si falla -> fallback (recarga clásica)
                         window.location.href = `/cart`;
                         //throw new Error("Error HTTP " + response.status);
                     });
+                }*/
+
+                if (!response.ok) {
+                    response.json().then(errors => {
+                            errors.forEach(err => {
+
+                                // marcar producto
+                                const el = document.querySelector(
+                                    `.cart-item[data-id="${err.productId}"]`
+                                );
+                                if (el) el.classList.add("border-danger");
+
+                                // toast
+                                showToast(err.message, "error");
+                            });
+
+                        });
+
+                        return;
                 }
 
                 // Animación y eliminación
@@ -48,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Error de red -> fallback
                 console.error("Error fetch:", err);
                 window.location.href = `/cart`;
+                //window.location.reload();
             });
         });
     });

@@ -20,31 +20,33 @@
     <form th:action="@{/checkout}" method="post" th:object="${orderRequest}">
         <section class="checkout py-4">
 
-            <h2 class="mb-4">Checkout</h2>
+            <!--<h2 class="mb-4">Checkout</h2>-->
 
             <!-- 🔹 STEPS NAV (solo con JS) -->
-            <div class="checkout-progress checkout-steps">
+            <div id="checkout-steps" class="checkout-progress">
 
                 <div class="mainCheckoutWrapper">
                     <div class="statusBar">
 
                         <!-- 🔹 Barra progreso -->
-                        <span class="pBar" id="progress-bar"></span>
+                        <!--<span class="pBar" id="progress-bar"></span>-->
+                        <div class="progress-line"></div> <!-- gris -->
+                        <div class="pBar" id="progress-bar"></div> <!-- verde -->
 
                         <!-- 🔹 Paso 1 -->
-                        <div class="node step-node active" data-step="0">
+                        <div class="node step-node active" data-step="1">
                             <div class="main"></div>
                             <span class="text">Dirección de envío</span>
                         </div>
 
                         <!-- 🔹 Paso 2 -->
-                        <div class="node step-node" data-step="1">
+                        <div class="node step-node" data-step="2">
                             <div class="main"></div>
                             <span class="text">Método de pago</span>
                         </div>
 
                         <!-- 🔹 Paso 3 -->
-                        <div class="node step-node" data-step="2">
+                        <div class="node step-node" data-step="3">
                             <div class="main"></div>
                             <span class="text">Confirmación</span>
                         </div>
@@ -53,6 +55,7 @@
                 </div>
 
             </div>
+        </section>
 
             <!-- ========================= -->
             <!-- 🟢 STEP 1: ENVÍO -->
@@ -67,8 +70,8 @@
 
                     <!-- EMAIL -->
                     <div class="inputGroup">
-                        <label for="correo">Correo electrónico</label>
-                        <input type="email" id="correo" name="correo" required placeholder="tu@email.com" class="form-control">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" th:field="*{email}" required placeholder="tu@email.com" class="form-control">
                         <p class="error">Es obligatorio especificar el correo electrónico</p>
                     </div>
 
@@ -96,13 +99,13 @@
                     <!-- DIRECCIÓN -->
                     <div class="inputGroup">
                         <label for="direccionEnv">Dirección</label>
-                        <input type="text" id="direccionEnv" th:field="*{direccionEnv}" required placeholder="Dirección de envío" class="form-control">
+                        <input type="text" id="direccionEnv" th:field="*{direccionEnvio}" required placeholder="Dirección de envío" class="form-control">
                         <p class="error">Es obligatorio especificar la dirección</p>
                     </div>
 
                     <!-- DIRECCIÓN 2 -->
                     <div class="inputGroup">
-                        <input type="text" id="direccionEnv2" th:field="*{direccionEnv2}" placeholder="Piso, puerta, etc." class="form-control">
+                        <input type="text" id="direccionEnv2" th:field="*{direccionEnvio2}" placeholder="Piso, puerta, etc." class="form-control">
                     </div>
 
                     <!-- MUNICIPIO -->
@@ -143,7 +146,7 @@
             <!-- ========================= -->
             <!-- 💳 STEP 2: PAGO -->
             <!-- ========================= -->
-            <section id="step-2" class="checkout-step d-none">
+            <section id="step-2" class="checkout-step">
 
                 <div class="step-container">
                     <h2>2. Método de pago</h2>
@@ -193,14 +196,14 @@
 
                     <!-- PAYPAL -->
                     <div class="paymentBlock d-none" id="payment-paypal">
-                        <button type="button" class="btn btn-primary pay-btn">
+                        <button type="button" class="btn btn-primary pay-btn" data-method="paypal">
                             Pagar con PayPal
                         </button>
                     </div>
 
                     <!-- TRANSFERENCIA -->
                     <div class="paymentBlock d-none" id="payment-bank">
-                        <button type="button" class="btn btn-primary pay-btn">
+                        <button type="button" class="btn btn-primary pay-btn" data-method="bank">
                             Pagar por transferencia
                         </button>
                     </div>
@@ -218,7 +221,7 @@
             <!-- ========================= -->
             <!-- 📦 STEP 3: CONFIRM -->
             <!-- ========================= -->
-            <section id="step-3" class="checkout-step d-none">
+            <section id="step-3" class="checkout-step">
 
                 <div class="step-container">
                     <h2>3. Confirmación del pedido</h2>
@@ -365,13 +368,15 @@
                     Volver al carrito
                 </a>
 
-                <button id="back-btn" class="btn btn-secondary d-none">
+                <button type="button" id="back-btn" class="btn btn-secondary d-none">
                     Atrás
                 </button>
 
-                <button id="next-btn" class="btn btn-primary d-none">
+                <button type="button" id="next-btn" class="btn btn-primary d-none">
                     Siguiente
                 </button>
+                <!--Importance especificar type="button", si no por defecto se le asigna type="submit"
+                al button y se intenta terminar el formulario cuando no toca-->
 
                 <!--<a href="/checkout-completed" class="btn btn-success"
                 th:onclick="submitOrder()">
@@ -383,8 +388,6 @@
                 </button>
 
             </div>
-
-        </section>
     </form>
 </main>
 

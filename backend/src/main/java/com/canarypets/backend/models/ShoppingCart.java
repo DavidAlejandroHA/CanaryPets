@@ -32,7 +32,7 @@ public class ShoppingCart {
 
     public float calculateTotal() {
         return (float) items.stream()
-                .mapToDouble(CartItem::getTotalPrice)
+                .mapToDouble(cartItem -> cartItem.getTotalPrice().floatValue())
                 .sum();
     }
 

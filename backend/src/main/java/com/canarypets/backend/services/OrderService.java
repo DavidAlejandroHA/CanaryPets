@@ -25,6 +25,11 @@ public class OrderService {
     public Order createOrder(OrderRequestDTO dto, User user) {
 
         cartService.validateCart(user); // Importante validar carrito
+        //  Validación previa (UX)
+
+        if (dto == null) {
+            throw new IllegalArgumentException("Datos del pedido inválidos");
+        }
 
         // Crear order
         Order order = new Order();
@@ -50,13 +55,13 @@ public class OrderService {
         List<OrderItem> items = new ArrayList<>();
         float total = 0f;
 
-        ShoppingCart cart = cartService.getCart(user);
+        //ShoppingCart cart = cartService.getCart(user);
+        List<CartItem> cartItems = cartService.getCartItems(user);
 
-        if (cart.getItems().isEmpty()) {
+        if (cartItems.isEmpty()) {
             throw new IllegalStateException("El carrito está vacío");
         }
 
-        List<CartItem> cartItems = cartService.getCartItems(user);
         //for (CartItem cartItem : cart.getItems()) {
         // cart.getItems() es lazy -> Al estar fuera de transacción y no hacer fetch join -> LazyInitializationException
         for (CartItem cartItem : cartItems) { // Manera correcta
@@ -73,7 +78,9 @@ public class OrderService {
             // Validar stock
             if (qty > product.getStock()) {
                 throw new IllegalStateException(
-                        "Stock insuficiente para: " + product.getName()
+                        (product.getStock() == 0 ?
+                                "Stock agotado para: " :
+                                "Stock insuficiente para: ") + product.getName()
                 );
             }
 
@@ -100,10 +107,11 @@ public class OrderService {
         order.setItems(items);
 
         // Envío
-        float shipping = total > 0 ? 3.99f : 0f;
+        float shipping = (total > 0 && !user.hasRole("PREMIUM")) ? 3.99f : 0f;
         order.setOrderTotal(BigDecimal.valueOf(total + shipping));
 
         // Guardar productos actualizados (útil solo al descontar stock)
+        // Realmente no es necesario al estar dentro de @Transactional
         productRepository.saveAll(
                 items.stream().map(OrderItem::getProduct).toList()
         );

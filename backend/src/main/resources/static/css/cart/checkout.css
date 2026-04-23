@@ -68,31 +68,75 @@
 /* checkout-progress */
 
 .checkout-progress {
-    margin-bottom: 2rem;
+    /*margin-bottom: 2rem;*/
+    width: 100%;
+}
+
+.mainCheckoutWrapper {
+    width: 100%;
 }
 
 .statusBar {
     position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /*width: 100%;*/
+    /*padding: 0 15px;*/ /* Importante */
+    display: flex;              /* Importante para mostrar todo_ en una linea */
+    justify-content: space-between; /* Separar los nodos */
+    align-items: center;        /* Alinear verticalmente */
 }
 
-.statusBar .pBar {
+/*.statusBar .pBar {
     position: absolute;
-    top: 50%;
-    left: 0;
+    top: 15px; / mitad del círculo (30px / 2) /
+    left: 15px; / mitad del primer círculo /
+    right: 15px; / mitad del último círculo /
     height: 4px;
-    width: 0%;
-    background: #28a745;
-    transition: width 0.3s ease;
+    background: #e0e0e0; /* barra base gris /
     z-index: 0;
+}*/
+
+/*.progress-line {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  height: 4px;
+  background: #ddd; / gris base /
+  z-index: 0;
+}*/
+.progress-line,
+.pBar {
+  position: absolute;
+  top: 15px;
+  /*left: 0;
+  width: 100%;*/
+  left: calc(60px);   /* mitad del círculo */
+  right: calc(60px);  /* mitad del círculo */
+  height: 4px;
+}
+
+.progress-line {
+  background: #ddd;
+  z-index: 0;
+}
+
+.pBar {
+  /*position: absolute;
+  top: 15px;
+  left: 15px;
+  height: 4px;*/
+  width: 0%;
+  background: #28a745; /* ✅ verde progreso */
+  z-index: 1;
+  transition: width 0.3s ease;
 }
 
 .node {
     position: relative;
     z-index: 1;
+    /*flex: 1;*/
     text-align: center;
+    width: 120px;
 }
 
 .node .main {

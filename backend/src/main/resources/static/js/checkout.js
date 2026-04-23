@@ -1,14 +1,31 @@
+/* Variables de pago */
+let selectedPayment = "card";
+let paymentDone = false;
+
+/**/
 let currentStep = 1;
 const steps = document.querySelectorAll(".checkout-step");
 
 function showStep(step) {
     steps.forEach(s => s.style.display = "none");
-    document.querySelector(`[data-step="${step}"]`).style.display = "block";
 
-    // botones
-    document.getElementById("back-btn").classList.toggle("d-none", step === 1);
-    document.getElementById("next-btn").classList.toggle("d-none", step === 3);
-    document.getElementById("finish-btn").classList.toggle("d-none", step !== 3);
+    const current = document.getElementById(`step-${step}`);
+    if (current) {
+        current.style.display = "block";
+    }
+    //document.querySelector(`[data-step="${step}"]`).style.display = "block"; // En base a data-step
+
+
+
+    const cartBtn = document.querySelector(".no-js-only");
+
+    // Botones
+    if (cartBtn) { // Botón "Volver al carrito"
+        cartBtn.classList.toggle("d-none", step !== 1);
+    }
+    document.getElementById("back-btn").classList.toggle("d-none", step === 1); // Atrás
+    document.getElementById("next-btn").classList.toggle("d-none", step === 3); // Siguiente
+    document.getElementById("finish-btn").classList.toggle("d-none", step !== 3); // Terminar
 }
 
 // validar form envío
@@ -17,13 +34,34 @@ function validateShipping() {
 
     document.querySelectorAll("#step-1 [required]").forEach(input => {
         const group = input.closest(".inputGroup");
+        if (!group) return; // Evitar errores con checkboxs
+
         const value = input.value.trim();
 
         // Si el input es de tipo email
         if (input.type === "email") {
-            valid = input.value.includes("@");
+            if (!input.value.includes("@")) {
+                //valid = input.value.includes("@"); // Esto sobreescribe valid global
+                group.classList.add("invalid");
+                valid = false;
+                return; // Importante
+            }/* else {
+                group.classList.remove("invalid");
+            }*/
         }
 
+        // Manejar checkboxs required
+        /*if (input.type === "checkbox") {
+            if (!input.checked) {
+                group.classList.add("invalid");
+                valid = false;
+            } else {
+                group.classList.remove("invalid");
+            }
+            return;
+        }*/
+
+        // General
         if (value.length < 2) {
             group.classList.add("invalid");
             valid = false;
@@ -37,19 +75,85 @@ function validateShipping() {
 
 // init
 document.addEventListener("DOMContentLoaded", () => {
+    showStep(currentStep);
+    updateProgressBar();
+
+    // VALIDACIÓN AL SALIR DEL INPUT
+    document.querySelectorAll("#step-1 input, #step-1 select").forEach(input => {
+        input.addEventListener("blur", () => {
+            const group = input.closest(".inputGroup");
+            if (!group) return; // Evitar error en caso de checkbox
+
+            if (input.hasAttribute("required") && input.value.trim().length < 2) {
+                group.classList.add("invalid");
+            } else {
+                group.classList.remove("invalid");
+            }
+        });
+    });
+
+    // CAMBIO DE MÉTODO_
+    document.querySelectorAll(".payment-option").forEach(btn => {
+        btn.addEventListener("click", () => {
+
+            document.querySelectorAll(".payment-option")
+                .forEach(b => b.classList.remove("active"));
+
+            btn.classList.add("active");
+
+            selectedPayment = btn.dataset.method;
+            paymentDone = false;
+
+            document.querySelectorAll(".paymentBlock")
+                .forEach(b => b.classList.add("d-none"));
+
+            document.getElementById("payment-" + selectedPayment)
+                .classList.remove("d-none");
+
+            // Activar / desactivar required dinámicamente según método_ de pago
+            const cardInputs = document.querySelectorAll("#payment-card [required]"); // Todos los inputs de pago
+            cardInputs.forEach(input => {
+                if (selectedPayment === "card") {
+                    input.disabled = false;
+                    input.setAttribute("required", "required");
+                } else {
+                    input.disabled = true;
+                    input.removeAttribute("required");
+                }
+            });
+        });
+    });
+
+    // BOTONES DE PAGO
+    document.querySelectorAll(".pay-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const method = btn.dataset.method;
+            paymentDone = true;
+            alert("Pago simulado correcto ✅" + "(" + (method === "bank" ?
+             "Transferencia bancaria" :
+             "Paypal"
+             ) + ")");
+
+            //currentStep = 3;
+            //showStep(3);
+            //updateProgressBar();
+        });
+    });
+
+
+
 
     // activar modo JS
-    document.querySelectorAll(".no-js-only").forEach(el => el.style.display = "none");
+    //document.querySelectorAll(".no-js-only").forEach(el => el.style.display = "none");
     document.getElementById("checkout-steps").classList.remove("d-none");
     document.getElementById("next-btn").classList.remove("d-none");
 
-    showStep(1);
-    updateProgressBar();
-
     document.getElementById("next-btn").addEventListener("click", () => {
-
-        if (currentStep === 1 && !validateShipping()) return;
-
+        //e.preventDefault(); // Evitar submit automático (útil en caso de que el botón sea tipo "submit")
+        if (currentStep === 1 && !validateShipping()) {
+            console.log("test: ", validateShipping())
+            return;
+        }
         if (currentStep === 2 && !validatePayment()) return;
 
         currentStep++;
@@ -63,60 +167,8 @@ document.addEventListener("DOMContentLoaded", () => {
         updateProgressBar();
     });
 
-    document.getElementById("pay-btn").addEventListener("click", () => {
-        currentStep = 3;
-        showStep(3);
-        updateProgressBar();
-    });
-
-});
-
-// VALIDACIÓN AL SALIR DEL INPUT
-document.querySelectorAll("#step-1 input, #step-1 select").forEach(input => {
-    input.addEventListener("blur", () => {
-        const group = input.closest(".inputGroup");
-
-        if (input.hasAttribute("required") && input.value.trim().length < 2) {
-            group.classList.add("invalid");
-        } else {
-            group.classList.remove("invalid");
-        }
-    });
-});
 
 
-
-
-/* Pago */
-let selectedPayment = "card";
-let paymentDone = false;
-
-// CAMBIO DE MÉTODO_
-document.querySelectorAll(".payment-option").forEach(btn => {
-    btn.addEventListener("click", () => {
-
-        document.querySelectorAll(".payment-option")
-            .forEach(b => b.classList.remove("active"));
-
-        btn.classList.add("active");
-
-        selectedPayment = btn.dataset.method;
-        paymentDone = false;
-
-        document.querySelectorAll(".paymentBlock")
-            .forEach(b => b.classList.add("d-none"));
-
-        document.getElementById("payment-" + selectedPayment)
-            .classList.remove("d-none");
-    });
-});
-
-// BOTONES DE PAGO
-document.querySelectorAll(".pay-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        paymentDone = true;
-        alert("Pago simulado correcto ✅");
-    });
 });
 
 function validatePayment() {
@@ -157,24 +209,56 @@ function validatePayment() {
 }
 
 /* Checkout progress */
-const stepNodes = document.querySelectorAll(".step-node");
-const progressBar = document.getElementById("progress-bar");
+//const stepNodes = document.querySelectorAll(".step-node");
+// progressBar = document.getElementById("progress-bar");
 
 function updateProgressBar() {
+    const nodes = document.querySelectorAll(".step-node");
+    const bar = document.getElementById("progress-bar");
 
-    stepNodes.forEach((node, index) => {
+    // Cambiar color de nodo
+    nodes.forEach((node, index) => {
         node.classList.remove("active", "done");
 
-        if (index < currentStep) {
+        if (index < currentStep - 1) {
             node.classList.add("done");
-        } else if (index === currentStep) {
+            node.classList.remove("active");
+        } else if (index === currentStep - 1) {
+            node.classList.add("active");
+            node.classList.remove("done");
+        } else {
+            node.classList.remove("active", "done");
+        }
+
+        // Mejora:
+        const step = Number(node.dataset.step);
+
+        if (step < currentStep) {
+            node.classList.add("done");
+        } else if (step === currentStep) {
             node.classList.add("active");
         }
     });
 
     // 🔹 Calcular ancho barra
-    const progressPercent = (currentStep) / (stepNodes.length - 1) * 100;
-    progressBar.style.width = progressPercent + "%";
+    /*const progressPercent = (currentStep - 1) / (stepNodes.length - 1) * 100;
+    progressBar.style.width = progressPercent + "%";*/ // En base a % no funciona del todo_ bien
+
+    // Cambiar barra de progreso
+    const currentNode = nodes[currentStep - 1];
+    const firstNode = nodes[0];
+
+    const firstRect = firstNode.getBoundingClientRect();
+    const currentRect = currentNode.getBoundingClientRect();
+
+    const containerRect = firstNode.parentElement.getBoundingClientRect();
+
+    const start = firstRect.left + firstRect.width / 2;
+    const current = currentRect.left + currentRect.width / 2;
+
+    const percent = ((current - start) / containerRect.width) * 100;
+
+    bar.style.width = percent + "%";
 }
 
 
