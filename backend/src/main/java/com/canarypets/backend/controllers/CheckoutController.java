@@ -100,7 +100,7 @@ public class CheckoutController {
         model.addAttribute("orderId", orderId);
         model.addAttribute("toastSuccess", success);
 
-        return "checkout/checkout-completed";
+        return "cart/checkout-completed";
     }
 
 }
