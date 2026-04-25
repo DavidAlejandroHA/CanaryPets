@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+
+<div class="container py-4">
+
+  <!-- Título -->
+  <h2 class="mb-4 text-center text-md-start">Mi perfil</h2>
+
+  <div class="row g-4">
+
+    <!-- 🔹 DATOS USUARIO -->
+    <div class="col-12 col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+
+          <h5 class="card-title mb-3">Información personal</h5>
+
+          <div class="row g-3">
+
+            <!-- Email -->
+            <div class="col-12 col-md-6">
+              <label class="form-label text-muted">Email</label>
+              <div class="fw-semibold" th:text="${user.email}">email</div>
+            </div>
+
+            <!-- Username -->
+            <div class="col-12 col-md-6">
+              <label class="form-label text-muted">Usuario</label>
+              <div class="fw-semibold" th:text="${user.username}">username</div>
+            </div>
+
+            <!-- Nombre -->
+            <div class="col-12 col-md-6">
+              <label class="form-label text-muted">Nombre</label>
+              <div class="fw-semibold" th:text="${user.nombre}">nombre</div>
+            </div>
+
+            <!-- Apellidos -->
+            <div class="col-12 col-md-6">
+              <label class="form-label text-muted">Apellidos</label>
+              <div class="fw-semibold" th:text="${user.apellidos}">apellidos</div>
+            </div>
+
+            <!-- País -->
+            <div class="col-12 col-md-6">
+              <label class="form-label text-muted">País</label>
+              <div class="fw-semibold" th:text="${user.pais}">pais</div>
+            </div>
+
+            <!-- Rol -->
+            <div class="col-12 col-md-6">
+              <label class="form-label text-muted">Rol</label>
+              <div class="fw-semibold">
+                                <span class="badge bg-primary"
+                                      th:text="${#authorization.expression('hasRole(''PREMIUM'')')} ? 'PREMIUM' : 'USER'">
+                                    USER
+                                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔹 ACCIONES -->
+    <div class="col-12 col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+
+          <h5 class="card-title mb-3">Opciones</h5>
+
+          <div class="d-grid gap-2">
+
+            <!-- Pedidos -->
+            <a href="/profile/orders" class="btn btn-outline-primary">
+              Ver pedidos
+            </a>
+
+            <!-- Favoritos -->
+            <a href="/profile/favorites" class="btn btn-outline-secondary">
+              Ver favoritos
+            </a>
+
+            <!-- Logout -->
+            <form th:action="@{/logout}" method="post">
+              <button type="submit" class="btn btn-danger w-100">
+                Cerrar sesión
+              </button>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
