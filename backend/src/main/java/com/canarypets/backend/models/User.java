@@ -36,17 +36,19 @@ public class User {
     private String nickName;
 
     //@NotNull
-    @NotBlank(message = "El campo de la dirección no debe de estar vacío")
+    //@NotBlank(message = "El campo de la dirección no debe de estar vacío")
+    @Size(max = 100, message = "La dirección es demasiado larga")
     private String address;
 
-    @NotNull
-    @NotBlank(message = "El campo del código postal no debe de estar vacío")
+    //@NotNull
+    //@NotBlank(message = "El campo del código postal no debe de estar vacío")
     @Pattern(regexp = "[0-9]{5}", message = "Código postal inválido")
     //@Positive -> No aplica a Strings
     private String postalCode;
 
     @NotNull
     @NotBlank(message = "El campo del país no debe de estar vacío")
+    @Size(max = 50, message = "El nombre o descripción del país es demasiado largo")
     private String country;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)

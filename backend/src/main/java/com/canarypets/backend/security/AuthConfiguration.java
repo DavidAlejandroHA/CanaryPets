@@ -62,7 +62,7 @@ public class AuthConfiguration {
             .requestMatchers("/", "/home", "/auth/login", "/auth/register",
                             "/auth/logout", "/css/**", "/js/**",
                             "/categoria/**", "/categoria", "/images/**",
-                            "/producto/**", "/checkout/**", "/order/**").permitAll()
+                            "/producto/**", "/checkout/**", "/order/**", "/profile/**").permitAll()
                     .anyRequest().authenticated();
             //requests.requestMatchers("/cart/**").authenticated();
         });

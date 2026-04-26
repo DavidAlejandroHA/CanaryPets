@@ -35,20 +35,20 @@
 
             <!-- Username -->
             <div class="col-12 col-md-6">
-              <label class="form-label text-muted">Usuario</label>
-              <div class="fw-semibold" th:text="${user.username}">username</div>
+              <label class="form-label text-muted">Nombre de usuario</label>
+              <div class="fw-semibold" th:text="${user.nickname}">username</div>
             </div>
 
-            <!-- Nombre -->
+            <!-- Dirección -->
             <div class="col-12 col-md-6">
-              <label class="form-label text-muted">Nombre</label>
-              <div class="fw-semibold" th:text="${user.nombre}">nombre</div>
+              <label class="form-label text-muted">Dirección</label>
+              <div class="fw-semibold" th:text="${user.address}">dirección</div>
             </div>
 
-            <!-- Apellidos -->
+            <!-- Código postal -->
             <div class="col-12 col-md-6">
-              <label class="form-label text-muted">Apellidos</label>
-              <div class="fw-semibold" th:text="${user.apellidos}">apellidos</div>
+              <label class="form-label text-muted">Código postal</label>
+              <div class="fw-semibold" th:text="${user.postalCode}">código postal</div>
             </div>
 
             <!-- País -->
@@ -61,10 +61,14 @@
             <div class="col-12 col-md-6">
               <label class="form-label text-muted">Rol</label>
               <div class="fw-semibold">
-                                <span class="badge bg-primary"
-                                      th:text="${#authorization.expression('hasRole(''PREMIUM'')')} ? 'PREMIUM' : 'USER'">
-                                    USER
-                                </span>
+                  <span class="badge"
+                        th:each="role : ${#authentication.authorities}"
+                        th:text="${role.authority.replace('ROLE_', '')}"
+                        th:classappend="
+                        ${role.authority == 'ROLE_ADMIN'} ? ' bg-warning' :
+                        (${role.authority == 'ROLE_PREMIUM'} ? ' bg-success text-dark' :
+                        ' bg-primary')">Rol
+                  </span>
               </div>
             </div>
 
@@ -84,18 +88,23 @@
           <div class="d-grid gap-2">
 
             <!-- Pedidos -->
+            <a href="/profile/edit" class="btn btn-outline-secondary">
+              Editar perfil
+            </a>
+
+            <!-- Pedidos -->
             <a href="/profile/orders" class="btn btn-outline-primary">
               Ver pedidos
             </a>
 
             <!-- Favoritos -->
-            <a href="/profile/favorites" class="btn btn-outline-secondary">
+            <a href="/profile/favorites" class="btn btn-outline-warning">
               Ver favoritos
             </a>
 
             <!-- Logout -->
             <form th:action="@{/logout}" method="post">
-              <button type="submit" class="btn btn-danger w-100">
+              <button type="submit" class="btn btn-secondary w-100">
                 Cerrar sesión
               </button>
             </form>

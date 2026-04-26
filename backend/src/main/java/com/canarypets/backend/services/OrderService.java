@@ -6,11 +6,14 @@ import com.canarypets.backend.repositories.OrderRepository;
 import com.canarypets.backend.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +23,11 @@ public class OrderService {
     private final ProductRepository productRepository;
     // Nota: Si no se usa @RequiredArgsConstructor entonces se tiene que poner @Autowired
     private final CartService cartService;
+
+    public Page<Order> getOrdersByUser(User user, Pageable pageable) {
+        //return orderRepository.findByUserOrderByCreatedAtDesc(user);
+        return orderRepository.findByUserOrderByCreatedAtDesc(user, pageable);
+    }
 
     @Transactional
     public Order createOrder(OrderRequestDTO dto, User user) {
@@ -123,5 +131,9 @@ public class OrderService {
         cartService.clearCart(user);
 
         return order;
+    }
+
+    public Optional<Order> getOrderDetail(Long orderId, User user) {
+        return orderRepository.findByIdAndUserWithItems(orderId, user);
     }
 }

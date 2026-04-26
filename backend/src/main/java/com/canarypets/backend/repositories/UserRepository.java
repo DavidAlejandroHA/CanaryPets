@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = "SELECT * FROM `USERS` WHERE nickName = :paramName",
     countQuery = "SELECT count(*) FROM `USERS` WHERE nickName = :paramName",
@@ -15,4 +17,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     countQuery = "SELECT count(*) FROM `USERS` WHERE email = :paramName",
     nativeQuery = true)
     User findByEmail(@Param("paramName") String email);
+
+    Optional<User> findByNickname(String nickname);
+    boolean existsByNickname(String nickname);
 }

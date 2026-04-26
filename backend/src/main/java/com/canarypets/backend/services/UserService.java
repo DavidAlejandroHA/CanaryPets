@@ -1,10 +1,12 @@
 package com.canarypets.backend.services;
 
+import com.canarypets.backend.DTOs.ProfileUpdateDTO;
 import com.canarypets.backend.models.Role;
 import com.canarypets.backend.models.User;
 import com.canarypets.backend.repositories.RoleRepository;
 import com.canarypets.backend.repositories.UserRepository;
 import com.canarypets.backend.security.AuthConfiguration;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,6 +28,24 @@ public class UserService implements UserDetailsService/*, EntityService<User>*/ 
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleRepository;
+
+    @Transactional
+    public void updateProfile(User user, ProfileUpdateDTO dto) {
+
+        // Validar nickname único (solo si cambia)
+        if (!user.getNickName().equals(dto.getNickname())) {
+            if (userRepository.existsByNickname(dto.getNickname())) {
+                throw new IllegalArgumentException("El nombre de usuario ya está en uso");
+            }
+        }
+
+        user.setNickName(dto.getNickname());
+        user.setAddress(dto.getAddress());
+        user.setPostalCode(dto.getPostalCode());
+        user.setCountry(dto.getCountry());
+
+        userRepository.save(user);
+    }
 
     public void upgradeToPremium(Authentication authentication, String username) {
 
