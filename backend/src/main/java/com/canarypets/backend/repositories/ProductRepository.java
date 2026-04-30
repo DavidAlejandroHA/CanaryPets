@@ -2,7 +2,10 @@ package com.canarypets.backend.repositories;
 
 import com.canarypets.backend.models.Category;
 import com.canarypets.backend.models.Product;
+import com.canarypets.backend.models.User;
 import jakarta.persistence.LockModeType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Lock;
@@ -24,4 +27,11 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
     //@Lock(LockModeType.PESSIMISTIC_WRITE)
     //@Query("SELECT p FROM Product p WHERE p.id = :id")
     //Optional<Product> findByIdForUpdate(@Param("id") Long id); // Para evitar race conditions
+
+    @Query("""
+        SELECT p FROM User u
+        JOIN u.favorites p
+        WHERE u = :user
+    """)
+    Page<Product> findFavoritesByUser(@Param("user") User user, Pageable pageable);
 }

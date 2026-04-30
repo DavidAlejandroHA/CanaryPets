@@ -26,3 +26,71 @@
 .product-card a.stretched-link {
     z-index: 1;
 }
+
+.favorite-form { /* Para que se pueda hacer click encima del botón toggle de favoritos */
+    z-index: 3;
+    position: absolute;
+}
+
+/* Favorites */
+.favorite-btn {
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: all 0.25s ease;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 20%;
+  padding: 6px;
+  cursor: pointer;
+}
+
+/* Mostrar en hover */
+.product-card:hover .favorite-btn {
+  opacity: 1;
+}
+
+/* Siempre visible si es favorito */
+.favorite-btn.active {
+  opacity: 1;
+  border-color: #dc3545;
+}
+
+/* Hover */
+.favorite-btn:hover {
+  border-color: #dc3545;
+  background: #ffe5e9;
+  transform: scale(1.1);
+}
+
+/* ❤️ Icono activo */
+.favorite-btn.active .fav-icon {
+  color: #dc3545;
+}
+
+/* 🤍 Icono normal */
+.fav-icon {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.favorite-btn.clicked {
+  animation: fav-pop 0.3s ease;
+}
+
+@keyframes fav-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

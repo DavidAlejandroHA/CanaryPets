@@ -11,3 +11,51 @@
 .thumb.border-primary {
     border: 2px solid #0d6efd !important;
 }
+
+/* Favorites */
+.favorite-btn-detail {
+    /*font-size: 1.5rem;*/
+    opacity: 1; /* Siempre visible */
+    /*transition: all 0.25s ease;*/
+    /*transition: background 0.2s ease, transform 0.2s ease, border 0.2s ease;*/
+    background: white;
+    /*border: 2px solid #ddd;*/
+    /*border-color: #ddd;*/
+    border-radius: 5px;
+    /*padding: 6px;*/
+    /*cursor: pointer;*/
+}
+
+/* Animación */
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.2); }
+  50%  { transform: scale(0.95); }
+  75%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.favorite-btn-detail.animate {
+  animation: heartbeat 0.4s ease;
+}
+
+/* Hover (cuando NO está activo) */
+.favorite-btn-detail:hover {
+  border-color: #dc3545;
+  /*transform: scale(1.1); Se quita el transform para que el hover
+  no pise la animación que el js activa */
+}
+
+/* Estado activo (rojo) */
+.favorite-btn-detail.active {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+/* Hover sobre activo (rojo más oscuro) */
+.favorite-btn-detail.active:hover {
+    background: #bb2d3b; /* rojo más oscuro */
+    border-color: #bb2d3b;
+    /*transform: scale(1.1);*/
+}

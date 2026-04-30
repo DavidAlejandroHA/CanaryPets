@@ -5,6 +5,7 @@ import com.canarypets.backend.models.ShoppingCart;
 import com.canarypets.backend.models.User;
 import com.canarypets.backend.services.CartService;
 import com.canarypets.backend.services.UserService;
+import com.canarypets.backend.utils.AuthUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +54,7 @@ public class CartController {
             @RequestParam int quantity,
             Authentication auth
     ) {
-        if (!isUserLogged(auth)) {
+        if (!AuthUtils.isUserLogged(auth)) {
             return "redirect:/auth/login";
         }
         //System.out.println("ENTRA EN ADD NORMAL");
@@ -71,7 +72,7 @@ public class CartController {
     public ResponseEntity<?> addAjax(@RequestBody Map<String, Object> body,
                                      Authentication auth) {
         //if (auth == null || !auth.isAuthenticated()) {
-        if (!isUserLogged(auth)) {
+        if (!AuthUtils.isUserLogged(auth)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         Long productId = Long.valueOf(body.get("productId").toString());
@@ -108,7 +109,7 @@ public class CartController {
     @PostMapping("/remove/{productId}")
     @ResponseBody
     public ResponseEntity<?> removeAjax(@PathVariable Long productId, Authentication auth) {
-        if (!isUserLogged(auth)) {
+        if (!AuthUtils.isUserLogged(auth)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
@@ -148,7 +149,7 @@ public class CartController {
     @ResponseBody
     public ResponseEntity<?> update(@RequestBody Map<String, Object> body,
                        Authentication auth) {
-        if (!isUserLogged(auth)) {
+        if (!AuthUtils.isUserLogged(auth)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
@@ -175,7 +176,7 @@ public class CartController {
     // Validar carrito - Ajax
     @PostMapping("/validate-ajax")
     public ResponseEntity<?> validateCart_Ajax(Authentication auth) {
-        if (!isUserLogged(auth)) {
+        if (!AuthUtils.isUserLogged(auth)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
@@ -194,7 +195,7 @@ public class CartController {
     @PostMapping("/validate")
     public String validateCartFallback(Authentication auth, RedirectAttributes redirectAttributes) {
         //if (auth == null || !auth.isAuthenticated()) {
-        if (!isUserLogged(auth)) {
+        if (!AuthUtils.isUserLogged(auth)) {
             return "redirect:/auth/login";
         }
 
@@ -220,9 +221,5 @@ public class CartController {
         cartService.addProduct(user, productId, quantity);
     }
 
-    private boolean isUserLogged(Authentication authentication) {
-        return authentication != null &&
-                !(authentication instanceof AnonymousAuthenticationToken)
-                && !("anonymousUser".equals(authentication.getName()));
-    }
+
 }

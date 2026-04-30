@@ -8,6 +8,9 @@
     <link th:href="@{/css/styles.css}" rel="stylesheet">
     <link th:href="@{/css/catalog/product-cards-styles.css}" rel="stylesheet">
     <link th:href="@{/css/fragments/header.css}" rel="stylesheet">
+
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -112,9 +115,28 @@
 
                     <article class="card h-100 product-card position-relative"
                              th:attr="data-slug=${product.slug}">
-                        <!--th:onclick="goToProduct(this)"
-                        style="cursor: pointer;"
-                        - Necesario si se hiciera con js -->
+
+                        <!--Favorito-->
+                        <form class="favorite-form position-absolute top-0 end-0 m-2"
+                              th:action="@{/profile/favorites/toggle}"
+                              method="post"
+                              onclick="event.stopPropagation()">
+
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                            <input type="hidden" name="productId" th:value="${product.id}">
+
+                            <button type="submit"
+                                    class="favorite-btn btn p-0 bg-transparent"
+                                    th:data-id="${product.id}"
+                                    th:classappend="${#lists.contains(favoritesIds, product.id)} ? 'active'">
+
+                            <span class="fav-icon"
+                                  th:text="${#lists.contains(favoritesIds, product.id)} ? '❤️' : '🤍'">
+                            ❤️
+                            </span>
+
+                            </button>
+                        </form>
 
                         <!--Overlay clickable-->
                         <a th:href="@{'/producto/' + ${product.slug}}"
@@ -125,7 +147,7 @@
                             <a th:href="@{'/producto/' + ${product.slug}}">
                                 <img th:src="@{'/images/' + ${product.imageUrl}}"
                                      class="card-img-top product-img"
-                                     alt="product">
+                                     alt="Imagen de producto">
                             </a>
                         </header>
 
@@ -164,8 +186,7 @@
                                 <!--onclick="event.stopPropagation()" - Necesario si se hiciera con js-->
                                 <!--th:attr="data-bs-target='#addToCartModal__' + ${product.id}"-->
                                 Añadir al carrito
-                            </a> <!--Para abrir automáticamente con bootstrap:
-                            data-bs-toggle="modal" th:data-bs-target="'#addToCartModal__' + ${product.id}"-->
+                            </a>
                         </footer>
 
                     </article>
@@ -226,8 +247,6 @@
                                                th:id="'hiddenQty__' + ${product.id}">
 
                                         <!--IMPORTANTE: type="button" evita submit automático-->
-                                        <!--<button type="button" class="btn btn-success"
-                                                th:onclick="setQuantity([[${product.id}]])">-->
                                         <button type="button" class="btn btn-success"
                                                 th:onclick="addToCart([[${product.id}]])">
                                             Añadir
@@ -304,5 +323,6 @@
 </body>
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/catalog.js}"></script>
+<script th:src="@{/js/favorites.js}"></script>
 <script th:src="@{/js/toast.js}"></script>
 </html>

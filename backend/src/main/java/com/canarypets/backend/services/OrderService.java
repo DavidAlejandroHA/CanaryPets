@@ -136,4 +136,8 @@ public class OrderService {
     public Optional<Order> getOrderDetail(Long orderId, User user) {
         return orderRepository.findByIdAndUserWithItems(orderId, user);
     }
+
+    /*public boolean existById(Long orderId) {
+        return orderRepository.existsById(orderId);
+    }*/
 }

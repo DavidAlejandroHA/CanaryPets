@@ -14,7 +14,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    // 📦 DATOS DE ENVÍO
+    // DATOS DE ENVÍO
     @Column(nullable = false)
     private String email;
 
@@ -41,12 +41,12 @@ public class Order {
     @Column(nullable = false)
     private String codigoPostal;
 
-    // 🧾 FACTURACIÓN
+    // FACTURACIÓN
     @Column(nullable = false)
     private boolean sameAsShipping; // checkbox
 
     @Column(nullable = false, updatable = false)
-    private LocalDate date;
+    private LocalDate createdAt;
 
     @Column(nullable = false)
     private BigDecimal orderTotal;
@@ -66,11 +66,11 @@ public class Order {
     // Generar fecha automáticamente
     @PrePersist
     protected void onCreate() {
-        this.date = LocalDate.now();
+        this.createdAt = LocalDate.now();
     }
     // Alternativa:
     //@PastOrPresent(message = "La fecha no puede ser futura")
-    //private LocalDateTime date;
+    //private LocalDateTime createdAt;
 
     //@ManyToOne(fetch = FetchType.LAZY)
     //@JoinColumn(name = "id_producto")
@@ -102,8 +102,8 @@ public class Order {
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
-    public LocalDate getDate() {return date;}
-    public void setDate(LocalDate date) {this.date = date;}
+    public LocalDate getCreatedAt() {return createdAt;}
+    public void setCreatedAt(LocalDate createdAt) {this.createdAt = createdAt;}
 
     public BigDecimal getOrderTotal() {return orderTotal;}
     public void setOrderTotal(BigDecimal orderTotal) {this.orderTotal = orderTotal;}

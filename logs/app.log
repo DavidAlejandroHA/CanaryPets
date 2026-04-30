@@ -1,19 +1,19 @@
-2026-03-27T00:08:24.988Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
-2026-03-27T00:08:24.999Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
-2026-03-27T00:08:25.470Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-27T00:08:25.509Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 4 JPA repository interfaces.
-2026-03-27T00:08:25.939Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
-2026-03-27T00:08:25.952Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-27T00:08:25.952Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
-2026-03-27T00:08:25.971Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 931 ms
-2026-03-27T00:08:26.130Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-03-27T00:08:26.167Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
-2026-03-27T00:08:26.443Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-27T00:08:26.464Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-27T00:08:26.568Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7fd2a67a
-2026-03-27T00:08:26.569Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-27T00:08:26.615Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC]
+2026-04-29T12:15:38.549Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T12:15:38.561Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T12:15:39.089Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T12:15:39.132Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 8 JPA repository interfaces.
+2026-04-29T12:15:39.600Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T12:15:39.610Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T12:15:39.611Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T12:15:39.631Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1029 ms
+2026-04-29T12:15:39.768Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T12:15:39.825Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T12:15:40.202Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T12:15:40.226Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T12:15:40.350Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2b41b8bb
+2026-04-29T12:15:40.352Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T12:15:40.407Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
 	Database driver: MySQL Connector/J
 	Database dialect: MySQLDialect
 	Database version: 8.0.44
@@ -24,21 +24,982 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-03-27T00:08:27.222Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-27T00:08:27.272Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-27T00:08:27.317Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-03-27T00:08:27.494Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-27T00:08:27.541Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
-2026-03-27T00:08:27.942Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
-2026-03-27T00:08:28.147Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
-2026-03-27T00:08:28.159Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 3.527 seconds (process running for 3.928)
-2026-03-27T00:08:33.840Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-27T00:08:33.841Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-27T00:08:33.842Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-03-27T00:08:34.007Z  WARN 1 --- [Canarypets] [http-nio-8080-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-1][index] Deprecated unwrapped fragment expression "fragments :: header" found in template index, line 12, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
-2026-03-27T00:08:34.062Z  WARN 1 --- [Canarypets] [http-nio-8080-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-1][index] Deprecated unwrapped fragment expression "fragments :: footer" found in template index, line 55, col 6. Please use the complete syntax of fragment expressions instead ("~{fragments :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
-2026-03-27T00:10:40.633Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
-2026-03-27T00:10:40.635Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
-2026-03-27T00:10:40.639Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-27T00:10:40.642Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-27T00:10:40.648Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T12:15:41.153Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T12:15:41.208Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T12:15:41.274Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T12:15:42.035Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T12:15:42.084Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T12:15:42.522Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T12:15:42.758Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T12:15:42.770Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.6 seconds (process running for 5.096)
+2026-04-29T12:24:32.093Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T12:24:32.099Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T12:24:32.103Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T12:24:32.106Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T12:24:32.116Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T12:24:50.990Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T12:24:50.994Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T12:24:51.498Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T12:24:51.545Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 8 JPA repository interfaces.
+2026-04-29T12:24:52.046Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T12:24:52.073Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T12:24:52.074Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T12:24:52.096Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1060 ms
+2026-04-29T12:24:52.216Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T12:24:52.301Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T12:24:52.682Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T12:24:52.704Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T12:24:52.820Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T12:24:52.822Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T12:24:52.870Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T12:24:53.643Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T12:24:53.694Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T12:24:53.732Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T12:24:54.512Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T12:24:54.567Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T12:24:54.991Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T12:24:55.225Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T12:24:55.237Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.593 seconds (process running for 4.989)
+2026-04-29T12:30:07.178Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T12:30:07.179Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T12:30:07.181Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T12:33:34.402Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T12:33:34.405Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T12:33:34.409Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T12:33:34.412Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T12:33:34.418Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T12:33:52.163Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T12:33:52.167Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T12:33:52.671Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T12:33:52.712Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 8 JPA repository interfaces.
+2026-04-29T12:33:53.157Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T12:33:53.176Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T12:33:53.177Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T12:33:53.196Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 982 ms
+2026-04-29T12:33:53.305Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T12:33:53.360Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T12:33:53.670Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T12:33:53.696Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T12:33:53.801Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T12:33:53.803Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T12:33:53.852Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T12:33:54.599Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T12:33:54.655Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T12:33:54.698Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T12:33:55.440Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T12:33:55.497Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T12:33:55.933Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T12:33:56.175Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T12:33:56.188Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.453 seconds (process running for 4.952)
+2026-04-29T12:35:04.125Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T12:35:04.126Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T12:35:04.127Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T12:35:40.323Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T12:35:40.324Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T12:35:40.328Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T12:35:40.330Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T12:35:40.338Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T12:35:51.143Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T12:35:51.148Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T12:35:51.621Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T12:35:51.661Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 8 JPA repository interfaces.
+2026-04-29T12:35:52.089Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T12:35:52.101Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T12:35:52.102Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T12:35:52.120Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 932 ms
+2026-04-29T12:35:52.234Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T12:35:52.278Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T12:35:52.569Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T12:35:52.588Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T12:35:52.694Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T12:35:52.696Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T12:35:52.743Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T12:35:53.416Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T12:35:53.464Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T12:35:53.499Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T12:35:54.187Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T12:35:54.230Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T12:35:54.637Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T12:35:54.856Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T12:35:54.868Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.094 seconds (process running for 4.509)
+2026-04-29T12:36:12.394Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T12:36:12.395Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T12:36:12.396Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T12:36:27.215Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T12:36:27.216Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T12:36:27.219Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T12:36:27.220Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T12:36:27.224Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T12:37:04.604Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T12:37:04.609Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T12:37:05.119Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T12:37:05.160Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 8 JPA repository interfaces.
+2026-04-29T12:37:05.577Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T12:37:05.588Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T12:37:05.589Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T12:37:05.608Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 956 ms
+2026-04-29T12:37:05.723Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T12:37:05.770Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T12:37:06.061Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T12:37:06.078Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T12:37:06.173Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T12:37:06.174Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T12:37:06.219Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T12:37:06.926Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T12:37:06.982Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T12:37:07.019Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T12:37:07.710Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T12:37:07.755Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T12:37:08.167Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T12:37:08.391Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T12:37:08.398Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.143 seconds (process running for 4.496)
+2026-04-29T12:41:30.668Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T12:41:30.669Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T12:41:30.671Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T15:56:55.835Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T15:56:55.837Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T15:56:55.841Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T15:56:55.844Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T15:56:55.846Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T17:32:11.925Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T17:32:11.929Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T17:32:12.452Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T17:32:12.496Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 8 JPA repository interfaces.
+2026-04-29T17:32:12.961Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T17:32:12.974Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T17:32:12.974Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T17:32:12.994Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1026 ms
+2026-04-29T17:32:13.122Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T17:32:13.193Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T17:32:13.537Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T17:32:13.559Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T17:32:13.679Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T17:32:13.681Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T17:32:13.735Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T17:32:14.490Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T17:32:14.547Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T17:32:14.592Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T17:32:15.323Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T17:32:15.369Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T17:32:15.809Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T17:32:16.062Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T17:32:16.077Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.534 seconds (process running for 5.033)
+2026-04-29T17:32:25.682Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T17:32:25.683Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T17:32:25.684Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T17:48:22.557Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T17:48:22.560Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T17:48:22.563Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T17:48:22.566Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T17:48:22.572Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T17:48:39.790Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T17:48:39.794Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T17:48:40.316Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T17:48:40.382Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 8 JPA repository interfaces.
+2026-04-29T17:48:40.811Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T17:48:40.823Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T17:48:40.824Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T17:48:40.842Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1009 ms
+2026-04-29T17:48:40.959Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T17:48:41.022Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T17:48:41.305Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T17:48:41.329Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T17:48:41.448Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T17:48:41.450Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T17:48:41.495Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T17:48:42.157Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T17:48:42.210Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T17:48:42.250Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T17:48:42.945Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T17:48:42.990Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T17:48:43.388Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T17:48:43.642Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T17:48:43.665Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.25 seconds (process running for 4.687)
+2026-04-29T17:48:45.290Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T17:48:45.291Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T17:48:45.292Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T18:04:49.504Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T18:04:49.506Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T18:04:49.511Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T18:04:49.514Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T18:04:49.522Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T18:05:06.809Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T18:05:06.815Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T18:05:07.396Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T18:05:07.446Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 8 JPA repository interfaces.
+2026-04-29T18:05:07.952Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T18:05:07.965Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T18:05:07.966Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T18:05:07.988Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1131 ms
+2026-04-29T18:05:08.105Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T18:05:08.168Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T18:05:08.476Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T18:05:08.496Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T18:05:08.622Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T18:05:08.624Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T18:05:08.673Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T18:05:09.462Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T18:05:09.517Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T18:05:09.556Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T18:05:10.362Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T18:05:10.429Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T18:05:10.917Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T18:05:11.141Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T18:05:11.161Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.74 seconds (process running for 5.156)
+2026-04-29T18:06:13.871Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T18:06:13.872Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T18:06:13.873Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T18:06:27.667Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T18:06:27.669Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T18:06:27.672Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T18:06:27.674Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T18:06:27.681Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T18:11:22.933Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T18:11:22.939Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T18:11:23.419Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T18:11:23.459Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 8 JPA repository interfaces.
+2026-04-29T18:11:23.885Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T18:11:23.896Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T18:11:23.897Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T18:11:23.913Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 932 ms
+2026-04-29T18:11:24.019Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T18:11:24.070Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T18:11:24.387Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T18:11:24.413Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T18:11:24.519Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T18:11:24.521Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T18:11:24.570Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T18:11:25.262Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T18:11:25.317Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T18:11:25.359Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T18:11:26.064Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T18:11:26.108Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T18:11:26.500Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T18:11:26.788Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T18:11:26.803Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.218 seconds (process running for 4.608)
+2026-04-29T18:11:35.066Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T18:11:35.066Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T18:11:35.068Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T20:36:17.853Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T20:36:17.861Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T20:36:17.872Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T20:36:17.884Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T20:36:17.888Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T20:36:36.627Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T20:36:36.631Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T20:36:37.110Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T20:36:37.150Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 8 JPA repository interfaces.
+2026-04-29T20:36:37.593Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T20:36:37.608Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T20:36:37.609Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T20:36:37.628Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 961 ms
+2026-04-29T20:36:37.754Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T20:36:37.812Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T20:36:38.134Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T20:36:38.153Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T20:36:38.269Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T20:36:38.271Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T20:36:38.318Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T20:36:39.012Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T20:36:39.072Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T20:36:39.115Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T20:36:39.809Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T20:36:39.855Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T20:36:40.271Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T20:36:40.527Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T20:36:40.548Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.27 seconds (process running for 4.678)
+2026-04-29T20:39:54.646Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T20:39:54.647Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T20:39:54.648Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T21:00:45.557Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T21:00:45.559Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T21:00:45.562Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:00:45.565Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T21:00:45.567Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T21:01:03.365Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T21:01:03.368Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T21:01:03.843Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T21:01:03.884Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 8 JPA repository interfaces.
+2026-04-29T21:01:04.353Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T21:01:04.366Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T21:01:04.366Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T21:01:04.385Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 975 ms
+2026-04-29T21:01:04.503Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T21:01:04.546Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T21:01:04.869Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T21:01:04.888Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T21:01:05.005Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T21:01:05.007Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T21:01:05.057Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T21:01:05.745Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T21:01:05.796Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:01:05.834Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T21:01:06.504Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T21:01:06.548Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T21:01:06.938Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T21:01:07.164Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T21:01:07.176Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.161 seconds (process running for 4.569)
+2026-04-29T21:14:27.347Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T21:14:27.348Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T21:14:27.349Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T21:18:53.192Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T21:18:53.195Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T21:18:53.199Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:18:53.202Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T21:18:53.213Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T21:19:10.656Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T21:19:10.662Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T21:19:11.144Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T21:19:11.184Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 8 JPA repository interfaces.
+2026-04-29T21:19:11.588Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T21:19:11.601Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T21:19:11.602Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T21:19:11.621Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 916 ms
+2026-04-29T21:19:11.728Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T21:19:11.772Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T21:19:12.056Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T21:19:12.079Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T21:19:12.185Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T21:19:12.186Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T21:19:12.233Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T21:19:12.865Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T21:19:12.917Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:19:12.954Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T21:19:13.637Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T21:19:13.684Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T21:19:14.083Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T21:19:14.310Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T21:19:14.327Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.066 seconds (process running for 4.559)
+2026-04-29T21:19:17.325Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T21:19:17.325Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T21:19:17.327Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T21:21:20.762Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T21:21:20.764Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T21:21:20.767Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:21:20.770Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T21:21:20.776Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T21:21:38.045Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T21:21:38.048Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T21:21:38.546Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T21:21:38.587Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 8 JPA repository interfaces.
+2026-04-29T21:21:39.049Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T21:21:39.060Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T21:21:39.061Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T21:21:39.079Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 992 ms
+2026-04-29T21:21:39.203Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T21:21:39.248Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T21:21:39.559Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T21:21:39.578Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T21:21:39.686Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T21:21:39.688Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T21:21:39.735Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T21:21:40.466Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T21:21:40.523Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:21:40.571Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T21:21:41.361Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T21:21:41.424Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T21:21:41.864Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T21:21:42.131Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T21:21:42.144Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.454 seconds (process running for 4.855)
+2026-04-29T21:22:57.073Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T21:22:57.074Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T21:22:57.075Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T21:23:25.508Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T21:23:25.510Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T21:23:25.513Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:23:25.514Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T21:23:25.518Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T21:23:47.889Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T21:23:47.892Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T21:23:48.355Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T21:23:48.397Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 8 JPA repository interfaces.
+2026-04-29T21:23:48.788Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T21:23:48.804Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T21:23:48.805Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T21:23:48.824Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 894 ms
+2026-04-29T21:23:48.922Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T21:23:48.974Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T21:23:49.261Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T21:23:49.285Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T21:23:49.378Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T21:23:49.379Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T21:23:49.424Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T21:23:50.070Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T21:23:50.124Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:23:50.159Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T21:23:50.843Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T21:23:50.887Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T21:23:51.267Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T21:23:51.508Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T21:23:51.515Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 3.949 seconds (process running for 4.276)
+2026-04-29T21:23:54.466Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T21:23:54.467Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T21:23:54.468Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T21:26:13.088Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T21:26:13.090Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T21:26:13.093Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:26:13.095Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T21:26:13.099Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T21:26:28.111Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T21:26:28.117Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T21:26:28.594Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T21:26:28.633Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 8 JPA repository interfaces.
+2026-04-29T21:26:29.041Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T21:26:29.052Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T21:26:29.053Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T21:26:29.071Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 915 ms
+2026-04-29T21:26:29.185Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T21:26:29.226Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T21:26:29.516Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T21:26:29.534Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T21:26:29.630Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@63c4d16
+2026-04-29T21:26:29.631Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T21:26:29.682Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T21:26:30.350Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T21:26:30.405Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:26:30.443Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T21:26:31.137Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T21:26:31.183Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T21:26:31.581Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T21:26:31.808Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T21:26:31.816Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.042 seconds (process running for 4.36)
+2026-04-29T21:29:05.396Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T21:29:05.397Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T21:29:05.398Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T21:38:08.667Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T21:38:08.669Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T21:38:08.673Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:38:08.675Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T21:38:08.682Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T21:38:29.601Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T21:38:29.605Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T21:38:30.079Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T21:38:30.124Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 8 JPA repository interfaces.
+2026-04-29T21:38:30.555Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T21:38:30.568Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T21:38:30.568Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T21:38:30.587Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 946 ms
+2026-04-29T21:38:30.705Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T21:38:30.745Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T21:38:31.053Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T21:38:31.073Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T21:38:31.179Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T21:38:31.181Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T21:38:31.229Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T21:38:31.922Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T21:38:31.979Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:38:32.019Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T21:38:32.709Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T21:38:32.753Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T21:38:33.160Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T21:38:33.407Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T21:38:33.420Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.171 seconds (process running for 4.572)
+2026-04-29T21:40:48.552Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T21:40:48.553Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T21:40:48.554Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T21:45:59.090Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T21:45:59.092Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T21:45:59.096Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:45:59.098Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T21:45:59.105Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T21:46:16.578Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T21:46:16.582Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T21:46:17.097Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T21:46:17.146Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 8 JPA repository interfaces.
+2026-04-29T21:46:17.603Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T21:46:17.615Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T21:46:17.616Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T21:46:17.635Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1012 ms
+2026-04-29T21:46:17.751Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T21:46:17.799Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T21:46:18.107Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T21:46:18.127Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T21:46:18.242Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T21:46:18.244Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T21:46:18.293Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T21:46:19.022Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T21:46:19.075Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:46:19.117Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T21:46:19.944Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T21:46:19.995Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T21:46:20.462Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T21:46:20.702Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T21:46:20.716Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.513 seconds (process running for 4.948)
+2026-04-29T21:46:30.522Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T21:46:30.522Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T21:46:30.524Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T21:52:46.175Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T21:52:46.177Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T21:52:46.180Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:52:46.183Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T21:52:46.189Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T21:53:04.286Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T21:53:04.290Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T21:53:04.791Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T21:53:04.831Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 8 JPA repository interfaces.
+2026-04-29T21:53:05.330Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T21:53:05.347Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T21:53:05.348Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T21:53:05.366Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1041 ms
+2026-04-29T21:53:05.491Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T21:53:05.540Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T21:53:05.856Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T21:53:05.876Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T21:53:06.001Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T21:53:06.003Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T21:53:06.053Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T21:53:06.719Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T21:53:06.772Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:53:06.809Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T21:53:07.504Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T21:53:07.548Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T21:53:07.958Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T21:53:08.240Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T21:53:08.255Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.368 seconds (process running for 4.815)
+2026-04-29T21:53:33.612Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T21:53:33.612Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T21:53:33.614Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T21:54:26.196Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T21:54:26.198Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T21:54:26.201Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:54:26.203Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T21:54:26.208Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T21:54:41.596Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T21:54:41.599Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T21:54:42.064Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T21:54:42.102Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 8 JPA repository interfaces.
+2026-04-29T21:54:42.504Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T21:54:42.517Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T21:54:42.518Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T21:54:42.538Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 900 ms
+2026-04-29T21:54:42.642Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T21:54:42.694Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T21:54:42.981Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T21:54:43.005Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T21:54:43.098Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T21:54:43.099Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T21:54:43.145Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T21:54:43.794Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T21:54:43.849Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T21:54:43.893Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T21:54:44.585Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T21:54:44.636Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T21:54:45.025Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T21:54:45.245Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T21:54:45.253Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 3.964 seconds (process running for 4.293)
+2026-04-29T21:55:58.034Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T21:55:58.034Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T21:55:58.035Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-04-29T22:01:12.236Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T22:01:12.238Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T22:01:12.241Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:01:12.243Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T22:01:12.248Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T22:01:27.917Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T22:01:27.921Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T22:01:28.422Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T22:01:28.461Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 8 JPA repository interfaces.
+2026-04-29T22:01:28.905Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T22:01:28.919Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T22:01:28.920Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T22:01:28.941Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 985 ms
+2026-04-29T22:01:29.074Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T22:01:29.114Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T22:01:29.420Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T22:01:29.439Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T22:01:29.533Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T22:01:29.535Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T22:01:29.582Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T22:01:30.266Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T22:01:30.321Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:01:30.367Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T22:01:31.061Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T22:01:31.108Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T22:01:31.543Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T22:01:31.816Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T22:01:31.825Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.234 seconds (process running for 4.572)
+2026-04-29T22:02:27.500Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T22:02:27.501Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T22:02:27.503Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T22:03:58.877Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T22:03:58.879Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T22:03:58.883Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:03:58.885Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T22:03:58.889Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T22:04:14.014Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T22:04:14.018Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T22:04:14.496Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T22:04:14.535Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 8 JPA repository interfaces.
+2026-04-29T22:04:14.922Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T22:04:14.933Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T22:04:14.934Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T22:04:14.953Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 898 ms
+2026-04-29T22:04:15.061Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T22:04:15.116Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T22:04:15.418Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T22:04:15.442Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T22:04:15.538Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T22:04:15.539Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T22:04:15.586Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T22:04:16.259Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T22:04:16.316Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:04:16.361Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T22:04:17.070Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T22:04:17.117Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T22:04:17.564Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T22:04:17.817Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T22:04:17.824Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.144 seconds (process running for 4.478)
+2026-04-29T22:04:18.368Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T22:04:18.373Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T22:04:18.374Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T22:05:29.904Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T22:05:29.906Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T22:05:29.910Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:05:29.912Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T22:05:29.916Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T22:05:47.787Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T22:05:47.791Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T22:05:48.259Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T22:05:48.302Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 8 JPA repository interfaces.
+2026-04-29T22:05:48.682Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T22:05:48.696Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T22:05:48.696Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T22:05:48.718Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 892 ms
+2026-04-29T22:05:48.824Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T22:05:48.882Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T22:05:49.177Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T22:05:49.204Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T22:05:49.298Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T22:05:49.300Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T22:05:49.344Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T22:05:50.021Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T22:05:50.078Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:05:50.118Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T22:05:50.805Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T22:05:50.850Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T22:05:51.233Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T22:05:51.454Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T22:05:51.466Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.013 seconds (process running for 4.396)
+2026-04-29T22:06:00.535Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T22:06:00.536Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T22:06:00.538Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T22:06:39.314Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T22:06:39.316Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T22:06:39.319Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:06:39.321Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T22:06:39.325Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T22:06:55.013Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T22:06:55.017Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T22:06:55.488Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T22:06:55.530Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 8 JPA repository interfaces.
+2026-04-29T22:06:55.919Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T22:06:55.931Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T22:06:55.932Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T22:06:55.952Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 900 ms
+2026-04-29T22:06:56.068Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T22:06:56.112Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T22:06:56.400Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T22:06:56.418Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T22:06:56.511Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75959b0c
+2026-04-29T22:06:56.513Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T22:06:56.558Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T22:06:57.232Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T22:06:57.282Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:06:57.322Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T22:06:58.036Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T22:06:58.085Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T22:06:58.506Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T22:06:58.747Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T22:06:58.755Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.078 seconds (process running for 4.424)
+2026-04-29T22:07:22.924Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T22:07:22.925Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T22:07:22.927Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-04-29T22:07:38.986Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T22:07:38.988Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T22:07:38.991Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:07:38.993Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T22:07:38.997Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-29T22:07:54.325Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Starting Application v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by root in /app)
+2026-04-29T22:07:54.332Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : No active profile set, falling back to 1 default profile: "default"
+2026-04-29T22:07:54.816Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-29T22:07:54.859Z  INFO 1 --- [Canarypets] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 8 JPA repository interfaces.
+2026-04-29T22:07:55.244Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-29T22:07:55.256Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-29T22:07:55.259Z  INFO 1 --- [Canarypets] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-29T22:07:55.280Z  INFO 1 --- [Canarypets] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 913 ms
+2026-04-29T22:07:55.386Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-29T22:07:55.430Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-29T22:07:55.716Z  INFO 1 --- [Canarypets] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-29T22:07:55.739Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-29T22:07:55.837Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e0d058a
+2026-04-29T22:07:55.838Z  INFO 1 --- [Canarypets] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-29T22:07:55.884Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://db:3306/canarypets_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: canarypets_database/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-29T22:07:56.548Z  INFO 1 --- [Canarypets] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-29T22:07:56.602Z  INFO 1 --- [Canarypets] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:07:56.643Z  INFO 1 --- [Canarypets] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-29T22:07:57.343Z  WARN 1 --- [Canarypets] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-29T22:07:57.389Z  INFO 1 --- [Canarypets] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-04-29T22:07:57.779Z  INFO 1 --- [Canarypets] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-04-29T22:07:57.998Z  INFO 1 --- [Canarypets] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-29T22:07:58.007Z  INFO 1 --- [Canarypets] [main] com.canarypets.backend.Application       : Started Application in 4.042 seconds (process running for 4.416)
+2026-04-29T22:07:58.713Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-29T22:07:58.713Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-29T22:07:58.715Z  INFO 1 --- [Canarypets] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-29T22:08:46.240Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-29T22:08:46.241Z  INFO 1 --- [Canarypets] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-29T22:08:46.245Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-29T22:08:46.246Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-29T22:08:46.250Z  INFO 1 --- [Canarypets] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -1,13 +1,18 @@
 package com.canarypets.backend.services;
 
 import com.canarypets.backend.DTOs.ProfileUpdateDTO;
+import com.canarypets.backend.models.Product;
 import com.canarypets.backend.models.Role;
 import com.canarypets.backend.models.User;
+import com.canarypets.backend.repositories.ProductRepository;
 import com.canarypets.backend.repositories.RoleRepository;
 import com.canarypets.backend.repositories.UserRepository;
 import com.canarypets.backend.security.AuthConfiguration;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,6 +25,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,23 +34,28 @@ public class UserService implements UserDetailsService/*, EntityService<User>*/ 
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     @Transactional
     public void updateProfile(User user, ProfileUpdateDTO dto) {
 
         // Validar nickname único (solo si cambia)
-        if (!user.getNickName().equals(dto.getNickname())) {
-            if (userRepository.existsByNickname(dto.getNickname())) {
+        if (!user.getNickName().equals(dto.getNickName())) {
+            if (userRepository.existsByNickName(dto.getNickName())) {
                 throw new IllegalArgumentException("El nombre de usuario ya está en uso");
             }
         }
+        System.out.println(user.getId());
 
-        user.setNickName(dto.getNickname());
+        user.setNickName(dto.getNickName());
         user.setAddress(dto.getAddress());
         user.setPostalCode(dto.getPostalCode());
         user.setCountry(dto.getCountry());
 
         userRepository.save(user);
+
+        System.out.println(user.getId());
     }
 
     public void upgradeToPremium(Authentication authentication, String username) {
@@ -68,6 +79,52 @@ public class UserService implements UserDetailsService/*, EntityService<User>*/ 
         );
         // Actualizar la autenticación del usuario
         SecurityContextHolder.getContext().setAuthentication(newAuth);
+    }
+
+    public Set<Product> getFavorites(User user) {
+        return userRepository.findById(user.getId())
+                .map(User::getFavorites)
+                .orElse(Set.of());
+    }
+
+    public Page<Product> getFavoritesPage(User user, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productRepository.findFavoritesByUser(user, pageable);
+    }
+
+    public void removeFavorite(User user, Long productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        user.getFavorites().remove(product);
+        userRepository.save(user);
+    }
+
+    /*public boolean existsProductById(Long productId) {
+        return productRepository.existsById(productId);
+    }*/
+
+    public void addFavorite(User user, Long productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow();
+
+        user.getFavorites().add(product);
+        userRepository.save(user);
+    }
+
+    public boolean toggleFavorite(User user, Long productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new IllegalArgumentException("Producto no encontrado"));
+
+        if (user.getFavorites().contains(product)) {
+            user.getFavorites().remove(product);
+            userRepository.save(user);
+            return false;
+        } else {
+            user.getFavorites().add(product);
+            userRepository.save(user);
+            return true;
+        }
     }
 
     /**
@@ -147,6 +204,15 @@ public class UserService implements UserDetailsService/*, EntityService<User>*/ 
      */
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public boolean isFavorite(User user, Long productId) {
+        if (user == null || user.getFavorites() == null) {
+            return false;
+        }
+
+        return productId != null && user.getFavorites().stream()
+                .anyMatch(product -> product.getId() == productId);
     }
 
 

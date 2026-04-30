@@ -1,13 +1,13 @@
 function addToCart(productId) {
     const qty = document.getElementById("qty__" + productId).value;
 
-    //console.log("🔥 ADD TO CART CLICK", productId);
+    //console.log("ADD TO CART CLICK", productId);
     fetch("/cart/add-ajax", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "X-CSRF-TOKEN": document.querySelector('input[name="_csrf"]').value,
-            "X-Requested-With": "XMLHttpRequest" // 👈 IMPORTANTE
+            "X-Requested-With": "XMLHttpRequest" // IMPORTANTE
         },
         body: JSON.stringify({
             productId: productId,

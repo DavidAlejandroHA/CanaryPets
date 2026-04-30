@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -64,7 +66,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    private List<Product> favorites = new ArrayList<>();
+    private Set<Product> favorites = new HashSet<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private ShoppingCart shoppingCart;
@@ -113,7 +115,7 @@ public class User {
     }
 
     public String getAddress() {return address;}
-    public void setAddress(String adress) {this.address = adress;}
+    public void setAddress(String address) {this.address = address;}
 
     public String getPostalCode() {return postalCode;}
     public void setPostalCode(String postalCode) {this.postalCode = postalCode;}
@@ -135,8 +137,8 @@ public class User {
                 .anyMatch(r -> r.getName().equalsIgnoreCase("ROLE_" +roleName));
     }
 
-    public List<Product> getFavorites() {return favorites;}
-    public void setFavorites(List<Product> favorites) {this.favorites = favorites;}
+    public Set<Product> getFavorites() {return favorites;}
+    public void setFavorites(Set<Product> favorites) {this.favorites = favorites;}
 
     public ShoppingCart getShoppingCart() {return shoppingCart;}
     public void setShoppingCart(ShoppingCart shoppingCart) {this.shoppingCart = shoppingCart;}

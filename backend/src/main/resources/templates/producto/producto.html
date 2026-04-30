@@ -58,9 +58,23 @@
 
             <!-- Favoritos -->
             <div sec:authorize="isAuthenticated()">
-                <button class="btn btn-outline-danger mb-2">
-                    ❤️ Añadir a favoritos
-                </button>
+                <!-- SIN JS -> funciona con submit normal -->
+                <form th:action="@{/profile/favorites/toggle}" method="post" class="favorite-form">
+                    <input type="hidden" name="productId" th:value="${product.id}">
+
+                    <button type="submit"
+                            class="btn mb-2 favorite-btn-detail"
+                            th:classappend="${isFavorite} ? 'btn-danger' : 'btn-outline-danger'"
+                            th:data-id="${product.id}"
+                            th:data-favorite="${isFavorite}">
+
+                    <span class="favorite-text"
+                          th:text="${isFavorite} ? '❤️ Eliminar de favoritos' : '🤍 Añadir a favoritos'">
+                    🤍 Añadir a favoritos
+                    </span>
+
+                    </button>
+                </form>
             </div>
 
             <!-- Precio -->
@@ -148,4 +162,6 @@
 
 </body>
 <script th:src="@{/js/carousel_simple.js}"></script>
+<!--<script th:src="@{/js/favorites.js}"></script>-->
+<script th:src="@{/js/product.js}"></script>
 </html>
