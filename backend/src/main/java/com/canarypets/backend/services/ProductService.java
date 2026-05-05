@@ -7,6 +7,7 @@ import com.canarypets.backend.repositories.CategoryRepository;
 import com.canarypets.backend.repositories.ProductRepository;
 import com.canarypets.backend.repositories.TagRepository;
 import com.canarypets.backend.utils.SlugUtils;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -118,6 +119,42 @@ public class ProductService {
 //            }
 //        }
 //    }
+
+    @Transactional
+    public void updateProduct(Long id, Product form) {
+        Product p = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        if (!p.getSlug().equals(form.getSlug()) && productRepository.existsBySlug(form.getSlug())) {
+            throw new RuntimeException("Slug duplicado");
+        }
+        p.setName(form.getName());
+        p.setSlug(form.getSlug());
+        p.setImageUrl(form.getImageUrl());
+        p.setDescription(form.getDescription());
+        p.setPrice(form.getPrice());
+        p.setStock(form.getStock());
+        p.setSolidaryProduct(form.isSolidaryProduct());
+        p.setDimensions(form.getDimensions());
+        p.setProvider(form.getProvider());
+
+        // Spring crea un Category "vacío" con solo id, pero no está gestionado por JPA
+        // por lo que se necesita volver a cargarlo desde BD
+        Category category = categoryRepository.findById(form.getCategory().getId())
+                .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+
+        p.setCategory(category);
+        //p.setCategory(form.getCategory());
+
+        // Lo mismo ocurre con los tags
+        Set<Tag> tags = new HashSet<>(tagRepository.findAllById(
+                form.getTags().stream().map(Tag::getId).toList()
+        ));
+        p.setTags(tags);
+        //p.setTags(form.getTags());
+
+        productRepository.save(p);
+    }
 
     public Product getBySlug(String slug) {
         return productRepository.findBySlug(slug)

@@ -1,5 +1,6 @@
 package com.canarypets.backend.services;
 
+import com.canarypets.backend.models.Category;
 import com.canarypets.backend.models.Tag;
 import com.canarypets.backend.repositories.TagRepository;
 import com.canarypets.backend.utils.SlugUtils;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
+import java.util.List;
 
 @Service
 public class TagService {
@@ -34,5 +36,9 @@ public class TagService {
                     tag.setSlug(slug);
                     return tagRepository.save(tag);
                 });
+    }
+
+    public List<Tag> findAll() {
+        return tagRepository.findAll();
     }
 }

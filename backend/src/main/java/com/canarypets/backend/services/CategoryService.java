@@ -52,4 +52,8 @@ public class CategoryService {
     public List<Category> getParentCategories() {
         return categoryRepository.findByParentIsNull();
     }
+
+    public List<Category> findAll() {
+        return categoryRepository.findAll();
+    }
 }

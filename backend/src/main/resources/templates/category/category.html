@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Title</title>
     <meta charset="UTF-8">
@@ -137,6 +137,18 @@
 
                             </button>
                         </form>
+
+                        <!-- ADMIN: Editar producto -->
+                        <div sec:authorize="hasRole('ADMIN')"
+                             class="position-absolute top-0 start-0 m-2"
+                             style="z-index: 3;">
+
+                            <a th:href="@{'/admin/products/edit/' + ${product.id}}"
+                               class="btn btn-sm btn-warning"
+                               onclick="event.stopPropagation()">
+                                ✏️
+                            </a>
+                        </div>
 
                         <!--Overlay clickable-->
                         <a th:href="@{'/producto/' + ${product.slug}}"

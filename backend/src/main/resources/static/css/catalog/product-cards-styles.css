@@ -82,6 +82,14 @@
   100% { transform: scale(1); }
 }
 
+/* Admin */
+.btn-warning {
+    transition: transform 0.2s ease;
+}
+
+.btn-warning:hover {
+    transform: scale(1.1);
+}
 
 
 

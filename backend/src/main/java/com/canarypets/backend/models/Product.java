@@ -139,7 +139,7 @@ public class Product {
     public int getStock() {return stock;}
     public void setStock(int stock) {this.stock = stock;}
 
-    public boolean getSolidaryProduct() {return solidaryProduct;}
+    public boolean isSolidaryProduct() {return solidaryProduct;}
     public void setSolidaryProduct(boolean solidaryProduct) {this.solidaryProduct = solidaryProduct;}
 
     public BigDecimal getPrice() {return price;}

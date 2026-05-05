@@ -22,7 +22,7 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     //@Id
     @NotNull(message = "Este campo es obligatorio")
@@ -71,8 +71,8 @@ public class Category {
         this.slug = SlugUtils.generateSlug(this.name);
     }
 
-    public long getId() {return id;}
-    public void setId(long id) {this.id = id;}
+    public Long getId() {return id;}
+    public void setId(Long id) {this.id = id;}
 
     public String getImage() {return image;}
     public void setImage(String image) {this.image = image;}
