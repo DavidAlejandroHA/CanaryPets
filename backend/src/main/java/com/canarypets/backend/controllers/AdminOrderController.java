@@ -48,6 +48,10 @@ public class AdminOrderController {
                 (query != null ? "?" + query : "");
 
         model.addAttribute("currentUrl", currentUrl);
+        model.addAttribute("status", form.getStatus());
+        model.addAttribute("search", form.getSearch());
+        model.addAttribute("dateFrom", form.getDateFrom());
+        model.addAttribute("dateTo", form.getDateTo());
 
         try {
             Pageable pageable = PageRequest.of(
@@ -97,8 +101,6 @@ public class AdminOrderController {
 
             model.addAttribute("ordersPage", ordersPage);
             model.addAttribute("currentPage", page);
-            /*model.addAttribute("search", search);
-            model.addAttribute("status", status);*/
             return "profile/admin-orders";
         } catch (Exception e) {
             ra.addFlashAttribute("error", e.getMessage());

@@ -155,7 +155,7 @@ public class ProfileController {
 
     @GetMapping("/favorites")
     public String viewFavorites(@RequestParam(defaultValue = "0") int page,
-                                @RequestParam(defaultValue = "5") int size,
+                                @RequestParam(defaultValue = "8") int size,
                                 Model model,
                                 Authentication auth,
                                 RedirectAttributes redirectAttributes) {

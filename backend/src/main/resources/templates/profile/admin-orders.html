@@ -251,7 +251,14 @@
       <!-- Primera -->
       <li class="page-item" th:classappend="${ordersPage.first} ? 'disabled'">
         <a class="page-link"
-           th:href="@{/admin/orders(page=0, size=${ordersPage.size}, status=${param.status})}">
+           th:href="@{/admin/orders(
+            page=0,
+            size=${ordersPage.size},
+            status=${status},
+            search=${search},
+            dateFrom=${dateFrom},
+            dateTo=${dateTo}
+         )}">
           Primera
         </a>
       </li>
@@ -259,7 +266,14 @@
       <!-- Anterior -->
       <li class="page-item" th:classappend="${ordersPage.first} ? 'disabled'">
         <a class="page-link"
-           th:href="@{/admin/orders(page=${ordersPage.number - 1}, size=${ordersPage.size}, status=${param.status})}">
+           th:href="@{/admin/orders(
+            page=${ordersPage.number - 1},
+            size=${ordersPage.size},
+            status=${status},
+            search=${search},
+            dateFrom=${dateFrom},
+            dateTo=${dateTo}
+         )}">
           Anterior
         </a>
       </li>
@@ -272,13 +286,20 @@
       <!-- NÚMEROS -->
       <li class="page-item"
           th:each="i : ${#numbers.sequence(
-                T(java.lang.Math).max(0, ordersPage.number - 2),
-                T(java.lang.Math).min(ordersPage.totalPages - 1, ordersPage.number + 2)
-            )}"
+            T(java.lang.Math).max(0, ordersPage.number - 2),
+            T(java.lang.Math).min(ordersPage.totalPages - 1, ordersPage.number + 2)
+        )}"
           th:classappend="${i == ordersPage.number} ? 'active'">
 
         <a class="page-link"
-           th:href="@{/admin/orders(page=${i}, size=${ordersPage.size}, status=${param.status})}"
+           th:href="@{/admin/orders(
+            page=${i},
+            size=${ordersPage.size},
+            status=${status},
+            search=${search},
+            dateFrom=${dateFrom},
+            dateTo=${dateTo}
+         )}"
            th:text="${i + 1}">
         </a>
       </li>
@@ -291,7 +312,14 @@
       <!-- Siguiente -->
       <li class="page-item" th:classappend="${ordersPage.last} ? 'disabled'">
         <a class="page-link"
-           th:href="@{/admin/orders(page=${ordersPage.number + 1}, size=${ordersPage.size}, status=${param.status})}">
+           th:href="@{/admin/orders(
+            page=${ordersPage.number + 1},
+            size=${ordersPage.size},
+            status=${status},
+            search=${search},
+            dateFrom=${dateFrom},
+            dateTo=${dateTo}
+         )}">
           Siguiente
         </a>
       </li>
@@ -299,7 +327,14 @@
       <!-- Última -->
       <li class="page-item" th:classappend="${ordersPage.last} ? 'disabled'">
         <a class="page-link"
-           th:href="@{/admin/orders(page=${ordersPage.totalPages - 1}, size=${ordersPage.size}, status=${param.status})}">
+           th:href="@{/admin/orders(
+            page=${ordersPage.totalPages - 1},
+            size=${ordersPage.size},
+            status=${status},
+            search=${search},
+            dateFrom=${dateFrom},
+            dateTo=${dateTo}
+         )}">
           Última
         </a>
       </li>

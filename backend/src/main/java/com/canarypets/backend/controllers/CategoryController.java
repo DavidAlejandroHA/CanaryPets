@@ -111,6 +111,9 @@ public class CategoryController {
             ProductFilterDTO filter,
             Pageable pageable,
             Model model) {
+        String baseUrl = "/categoria/" + parent;
+
+        model.addAttribute("baseUrl", baseUrl);
 
         Category category = categoryService.getBySlug(parent); // <- Categorías padre
         //categoryService.findBySlugAndParentIsNull(parentSlug);
@@ -130,6 +133,9 @@ public class CategoryController {
             ProductFilterDTO filter,
             Pageable pageable,
             Model model) {
+        String baseUrl = "/categoria/" + parent + "/" + child;
+
+        model.addAttribute("baseUrl", baseUrl);
 
         //Category category = categoryService.getBySlug(child);
         Category category = categoryService.getBySlugAndParent_Slug(parent, child);

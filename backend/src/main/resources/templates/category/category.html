@@ -108,7 +108,7 @@
                 <p>Prueba con otros filtros o búsqueda</p>
             </div>
 
-            <div class="row g-3">
+            <div class="row g-3 mb-4">
 
                 <div class="col-6 col-md-4 col-lg-3"
                      th:each="product : ${products}">
@@ -276,7 +276,99 @@
             </div>
 
             <!-- PAGINACIÓN -->
-            <nav class="mt-4" th:if="${page.totalPages > 0}">
+            <nav class="mt-4" th:if="${page.totalPages > 1}">
+                <ul class="pagination justify-content-center flex-wrap">
+
+                    <!-- Primera -->
+                    <li class="page-item" th:classappend="${page.first} ? 'disabled'">
+                        <a class="page-link"
+                           th:href="@{${baseUrl}(
+                                page=0,
+                                size=${page.size},
+                                search=${search},
+                                sort=${sort}
+                           )}">
+                            Primera
+                        </a>
+                    </li>
+                    <!-- Nota: param devuelve arrays (String[]), pero Thymeleaf lo maneja bien automáticamente en URLs-->
+                    <!-- Para evitar usar /categoria siempre se puede usar alternativamente lo siguiente:
+                    th:href="@{${#httpServletRequest.requestURI}(page=${i}, size=${page.size})}",
+                    lo que sirve para reutilizar la URL actual-->
+
+
+                    <!-- Anterior -->
+                    <li class="page-item" th:classappend="${page.first} ? 'disabled'">
+                        <a class="page-link"
+                           th:href="@{${baseUrl}(
+                                page=${page.number - 1},
+                                size=${page.size},
+                                search=${search},
+                                sort=${sort}
+                           )}">
+                            Anterior
+                        </a>
+                    </li>
+
+                    <!-- ... inicio -->
+                    <li class="page-item" th:if="${page.number > 2}">
+                        <span class="page-link">...</span>
+                    </li>
+
+                    <!-- NÚMEROS -->
+                    <li class="page-item"
+                        th:each="i : ${#numbers.sequence(
+                            T(java.lang.Math).max(0, page.number - 2),
+                            T(java.lang.Math).min(page.totalPages - 1, page.number + 2)
+                        )}"
+                        th:classappend="${i == page.number} ? 'active'">
+
+                        <a class="page-link"
+                           th:href="@{${baseUrl}(
+                                page=${i},
+                                size=${page.size},
+                                search=${search},
+                                sort=${sort}
+                           )}"
+                           th:text="${i + 1}">
+                        </a>
+                    </li>
+
+                    <!-- ... final -->
+                    <li class="page-item"
+                        th:if="${page.number < page.totalPages - 3}">
+                        <span class="page-link">...</span>
+                    </li>
+
+                    <!-- Siguiente -->
+                    <li class="page-item" th:classappend="${page.last} ? 'disabled'">
+                        <a class="page-link"
+                           th:href="@{${baseUrl}(
+                                page=${page.number + 1},
+                                size=${page.size},
+                                search=${search},
+                                sort=${sort}
+                           )}">
+                            Siguiente
+                        </a>
+                    </li>
+
+                    <!-- Última -->
+                    <li class="page-item" th:classappend="${page.last} ? 'disabled'">
+                        <a class="page-link"
+                           th:href="@{${baseUrl}(
+                                page=${page.totalPages - 1},
+                                size=${page.size},
+                                search=${search},
+                                sort=${sort}
+                           )}">
+                            Última
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+            <!--<nav class="mt-4" th:if="${page.totalPages > 0}">
                 <ul class="pagination justify-content-center">
 
                     <li class="page-item"
@@ -294,7 +386,7 @@
                         </button>
                     </li>
 
-                    <span th:if="${page.totalPages == 0}">1</span> <!--Solo si no hay resultados-->
+                    <span th:if="${page.totalPages == 0}">1</span> <--Solo si no hay resultados->
 
                     <li class="page-item"
                         th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
@@ -322,7 +414,7 @@
                     </li>
 
                 </ul>
-            </nav>
+            </nav>-->
 
         </main>
     </div>
