@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <link th:href="@{/css/fragments/header.css}" rel="stylesheet">
+  <title>Pedidos de todos los usuarios</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+
+<header th:insert="~{fragments :: header}"></header>
+
+<main class="container py-4 flex-grow-1">
+
+  <div th:if="${error}" class="alert alert-danger">
+    <span th:text="${error}"></span>
+  </div>
+  <div th:if="${success}" class="alert alert-success">
+    <span th:text="${success}"></span>
+  </div>
+
+  <a href="/profile" class="btn btn-outline-secondary mb-3">
+    ← Volver al perfil
+  </a>
+
+  <h2 class="mb-4">Pedidos de usuarios</h2>
+
+  <!-- Filtrar por status -->
+  <!--<form method="get" th:action="@{/admin/orders}" class="mb-3 d-flex gap-2">
+    <select name="status" class="form-select w-auto">
+      <option value="">Todos</option>
+      <option value="PENDING" th:selected="${param.status == 'PENDING'}">Pendiente</option>
+      <option value="SHIPPED" th:selected="${param.status == 'SHIPPED'}">Enviado</option>
+      <option value="DELIVERED" th:selected="${param.status == 'DELIVERED'}">Entregado</option>
+      <option value="CANCELLED" th:selected="${param.status == 'CANCELLED'}">Cancelado</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+  </form>
+
+  <--Filtrar por búsqueda de nombre, apellidos o email->
+  <form method="get" th:action="@{/admin/orders}" class="row g-2 mb-3">
+
+    <input type="hidden" name="status" th:value="${status}">
+
+    <div class="col-md-4">
+      <input type="text"
+             name="search"
+             class="form-control"
+             placeholder="Buscar por nombre, apellidos o email"
+             th:value="${search}">
+    </div>
+
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">
+        Buscar
+      </button>
+    </div>
+
+    <div class="col-auto" th:if="${search != null and search != ''}">
+      <a th:href="@{/admin/orders}" class="btn btn-outline-secondary">
+        Limpiar
+      </a>
+    </div>
+
+  </form>-->
+
+  <!--Filtros-->
+  <form method="get" th:action="@{/admin/orders}" class="row g-2 mb-3" th:object="${filter}">
+
+    <!-- SEARCH -->
+    <div class="col-md-3">
+      <label for="searchLabel">Búsqueda:</label>
+      <input id="searchLabel" type="text"
+             th:field="*{search}"
+             class="form-control"
+             placeholder="Buscar por nombre, apellidos o email"
+             ><!--th:value="${search}"-->
+    </div>
+
+    <!-- STATUS -->
+    <div class="col-md-2">
+      <label for="statusLabel">Estado:</label>
+      <select id="statusLabel" th:field="*{status}" class="form-select">
+        <option value="">Todos los estados</option>
+        <option th:each="s : ${T(com.canarypets.backend.enums.OrderStatus).values()}"
+                th:value="${s}"
+                th:text="${s}"
+                th:selected="${s.name() == status}">
+        </option>
+      </select>
+
+      <!-- error -->
+      <div class="text-danger" th:if="${#fields.hasErrors('status')}"
+           th:errors="*{status}"></div>
+    </div>
+
+    <!-- FECHA DESDE -->
+    <div class="col-md-2">
+      <label for="dateFromLabel">Desde:</label>
+      <input id="dateFromLabel"
+             type="date"
+             th:field="*{dateFrom}"
+             class="form-control"> <!--th:value="${dateFrom}"-->
+
+      <!-- error -->
+      <div class="text-danger" th:if="${#fields.hasErrors('dateFrom')}"
+           th:errors="*{dateFrom}"></div>
+    </div>
+
+    <!-- FECHA HASTA -->
+    <div class="col-md-2">
+      <label for="dateToLabel">Hasta:</label>
+      <input id="dateToLabel"
+             type="date"
+             th:field="*{dateTo}"
+             class="form-control"><!--th:value="${dateTo}"-->
+
+      <!-- error -->
+      <div class="text-danger" th:if="${#fields.hasErrors('dateTo')}"
+           th:errors="*{dateTo}"></div>
+    </div>
+
+    <!-- BOTÓN -->
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mt-4">
+        Filtrar
+      </button>
+    </div>
+
+    <!-- LIMPIAR -->
+    <!--<div class="col-auto"
+         th:if="${search != null or status != null or dateFrom != null or dateTo != null}">
+      <a th:href="@{/admin/orders}" class="btn btn-outline-secondary mt-4">
+        Limpiar
+      </a>
+    </div>-->
+    <div class="col-auto"
+         th:if="${filter.search != null or filter.status != null or filter.dateFrom != null or filter.dateTo != null}">
+      <a th:href="@{/admin/orders}" class="btn btn-outline-secondary mt-4">Limpiar</a>
+    </div>
+
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-striped align-middle">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Email</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th>Productos</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="order : ${ordersPage.content}">
+        <!-- ID -->
+        <td th:text="${order.id}"></td>
+
+        <!-- Nombre y apellidos -->
+        <td>
+          <span th:text="${order.nombre + ' ' + order.apellidos}"></span>
+        </td>
+
+        <!-- Email -->
+        <td th:text="${order.email}"></td>
+
+        <!-- Fecha -->
+        <td th:text="${order.createdAt}"></td>
+
+        <!-- Total -->
+        <td th:text="${order.orderTotal + ' €'}"></td>
+
+        <!-- Nº productos -->
+        <td th:text="${order.items.size()}"></td>
+
+        <!-- Estado -->
+        <td>
+
+          <!--<form th:action="@{'/admin/orders/' + ${order.id} + '/status'}" method="post" class="d-flex align-items-center gap-2 status-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+            <select name="status" class="form-select">
+              <option th:each="s : ${T(com.canarypets.backend.enums.OrderStatus).values()}"
+                      th:value="${s}"
+                      th:text="${s}"
+                      th:selected="${s == order.status}">
+              </option>
+            </select>
+
+            <-- Fallback sin JS ->
+            <button type="submit" class="btn btn-sm btn-primary">
+              Guardar
+            </button>
+
+          </form>-->
+
+          <!--<span class="badge"
+                th:switch="${order.status}">
+
+              <span th:case="'PENDING'" class="bg-warning text-dark">PENDIENTE</span>
+
+              <span th:case="'PROCESSING'" class="bg-info text-dark">PROCESANDO</span>
+
+              <span th:case="'SHIPPED'" class="bg-primary">ENVIADO</span>
+
+              <span th:case="'DELIVERED'" class="bg-success">ENTREGADO</span>
+
+              <span th:case="'CANCELLED'" class="bg-danger">CANCELADO</span>
+
+                  <-- fallback ->
+              <span th:case="*" class="bg-secondary"
+                    th:text="${order.status}">UNKNOWN</span>
+
+          </span>-->
+          <span class="badge"
+                th:text="${order.status.label}"
+                th:classappend="' ' + ${order.status.cssClass}">
+          </span>
+        </td>
+
+        <!-- Botón detalle -->
+        <td>
+          <a th:href="@{'/admin/orders/' + ${order.id} (redirectTo=${currentUrl})}"
+             class="btn btn-sm btn-outline-primary">
+            Ver detalle
+          </a>
+        </td>
+        <!--(redirectTo=${#httpServletRequest.requestURI + (#httpServletRequest.queryString != null ? '?' + #httpServletRequest.queryString : '')})
+        viene -->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINACIÓN -->
+  <nav th:if="${ordersPage.totalPages > 1}" class="mt-4">
+    <ul class="pagination justify-content-center flex-wrap">
+
+      <!-- Primera -->
+      <li class="page-item" th:classappend="${ordersPage.first} ? 'disabled'">
+        <a class="page-link"
+           th:href="@{/admin/orders(page=0, size=${ordersPage.size}, status=${param.status})}">
+          Primera
+        </a>
+      </li>
+
+      <!-- Anterior -->
+      <li class="page-item" th:classappend="${ordersPage.first} ? 'disabled'">
+        <a class="page-link"
+           th:href="@{/admin/orders(page=${ordersPage.number - 1}, size=${ordersPage.size}, status=${param.status})}">
+          Anterior
+        </a>
+      </li>
+
+      <!-- ... inicio -->
+      <li class="page-item" th:if="${ordersPage.number > 2}">
+        <span class="page-link">...</span>
+      </li>
+
+      <!-- NÚMEROS -->
+      <li class="page-item"
+          th:each="i : ${#numbers.sequence(
+                T(java.lang.Math).max(0, ordersPage.number - 2),
+                T(java.lang.Math).min(ordersPage.totalPages - 1, ordersPage.number + 2)
+            )}"
+          th:classappend="${i == ordersPage.number} ? 'active'">
+
+        <a class="page-link"
+           th:href="@{/admin/orders(page=${i}, size=${ordersPage.size}, status=${param.status})}"
+           th:text="${i + 1}">
+        </a>
+      </li>
+
+      <!-- ... final -->
+      <li class="page-item" th:if="${ordersPage.number < ordersPage.totalPages - 3}">
+        <span class="page-link">...</span>
+      </li>
+
+      <!-- Siguiente -->
+      <li class="page-item" th:classappend="${ordersPage.last} ? 'disabled'">
+        <a class="page-link"
+           th:href="@{/admin/orders(page=${ordersPage.number + 1}, size=${ordersPage.size}, status=${param.status})}">
+          Siguiente
+        </a>
+      </li>
+
+      <!-- Última -->
+      <li class="page-item" th:classappend="${ordersPage.last} ? 'disabled'">
+        <a class="page-link"
+           th:href="@{/admin/orders(page=${ordersPage.totalPages - 1}, size=${ordersPage.size}, status=${param.status})}">
+          Última
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+</main>
+
+
+<footer th:insert="~{fragments :: footer}"></footer>
+
+<div th:insert="~{fragments :: toast}"></div>
+
+<!--<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+  <div id="statusToast" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">
+        Estado actualizado correctamente
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>-->
+
+</body>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/toast.js}"></script>
+</html>

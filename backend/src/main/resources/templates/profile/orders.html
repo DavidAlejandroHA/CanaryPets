@@ -23,6 +23,9 @@
   <div th:if="${error}" class="alert alert-danger">
     <span th:text="${error}"></span>
   </div>
+  <div th:if="${success}" class="alert alert-success">
+    <span th:text="${success}"></span>
+  </div>
 
   <!-- SIN PEDIDOS -->
   <div th:if="${#lists.isEmpty(orders)}" class="alert alert-info">
@@ -97,12 +100,22 @@
 
         <td>
                     <span class="badge"
-                          th:text="${order.status}"
+                          th:switch="${order.status}"
                           th:classappend="
-                            ${order.status == 'PENDING'} ? ' bg-warning text-dark' :
-                            (${order.status == 'COMPLETED'} ? ' bg-success' :
-                            ' bg-secondary')">
+                            ${order.status == 'PENDING'} ? 'bg-warning text-dark' :
+                            (${order.status == 'PROCESSING'} ? 'bg-info text-dark' :
+                            (${order.status == 'SHIPPED'} ? 'bg-primary' :
+                            (${order.status == 'DELIVERED'} ? 'bg-success' :
+                            (${order.status == 'CANCELLED'} ? 'bg-danger' : 'bg-secondary'))))">
+
+                        <span th:case="'PENDING'">Pendiente</span>
+                        <span th:case="'PROCESSING'">Procesando</span>
+                        <span th:case="'SHIPPED'">Enviado</span>
+                        <span th:case="'DELIVERED'">Entregado</span>
+                        <span th:case="'CANCELLED'">Cancelado</span>
+
                     </span>
+
         </td>
 
         <td>

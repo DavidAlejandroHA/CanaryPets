@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,6 +109,12 @@
             <a href="/profile/favorites" class="btn btn-outline-warning">
               Ver favoritos
             </a>
+
+            <div sec:authorize="hasRole('ADMIN')" class="d-flex flex-column">
+              <a href="/admin/orders" class="btn btn-dark">
+                📦 Ver pedidos de usuarios
+              </a>
+            </div>
 
             <!-- Logout -->
             <form th:action="@{/logout}" method="post">

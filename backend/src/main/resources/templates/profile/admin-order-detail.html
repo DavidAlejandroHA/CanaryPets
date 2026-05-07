@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <link th:href="@{/css/fragments/header.css}" rel="stylesheet">
+  <title>Historial de pedidos - todos los usuarios</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+
+<header th:insert="~{fragments :: header}"></header>
+
+<main class="container py-4 flex-grow-1">
+
+  <div th:if="${error}" class="alert alert-danger">
+    <span th:text="${error}"></span>
+  </div>
+
+  <a th:href="${redirectTo != null and redirectTo != ''} ? ${redirectTo} : '/admin/orders'"
+     class="btn btn-outline-secondary mb-3">
+    ← Volver
+  </a>
+
+  <h2>Pedido #<span th:text="${order.id}"></span></h2>
+
+  <p><strong>Fecha:</strong> <span th:text="${order.createdAt}"></span></p>
+  <p><strong>Cliente:</strong> <span th:text="${order.nombre + ' ' + order.apellidos}"></span></p>
+  <p><strong>Email:</strong> <span th:text="${order.email}"></span></p>
+
+  <hr>
+
+  <h4>Estado</h4>
+
+  <form th:action="@{'/admin/orders/' + ${order.id} + '/status'}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <!--<select name="status" class="form-select w-auto d-inline">
+      <option value="PENDING" th:selected="${order.status == 'PENDING'}">PENDING</option>
+      <option value="PROCESSING" th:selected="${order.status == 'PROCESSING'}">PROCESSING</option>
+      <option value="SHIPPED" th:selected="${order.status == 'SHIPPED'}">SHIPPED</option>
+      <option value="DELIVERED" th:selected="${order.status == 'DELIVERED'}">DELIVERED</option>
+      <option value="CANCELLED" th:selected="${order.status == 'CANCELLED'}">CANCELLED</option>
+    </select>-->
+    <!-- Alternativa reducida con enums: -->
+    <select name="status" class="form-select w-auto d-inline"> <!--th:value="${order.status}"-->
+      <option th:each="s : ${T(com.canarypets.backend.enums.OrderStatus).values()}"
+              th:value="${s}"
+              th:text="${s}"
+              th:selected="${s == order.status}">
+      </option>
+    </select>
+
+    <button class="btn btn-primary ms-2">Actualizar</button>
+  </form>
+
+  <hr>
+
+  <h4>Productos</h4>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${order.items}">
+      <td th:text="${item.product.name}"></td>
+      <td th:text="${item.quantity}"></td>
+      <td th:text="${item.priceAtPurchase} + ' €'"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h5>Total*: <span th:text="${order.orderTotal} + ' €'"></span></h5>
+  <div><span>*Gastos de envío incluídos (3.99€)</span></div>
+
+</main>
+
+<footer th:insert="~{fragments :: footer}"></footer>
+
+<div th:insert="~{fragments :: toast}"></div>
+
+</body>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/toast.js}"></script>
+</html>

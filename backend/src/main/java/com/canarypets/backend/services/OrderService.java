@@ -1,6 +1,7 @@
 package com.canarypets.backend.services;
 
 import com.canarypets.backend.DTOs.OrderRequestDTO;
+import com.canarypets.backend.enums.OrderStatus;
 import com.canarypets.backend.models.*;
 import com.canarypets.backend.repositories.OrderRepository;
 import com.canarypets.backend.repositories.ProductRepository;
@@ -11,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,7 +47,8 @@ public class OrderService {
 
         // Datos básicos
         order.setUser(user);
-        order.setStatus("PENDING");
+        //order.setStatus("PENDING");
+        order.setStatus(OrderStatus.PENDING);
 
         // Envío DTO
         order.setEmail(dto.getEmail());
@@ -135,6 +139,62 @@ public class OrderService {
 
     public Optional<Order> getOrderDetail(Long orderId, User user) {
         return orderRepository.findByIdAndUserWithItems(orderId, user);
+    }
+
+    public Page<Order> getAllOrders(Pageable pageable) {
+        return orderRepository.findAll(pageable);
+    }
+
+
+    @Transactional
+    public void updateStatus(Long orderId, OrderStatus status) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Pedido no encontrado"));
+
+        order.setStatus(status);
+        //orderRepository.save(order); // No es necesario al haber Transactional
+    }
+
+    public Page<Order> findByStatus(String status, Pageable pageable) {
+        return orderRepository.findByStatus(status, pageable);
+    }
+
+
+    public Page<Order> searchOrders(String search, Pageable pageable) {
+        return orderRepository.searchOrders(search, pageable);
+    }
+
+    public Page<Order> searchByFilters(
+            String status,
+            String search,
+            LocalDate dateFrom,
+            LocalDate dateTo,
+            Pageable pageable) {
+
+        OrderStatus statusEnum = null;
+
+        if (status != null && !status.isBlank()) {
+            statusEnum = OrderStatus.valueOf(status); // ya viene validado
+        }
+
+        // TRIM + limpiar vacío
+        if (search != null) {
+            search = search.trim();
+            if (search.isEmpty()) {
+                search = null;
+            }
+        }
+
+        // Validación de fechas
+        /*if (dateFrom != null && dateTo != null && dateFrom.isAfter(dateTo)) {
+            throw new DateTimeException("La fecha 'Desde' no puede ser mayor que 'Hasta'");
+        }*/
+
+        return orderRepository.searchByFilters(statusEnum, search, dateFrom, dateTo, pageable);
+    }
+
+    public Optional<Order> getOrderById(Long id) {
+        return orderRepository.findById(id);
     }
 
     /*public boolean existById(Long orderId) {

@@ -1,5 +1,6 @@
 package com.canarypets.backend.models;
 
+import com.canarypets.backend.enums.OrderStatus;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -51,8 +52,11 @@ public class Order {
     @Column(nullable = false)
     private BigDecimal orderTotal;
 
+    //@Column(nullable = false)
+    //private String status;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status;
+    private OrderStatus status;
 
     // Relación con usuario (opcional pero recomendable)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -108,8 +112,8 @@ public class Order {
     public BigDecimal getOrderTotal() {return orderTotal;}
     public void setOrderTotal(BigDecimal orderTotal) {this.orderTotal = orderTotal;}
 
-    public String getStatus() {return status;}
-    public void setStatus(String status) {this.status = status;}
+    public OrderStatus getStatus() {return status;}
+    public void setStatus(OrderStatus status) {this.status = status;}
 
     public User getUser() {return user;}
     public void setUser(User user) {this.user = user;}
