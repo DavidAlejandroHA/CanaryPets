@@ -28,7 +28,8 @@
   </div>
 
   <!-- SIN PEDIDOS -->
-  <div th:if="${#lists.isEmpty(orders)}" class="alert alert-info">
+  <!--<div th:if="${#lists.isEmpty(orders)}" class="alert alert-info">-->
+  <div th:if="${ordersPage.content.isEmpty()}" class="alert alert-info">
     No has realizado ningún pedido todavía.
   </div>
 
@@ -55,13 +56,13 @@
 
         <p class="mb-2">
           <strong>Estado:</strong>
-          <span class="badge"
+          <!--<span class="badge"
                 th:text="${order.status}"
                 th:classappend="
                             ${order.status == 'PENDING'} ? ' bg-warning text-dark' :
                             (${order.status == 'COMPLETED'} ? ' bg-success' :
                             ' bg-secondary')">
-                    </span>
+                    </span>-->
         </p>
 
         <a th:href="@{/profile/orders/{id}(id=${order.id})}"
@@ -99,23 +100,10 @@
         <td th:text="${order.orderTotal + ' €'}"></td>
 
         <td>
-                    <span class="badge"
-                          th:switch="${order.status}"
-                          th:classappend="
-                            ${order.status == 'PENDING'} ? 'bg-warning text-dark' :
-                            (${order.status == 'PROCESSING'} ? 'bg-info text-dark' :
-                            (${order.status == 'SHIPPED'} ? 'bg-primary' :
-                            (${order.status == 'DELIVERED'} ? 'bg-success' :
-                            (${order.status == 'CANCELLED'} ? 'bg-danger' : 'bg-secondary'))))">
-
-                        <span th:case="'PENDING'">Pendiente</span>
-                        <span th:case="'PROCESSING'">Procesando</span>
-                        <span th:case="'SHIPPED'">Enviado</span>
-                        <span th:case="'DELIVERED'">Entregado</span>
-                        <span th:case="'CANCELLED'">Cancelado</span>
-
-                    </span>
-
+          <span class="badge"
+                th:text="${order.status.label}"
+                th:classappend="' ' + ${order.status.cssClass}">
+          </span>
         </td>
 
         <td>

@@ -31,13 +31,17 @@
 
       <p>
         <strong>Estado:</strong>
-        <span class="badge"
+        <!--<span class="badge"
               th:text="${order.status}"
               th:classappend="
                         ${order.status == 'PENDING'} ? ' bg-warning text-dark' :
                         (${order.status == 'COMPLETED'} ? ' bg-success' :
                         ' bg-secondary')">
-                </span>
+                </span>-->
+        <span class="badge"
+              th:text="${order.status.label}"
+              th:classappend="' ' + ${order.status.cssClass}">
+          </span>
       </p>
 
       <p>
