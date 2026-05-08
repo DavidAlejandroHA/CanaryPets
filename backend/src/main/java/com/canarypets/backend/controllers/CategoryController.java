@@ -8,6 +8,7 @@ import com.canarypets.backend.repositories.ProductRepository;
 import com.canarypets.backend.services.CategoryService;
 import com.canarypets.backend.services.ProductService;
 import com.canarypets.backend.specifications.ProductSpecification;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -101,7 +103,7 @@ public class CategoryController {
         return "redirect:" + url.toString();
     }
 
-    // Ver categoría padre (ej: /categoria/perros)
+    // Ver categoría padre (ej: /categoria/perros) + Filtros (si los hay)
     @GetMapping("/{parent}") // Importante: No usar {parentSlug}, ya que este ya se usa como dato en el modelo
     // (se mezcla con "parentSlug" y spring no enlaza bien, lo que hace que se rompa el flujo y lleve hacia el login)
     public String viewParentCategory(
@@ -110,17 +112,22 @@ public class CategoryController {
             @RequestParam(required = false) List<String> tipo,
             ProductFilterDTO filter,
             Pageable pageable,
-            Model model) {
-        String baseUrl = "/categoria/" + parent;
+            Model model,
+            HttpServletRequest request,
+            RedirectAttributes ra) {
+        try {
+            String baseUrl = "/categoria/" + parent;
+            model.addAttribute("baseUrl", baseUrl);
 
-        model.addAttribute("baseUrl", baseUrl);
-
-        Category category = categoryService.getBySlug(parent); // <- Categorías padre
-        //categoryService.findBySlugAndParentIsNull(parentSlug);
-        model.addAttribute("parentSlug", parent);
-        model.addAttribute("currentCategory", parent);
-        //model.addAttribute("allCategories", categoryService.getParentCategories()); // Definido en el controller GlobalModelAttributtes
-        return buildCategoryView(category, filter, pageable, model, search, tipo);
+            Category category = categoryService.getBySlug(parent); // <- Categorías padre
+            //categoryService.findBySlugAndParentIsNull(parentSlug);
+            model.addAttribute("parentSlug", parent);
+            model.addAttribute("currentCategory", parent);
+            //model.addAttribute("allCategories", categoryService.getParentCategories()); // Definido en el controller GlobalModelAttributtes
+            return buildCategoryView(category, filter, pageable, model, search, tipo);
+        } catch (Exception e) {
+            return redirectBack(request, ra, "Categoría no encontrada");
+        }
     }
 
     // Ver subcategoría (ej: /categoria/perros/comida) + Filtros (si los hay)
@@ -132,18 +139,22 @@ public class CategoryController {
             @RequestParam(required = false) List<String> tipo,
             ProductFilterDTO filter,
             Pageable pageable,
-            Model model) {
-        String baseUrl = "/categoria/" + parent + "/" + child;
+            Model model,
+            HttpServletRequest request,
+            RedirectAttributes ra) {
+        try {
+            String baseUrl = "/categoria/" + parent + "/" + child;
+            model.addAttribute("baseUrl", baseUrl);
 
-        model.addAttribute("baseUrl", baseUrl);
-
-        //Category category = categoryService.getBySlug(child);
-        Category category = categoryService.getBySlugAndParent_Slug(parent, child);
-        model.addAttribute("parentSlug", parent);
-        model.addAttribute("childSlug", child);
-        model.addAttribute("currentCategory", parent);
-        model.addAttribute("currentSubCategory", child);
-        return buildCategoryView(category, filter, pageable, model, search, tipo);
+            Category category = categoryService.getBySlugAndParent_Slug(parent, child); // <- Subcategorías
+            model.addAttribute("parentSlug", parent);
+            model.addAttribute("childSlug", child);
+            model.addAttribute("currentCategory", parent);
+            model.addAttribute("currentSubCategory", child);
+            return buildCategoryView(category, filter, pageable, model, search, tipo);
+        } catch (Exception e) {
+            return redirectBack(request, ra, "Categoría no encontrada");
+        }
     }
 
     private String buildCategoryView(Category category, ProductFilterDTO filter, Pageable pageable, Model model,
@@ -193,5 +204,13 @@ public class CategoryController {
         // /* Se podría hacer parent.slug en las vistas para obtener el slug del parent, pero es más siempre utilizar
         // el String "parent" de los métodos del controller */
         return "category/category";
+    }
+
+    private String redirectBack(HttpServletRequest request, RedirectAttributes ra, String message) {
+        ra.addFlashAttribute("error", message);
+
+        String referer = request.getHeader("Referer");
+
+        return "redirect:" + (referer != null ? referer : "/");
     }
 }

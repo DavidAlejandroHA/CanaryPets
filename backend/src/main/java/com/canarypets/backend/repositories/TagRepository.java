@@ -52,4 +52,15 @@ public interface TagRepository extends JpaRepository<Tag, Long> {
     List<Object[]> countTagsByCategories(List<Category> categories);
 
     Optional<Tag> findByTypeAndSlug(String type, String slug);
+
+    //List<Tag> findByParentCategoryId(Long parentId);
+
+    // Si se quiere filtrar por categoría padre:
+    // Si Tag está ligado a subcategoría y esta tiene parent:
+    //List<Tag> findByCategory_Parent_Id(Long parentId);
+
+    // Si se usase product.getCategory() a secas en el tagService.getOrCreate del seeding,
+    // entonces la query/nombre del método_ tendría que ser findByCategory_Parent_Id
+    // pero como ahora se usa product.getCategory().getParent() entonces se nombra findByCategory_Parent_Id
+    //List<Tag> findByCategory_Id(Long parentId);
 }

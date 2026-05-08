@@ -107,8 +107,8 @@
                 </div>
             </div>
 
-            <!-- Categoría -->
-            <div class="col-md-6">
+            <!-- Categoría padre-->
+            <!--<div class="col-md-6">
                 <label>Categoría</label>
                 <select class="form-select" th:field="*{category}">
                     <option th:each="c : ${categories}"
@@ -120,10 +120,43 @@
                      th:if="${#fields.hasErrors('category')}"
                      th:errors="*{category}">
                 </div>
+            </div>-->
+            <div class="col-md-6"> <!-- Aquí no lleva th:field-->
+                <label>Categoría padre</label>
+                <select name="parentId" class="form-select" onchange="this.form.submit()"><!---->
+                    <option value="">Selecciona</option>
+                    <option th:each="p : ${parentCategories}"
+                            th:value="${p.id}"
+                            th:text="${p.name}"
+                            th:selected="${p.id == selectedParentId}">
+                    </option><!--th:selected="${product.category != null and product.category.parent != null and p.id == product.category.parent.id}"-->
+                </select> <!-- Lo anterior funciona solo en carga inicial, pero falla cuando
+                            hay error de validación (BindingResult) o se cambia parentId y se recarga-->
+
+                <button type="submit" class="btn btn-outline-secondary mt-2">
+                    Aplicar categoría
+                </button>
+            </div>
+
+            <!--Subcategoría-->
+            <div class="col-md-6">
+                <label>Subcategoría</label>
+                <select class="form-select" th:field="*{category}">
+                    <option value="">Selecciona</option>
+                    <option th:each="c : ${allCategories}"
+                            th:value="${c.id}"
+                            th:text="${c.name}">
+                    </option> <!-- El th:if="${selectedParentId == null or (c.parent != null and c.parent.id == selectedParentId)}"
+                                    también es necesario quitarlo de aquí ya que si no se estaría duplicando lógica y causando bugs raros-->
+                </select>
+                <div class="text-danger small"
+                     th:if="${#fields.hasErrors('category')}"
+                     th:errors="*{category}">
+                </div>
             </div>
 
             <!-- Tags -->
-            <div class="col-md-6">
+            <!--<div class="col-md-6">
                 <label>Tags</label>
                 <select multiple class="form-select" th:field="*{tags}">
                     <option th:each="t : ${tags}"
@@ -131,11 +164,22 @@
                             th:text="${t.name}">
                     </option>
                 </select>
+            </div>-->
+            <div>
+                <label>Tags</label>
+                <select multiple class="form-select" th:field="*{tags}">
+                    <option th:each="t : ${allTags}"
+                            th:value="${t.id}"
+                            th:text="${t.name}"
+                            th:selected="${selectedTagIds.contains(t.id)}">
+                    </option>
+                </select>
                 <div class="text-danger small"
                      th:if="${#fields.hasErrors('tags')}"
                      th:errors="*{tags}">
                 </div>
             </div>
+
 
             <!-- Solidario -->
             <div class="col-12 form-check">

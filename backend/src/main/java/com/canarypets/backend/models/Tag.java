@@ -19,7 +19,7 @@ import java.util.Set;
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     //@Id
     @NotNull(message = "Este campo es obligatorio")
@@ -41,10 +41,15 @@ public class Tag {
     @ManyToMany(mappedBy = "tags")
     private Set<Product> products = new HashSet<>();
 
+    // Importante para establecer las relaciones con la clase Category
+    /*@ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;*/
+
     public Tag(){}
 
-    public long getId() {return id;}
-    public void setId(long id) {this.id = id;}
+    public Long getId() {return id;}
+    public void setId(Long id) {this.id = id;}
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
@@ -71,4 +76,25 @@ public class Tag {
 
     public Set<Product> getProducts() {return products;}
     public void setProducts(Set<Product> products) {this.products = products;}
+
+    /*public Category getCategory() {return category;}
+    public void setCategory(Category category) {this.category = category;}*/
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Tag)) return false;
+        Tag tag = (Tag) o;
+        return id != null && id.equals(tag.id);
+    }*/
+    // Thymeleaf hace algo equivalente a:
+    // product.getTags().contains(tagDelOption)
+    // Por lo que si no se tiene el equals():
+    // Compara por referencia ❌
+    // Y no coincide aunque tengan el mismo id ❌
+
+    /*@Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }*/
 }

@@ -34,4 +34,9 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
         WHERE u = :user
     """)
     Page<Product> findFavoritesByUser(@Param("user") User user, Pageable pageable);
+
+    // Sería necesario para cargar los tags con el Product si el Producto no tuviera
+    // el campo tags como Lazy
+    //@Query("SELECT p FROM Product p LEFT JOIN FETCH p.tags WHERE p.id = :id")
+    //Optional<Product> findByIdWithTags(Long id);
 }

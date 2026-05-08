@@ -15,26 +15,26 @@ public class CategoryService {
     CategoryRepository categoryRepository;
     // Obtener categoría por slug
     public Category getBySlug(String slug) { // No evita slugs duplicados
-        //return categoryRepository.findBySlug(slug)
-        //        .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
-        Optional<Category> category = categoryRepository.findBySlug(slug);
+        return categoryRepository.findBySlug(slug)
+                .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+        /*Optional<Category> category = categoryRepository.findBySlug(slug);
         if (category.isEmpty()) {
             return new Category(); // Categoría vacía en vez de error
-        }
-        return categoryRepository.findBySlug(slug).get();
+        }*/
+        //return categoryRepository.findBySlug(slug).get();
     }
 
     // Validar jerarquía - Obtener subcategoría por slug y parentslug
     public Category getBySlugAndParent_Slug(String parentSlug, String childSlug) {
-        /*return categoryRepository
+        return categoryRepository
                 .findBySlugAndParent_Slug(childSlug, parentSlug)
-                .orElseThrow(() -> new RuntimeException("Subcategoría inválida"));*/
-        Optional<Category> category = categoryRepository
-                .findBySlugAndParent_Slug(childSlug, parentSlug);
+                .orElseThrow(() -> new RuntimeException("Subcategoría inválida"));
+        /*Optional<Category> category = categoryRepository
+                .findBySlugAndParent_Slug(childSlug, parentSlug);*/
         // Categoría vacía en vez de error
         //return category.orElseGet(Category::new);
 
-        return category.orElseThrow();
+        //return category.orElseThrow();
     }
 
     public List<Category> getCategoryWithSubcategories(Category parent) {
@@ -53,7 +53,18 @@ public class CategoryService {
         return categoryRepository.findByParentIsNull();
     }
 
+    public List<Category> findParents() {
+        return categoryRepository.findByParentIsNull();
+    }
+
+    public List<Category> findByParent(Category parent) {
+        return categoryRepository.findByParent(parent);
+    }
+
     public List<Category> findAll() {
         return categoryRepository.findAll();
+    }
+    public List<Category> findByParentId(Long parentId) {
+        return categoryRepository.findByParentId(parentId);
     }
 }

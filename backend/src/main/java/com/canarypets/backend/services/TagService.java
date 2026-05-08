@@ -7,7 +7,6 @@ import com.canarypets.backend.utils.SlugUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.Normalizer;
 import java.util.List;
 
 @Service
@@ -15,6 +14,7 @@ public class TagService {
     @Autowired
     private TagRepository tagRepository;
 
+    //public Tag getOrCreate(String type, String name, Category category) {
     public Tag getOrCreate(String type, String name) {
 
         /*String slug = name.toLowerCase()
@@ -34,6 +34,11 @@ public class TagService {
                     tag.setType(type);
                     tag.setName(name);
                     tag.setSlug(slug);
+
+                    // CLAVE // Sin uso ahora mismo ya que al final no se usa una
+                    // category como parent, si no tags globales
+                    //tag.setCategory(category);
+
                     return tagRepository.save(tag);
                 });
     }
@@ -41,4 +46,7 @@ public class TagService {
     public List<Tag> findAll() {
         return tagRepository.findAll();
     }
+    /*public List<Tag> findByCategory_Id(Long parentId) {
+        return tagRepository.findByCategory_Id(parentId);
+    }*/
 }

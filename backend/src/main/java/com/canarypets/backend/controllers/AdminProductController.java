@@ -1,5 +1,7 @@
 package com.canarypets.backend.controllers;
 
+import com.canarypets.backend.DTOs.ProductEditDTO;
+import com.canarypets.backend.exceptions.ValidationException;
 import com.canarypets.backend.models.Product;
 import com.canarypets.backend.services.CategoryService;
 import com.canarypets.backend.services.ProductService;
@@ -33,21 +35,21 @@ public class AdminProductController {
     // Mostrar formulario
     @GetMapping("/edit/{id}")
     public String editProduct(@PathVariable Long id,
+                              @RequestParam(required = false) Long parentId,
                               Model model,
                               HttpServletRequest request,
                               RedirectAttributes redirectAttributes) {
         try {
-            Product product = productService.getById(id);
+            ProductEditDTO dto = productService.getProductEditData(id, parentId);
 
-            model.addAttribute("product", product);
-            model.addAttribute("categories", categoryService.findAll());
-            model.addAttribute("tags", tagService.findAll());
+            model.addAttribute("product", dto.getProduct());
+            model.addAttribute("parentCategories", dto.getParentCategories());
+            model.addAttribute("allCategories", dto.getAllCategories());
+            model.addAttribute("allTags", dto.getAllTags());
+            model.addAttribute("selectedTagIds", dto.getSelectedTagIds());
+            model.addAttribute("selectedParentId", dto.getSelectedParentId()); // IMPORTANTE: para mantener selección en el select
 
-            //return "admin/edit-product";
-
-            // Guardar referer
-            String referer = request.getHeader("Referer");
-            model.addAttribute("redirectTo", referer);
+            model.addAttribute("redirectTo", request.getHeader("Referer")); // Guardar referer + redirect
 
             return "producto/edit";
         } catch (Exception e) {
@@ -62,43 +64,41 @@ public class AdminProductController {
                                 @Valid @ModelAttribute("product") Product form,
                                 //HttpServletRequest request,
                                 BindingResult result,
+                                @RequestParam(required = false) Long parentId,
                                 @RequestParam(required = false) String redirectTo,
                                 Model model,
                                 RedirectAttributes redirectAttributes) {
         // VALIDACIÓN FRONT (DTO/FORM)
         if (result.hasErrors()) {
-            model.addAttribute("categories", categoryService.findAll());
-            model.addAttribute("tags", tagService.findAll());
-            // Mantener redirectTo
-            model.addAttribute("redirectTo", redirectTo);
+            loadFormData(model, parentId, redirectTo);
             return "producto/edit";
         }
-
 
         try {
-            // Para evitar el error de category null:
-            if (form.getCategory() == null || form.getCategory().getId() == null) {
-                result.rejectValue("category", "error.category", "Selecciona una categoría");
-            }
-            productService.updateProduct(id, form);
+            productService.updateProduct(id, form, parentId);
             redirectAttributes.addFlashAttribute("success", "Producto actualizado");
-            //return "redirect:/admin/products/edit/" + id;
-        } catch (IllegalArgumentException e) {
-            result.rejectValue("slug", "error.slug", e.getMessage());
 
-            model.addAttribute("categories", categoryService.findAll());
-            model.addAttribute("tags", tagService.findAll());
+            // Redirigir a la página anterior
+            //String referer = request.getHeader("Referer");
+            return "redirect:" + (redirectTo != null ? redirectTo : "/");
+        } catch (ValidationException e) {
+            //result.rejectValue("slug", "error.slug", e.getMessage());
+            e.getErrors().forEach(error ->
+                    result.rejectValue(error.getField(), error.getCode(), error.getMessage())
+            );
+
+            loadFormData(model, parentId, redirectTo);
             return "producto/edit";
-
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error al actualizar producto: " + e.getMessage());
-            //return "producto/edit";
-
-
+            return "producto/edit";
         }
-        // Redirigir a la página anterior
-        //String referer = request.getHeader("Referer");
-        //return "redirect:" + (referer != null ? referer : "/");
-        return "redirect:" + (redirectTo != null ? redirectTo : "/");
+    }
+
+    private void loadFormData(Model model, Long parentId, String redirectTo) {
+        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("tags", tagService.findAll());
+        model.addAttribute("redirectTo", redirectTo);
+        model.addAttribute("selectedParentId", parentId);
     }
 }

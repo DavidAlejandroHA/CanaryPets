@@ -439,7 +439,10 @@ public class ProductsSeeder implements CommandLineRunner {
 
     private void addTagIfNotNull(Product product, String type, String value) {
         if (value != null && !value.isBlank()) {
+            //product.addTag(tagService.getOrCreate(type, value, product.getCategory().getParent()));
             product.addTag(tagService.getOrCreate(type, value));
+            // Importante: Usar en el TagRepository findByCategory_Id(parentId) en vez de findByCategory_Parent_Id
+            // si se usa product.getCategory().getParent() para mostrar por categoría padre
         }
     }
 }

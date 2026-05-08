@@ -1,5 +1,8 @@
 package com.canarypets.backend.services;
 
+import com.canarypets.backend.DTOs.ProductEditDTO;
+import com.canarypets.backend.exceptions.InvalidSlugException;
+import com.canarypets.backend.exceptions.ValidationException;
 import com.canarypets.backend.models.Category;
 import com.canarypets.backend.models.Product;
 import com.canarypets.backend.models.Tag;
@@ -11,7 +14,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -24,6 +29,12 @@ public class ProductService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private TagService tagService;
 
     // Productos por subcategoría (caso normal)
     public List<Product> getByCategorySlug(String slug) {
@@ -121,15 +132,59 @@ public class ProductService {
 //    }
 
     @Transactional
-    public void updateProduct(Long id, Product form) {
+    public void updateProduct(Long id, Product form, Long parentId) {
+        ValidationException errors = new ValidationException();
+
         Product p = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
-        if (!p.getSlug().equals(form.getSlug()) && productRepository.existsBySlug(form.getSlug())) {
-            throw new RuntimeException("Slug duplicado");
+        // --- SLUG ---
+        String slug = form.getSlug() != null ? form.getSlug().trim().toLowerCase() : null;
+        form.setSlug(slug);
+
+        if (slug == null || slug.isBlank()) {
+            errors.addError("slug", "El slug es obligatorio");
+        } else {
+            if (slug.contains(" ")) {
+                errors.addError("slug", "El slug no puede contener espacios");
+            }
+            if (!slug.matches("^[a-z0-9-_]+$")) { // No permitir espacios y solo caracteres, números o guiones
+                errors.addError("slug", "Formato de slug inválido");
+            }
+            if (!slug.equals(p.getSlug()) && productRepository.existsBySlug(slug)) {
+                errors.addError("slug", "Slug duplicado");
+            }
         }
+
+        // --- CATEGORY PADRE ---
+        if (parentId == null) {
+            errors.addError("category", "Selecciona una categoría padre");
+        }
+
+        // --- SUBCATEGORÍA ---
+        if (form.getCategory() == null || form.getCategory().getId() == null) {
+            errors.addError("category", "Selecciona una subcategoría");
+        }
+
+        // --- TAGS ---
+        /*if (form.getTags() == null || form.getTags().isEmpty()) {
+            errors.addError("tags", "Selecciona al menos un tag");
+        }*/
+
+        // --- PRECIO ---
+        if (form.getPrice() == null || form.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
+            // Usar siempre compareTo o .compareTo(new BigDecimal("0.01") para comparar con BigDecimal
+            errors.addError("price", "El precio debe de ser al menos de 0.01 euros");
+        }
+
+        // Si hay errores -> lanzar
+        if (errors.hasErrors()) {
+            throw errors;
+        }
+
+        // --- SETEO ---
         p.setName(form.getName());
-        p.setSlug(form.getSlug());
+        p.setSlug(slug);
         p.setImageUrl(form.getImageUrl());
         p.setDescription(form.getDescription());
         p.setPrice(form.getPrice());
@@ -164,5 +219,46 @@ public class ProductService {
     public Product getById(Long id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Producto no encontrado"));
+        // En caso de que el campo Tag de Product no usara Lazy, entonces sería necesario
+        // una query en específico
+    }
+
+    public ProductEditDTO getProductEditData(Long id, Long parentId) {
+
+        Product product = getById(id);
+
+        // Si no viene parentId -> se saca de la categoría actual
+        if (parentId == null && product.getCategory() != null) {
+            Category parent = product.getCategory().getParent();
+            if (parent != null) {
+                parentId = parent.getId();
+            }
+        }
+
+        List<Category> parentCategories = categoryService.findParents();
+
+        List<Category> categories = (parentId != null)
+                ? categoryService.findByParentId(parentId)
+                : categoryService.findAll();
+
+        // IMPORTANTE: tags filtrados
+            /*List<Tag> tags = (parentId != null)
+                    ? tagService.findByCategory_Id(parentId)
+                    : tagService.findAll();*/ // Sin uso actualmente
+        List<Tag> tags = tagService.findAll();
+
+        Set<Long> selectedTagIds = product.getTags()
+                .stream()
+                .map(Tag::getId)
+                .collect(Collectors.toSet());
+
+        return new ProductEditDTO(
+                product,
+                parentCategories,
+                categories,
+                tags,
+                selectedTagIds,
+                parentId
+        );
     }
 }

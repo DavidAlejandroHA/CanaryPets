@@ -56,6 +56,10 @@ public class Category {
     @OneToMany(mappedBy = "parent")
     private List<Category> subcategories = new ArrayList<>();
 
+    // Para poder navegar desde categoría:
+    /*@OneToMany(mappedBy = "category")
+    private List<Tag> tags = new ArrayList<>();*/
+
     public Category(){}
 
     /*@PrePersist

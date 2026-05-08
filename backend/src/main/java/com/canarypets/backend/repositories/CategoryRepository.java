@@ -13,4 +13,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     //@Query("SELECT c FROM Category c WHERE c.parent IS NULL")
     //List<Category> findParentCategories(); // Devolver solo categorías padre (sin parent)
     List<Category> findByParentIsNull(); // Lo mismo pero sin @Query
+    List<Category> findByParent(Category parent);
+    List<Category> findByParentId(Long id);
 }
