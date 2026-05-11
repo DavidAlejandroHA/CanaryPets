@@ -11,11 +11,11 @@ http {
 	
 	# Default server
 	# Bloquea peticiones que no coinciden con server_name o vienen con hosts raros
-	server {
-		listen 80 default_server;
-		server_name _; # _ = catch-all más explícito, por si Nginx no matchea bien el host
-		return 444;
-	}
+	#server {
+	#	listen 80 default_server;
+	#	server_name _; # _ = catch-all más explícito, por si Nginx no matchea bien el host
+	#	return 444;
+	#}
 
     # Redirigir sin www -> www
     server {

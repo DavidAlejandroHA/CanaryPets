@@ -145,6 +145,8 @@ https://www.canarypets.com
 
 > ⚠️ En caso de haber generado los certificados y entrar con https, el navegador mostrará una advertencia → selecciona "Avanzado" → "Continuar de todos modos".
 
+Si no puedes acceder, recuerda antes asignar como servidor DNS la ip del servidor en el que se encuentre la aplicación, o mirar otras posibles causas del problema en [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
+
 ---
 
 ## 6. 🌐 (Opcional) Configuración de dominio local (Bind9)
@@ -188,7 +190,15 @@ Si despliegas la aplicación en un servidor Linux (ej: Ubuntu), es recomendable 
 ```bash
 sudo ufw allow 80
 sudo ufw allow 443
+sudo ufw allow 53/tcp
+sudo ufw allow 53/udp
 sudo ufw enable
+```
+
+Y para permitir ssh a conexiones con el servidor:
+
+```bash
+sudo ufw allow 22
 ```
 
 No es necesario en entorno local (localhost).
@@ -282,6 +292,10 @@ http://localhost/
   `docker compose up -d --build`
 
 ---
+
+## 🛠️ Troubleshooting
+
+Para ver algunos de los problemas más comunes a la hora de levantar la aplicación junto a las posibles soluciones, visita el documento [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
 
 ## 👨‍💻 Autor
 

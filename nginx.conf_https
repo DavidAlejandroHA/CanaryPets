@@ -10,22 +10,23 @@ http {
 	# Nota: Esto podría dar problemas con archivos binarios raros o malas configs MIME (aunque no se utilizan en este proyecto)
 	
 	# Default server
-	# Bloquea peticiones que no coinciden con server_name o vienen con hosts raros
+    # Bloquea peticiones que no coinciden con server_name o vienen con hosts raros
 	#server {
-	# 	listen 80 default_server;
-	#	server_name _; 
-	#	return 444;
+	#    listen 80 default_server;
+	#    server_name _;
+	#    return 444;
 	#}
-	
-	server {
-		listen 80 default_server;
-		server_name _; # _ = catch-all más explícito, por si Nginx no matchea bien el host
-		location / {
-			proxy_pass http://backend:8080;
-		}
-	}
-	
-	# NUEVO
+
+	# Otra manera:
+    #server {
+	#	listen 80 default_server;
+	#	server_name _; # _ = catch-all más explícito, por si Nginx no matchea bien el host
+	#	location / {
+	#		proxy_pass http://backend:8080;
+	#	}
+    #}
+
+    # NUEVO
     #server {
     #    listen 80;
     #    server_name localhost;
@@ -33,6 +34,7 @@ http {
     #        proxy_pass http://backend:8080;
     #    }
     #}
+	
 
     # HTTP -> HTTPS
     server {
