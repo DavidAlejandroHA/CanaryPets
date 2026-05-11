@@ -1,6 +1,4 @@
 
-version: "3.9"
-
 services:
   db:
     image: mysql:8.0
@@ -65,7 +63,7 @@ services:
       - ./nginx/logs:/var/log/nginx   # logs nginx -> Importante en producción para debug
       - ./certs:/etc/nginx/certs  # Certificados autofirmados
     depends_on:
-      - backend:
+      backend:
         condition: service_healthy # Para que nginx no arranque hasta que el backend esté listo
   
 volumes:
