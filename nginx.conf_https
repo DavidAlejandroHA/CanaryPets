@@ -1,0 +1,74 @@
+events {}
+
+http {
+    charset utf-8;
+	
+	# Gzip comprime respuestas → menos peso → más rápido (reduce peso de respuestas y mejora rendimiento real)
+	gzip on;
+	gzip_vary on; # Para evitar posibles problemas raros y mejorar compatibilidad con proxies/cache
+    gzip_types text/plain text/css application/json application/javascript;
+	# Nota: Esto podría dar problemas con archivos binarios raros o malas configs MIME (aunque no se utilizan en este proyecto)
+	
+	# Default server
+	# Bloquea peticiones que no coinciden con server_name o vienen con hosts raros
+	server {
+		listen 80 default_server;
+		server_name _; # _ = catch-all más explícito, por si Nginx no matchea bien el host
+		return 444;
+	}
+
+    # HTTP -> HTTPS
+    server {
+        listen 80;
+        server_name canarypets.com;
+        return 301 https://www.canarypets.com$request_uri;
+    }
+
+    server {
+        listen 80;
+        server_name www.canarypets.com;
+        return 301 https://www.canarypets.com$request_uri;
+    }
+
+    # HTTPS sin www -> www
+    server {
+        listen 443 ssl;
+        server_name canarypets.com;
+
+        ssl_certificate /etc/nginx/certs/fullchain.pem;
+        ssl_certificate_key /etc/nginx/certs/privkey.pem;
+
+        return 301 https://www.canarypets.com$request_uri;
+    }
+
+    # HTTPS principal
+    server {
+        listen 443 ssl;
+        server_name www.canarypets.com;
+
+        ssl_certificate /etc/nginx/certs/fullchain.pem;
+        ssl_certificate_key /etc/nginx/certs/privkey.pem;
+		
+		ssl_protocols TLSv1.2 TLSv1.3; # Solo permite protocolos modernos y seguros y bloquea SSL antiguos inseguros
+		ssl_prefer_server_ciphers on; # El servidor decide qué cifrado usar (más seguro)
+
+        location / {
+            proxy_pass http://backend:8080;
+			proxy_http_version 1.1; # Para evitar posibles problemas raros con keep-alive
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+			
+			# Recomendado para logs, seguridad y generación de urls en backend:
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+	# Nota: return 301 https://$host$request_uri; NO fuerza www, solo mantiene lo que el usuario puso
+	# Por eso ahora se cambia a: https://www.canarypets.com$request_uri
+	
+	# Resultado final
+	# http://canarypets.com -> https://www.canarypets.com
+	# https://canarypets.com -> https://www.canarypets.com
+	# http://www.canarypets.com -> https://www.canarypets.com
+	# https://www.canarypets.com -> OK
+}
