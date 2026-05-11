@@ -172,7 +172,12 @@ Ejemplo:
 ⚠️ Importante:  
 
 - Sustituir la IP por la del servidor  
-- Configurar tu equipo para usar ese DNS  
+- Configurar tu equipo para usar ese DNS
+- Después de añadir los archivos y modificarlos, para reiniciar el servicio `bind9` ejecutar:
+
+```bash
+systemctl restart bind9
+```
 
 ---  
 

@@ -48,6 +48,10 @@ services:
     volumes:
       - ./logs:/app/logs
       - ./images:/app/images
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 10s
+      retries: 5
 
   nginx:
     image: nginx:latest
@@ -61,7 +65,8 @@ services:
       - ./nginx/logs:/var/log/nginx   # logs nginx -> Importante en producción para debug
       - ./certs:/etc/nginx/certs  # Certificados autofirmados
     depends_on:
-      - backend
+      - backend:
+        condition: service_healthy # Para que nginx no arranque hasta que el backend esté listo
   
 volumes:
   db_data:

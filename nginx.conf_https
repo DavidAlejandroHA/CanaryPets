@@ -6,7 +6,7 @@ http {
 	# Gzip comprime respuestas → menos peso → más rápido (reduce peso de respuestas y mejora rendimiento real)
 	gzip on;
 	gzip_vary on; # Para evitar posibles problemas raros y mejorar compatibilidad con proxies/cache
-    gzip_types text/plain text/css application/json application/javascript;
+	gzip_types text/plain text/css application/json application/javascript;
 	# Nota: Esto podría dar problemas con archivos binarios raros o malas configs MIME (aunque no se utilizan en este proyecto)
 	
 	# Default server
