@@ -14,9 +14,11 @@ En caso de que tengas problemas a la hora de levantar la aplicación en un servi
 ### ❌ Error: "address already in use"
 
 - Otro servicio está usando el puerto 80/443 (probablemente apache o nginx ya instalado en la propia máquina)
+
 - Solución: `sudo systemctl stop apache2` `sudo systemctl disable apache2` -> parar y deshabilitar apache
   
   o
+
 - `sudo systemctl stop nginx` `sudo systemctl disable nginx` -> parar y deshabilitar nginx
 
 ---
@@ -53,7 +55,7 @@ En caso de que tengas problemas a la hora de levantar la aplicación en un servi
 - Limpiar y actualizar repositorios: 
   - `sudo apt clean` 
   - `sudo rm -rf /var/lib/apt/lists/*`
-  -  `sudo apt update`
+  - `sudo apt update`
 
 ---
 

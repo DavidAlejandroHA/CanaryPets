@@ -162,7 +162,7 @@ public class ProductsSeeder implements CommandLineRunner {
         createProduct("Trixie Cama acolchada gato", "Cama suave", new BigDecimal("29.99"), 15, false, "50cm", "Trixie", "productos/gatos/cama1.jpg", accesoriosGatos, "Trixie", "Camas", null);
 
         // Transportines
-        createProduct("Catit Transportín gris", "Transportín cómodo", new BigDecimal("39.99"), 12, false, "55cm", "Catit", "productos/gatos/transportin1.jpg", accesoriosGatos, "Catit", "Transportines", null);
+        createProduct("Catit Transportín blanco", "Transportín cómodo", new BigDecimal("39.99"), 12, false, "55cm", "Catit", "productos/gatos/transportin1.jpg", accesoriosGatos, "Catit", "Transportines", null);
 
         // Areneros
         createProduct("Arquivet Arenero cerrado", "Arenero con tapa", new BigDecimal("34.99"), 20, false, "60cm", "Arquivet", "productos/gatos/arenero1.jpg", accesoriosGatos, "Arquivet", "Areneros", null);
@@ -341,7 +341,7 @@ public class ProductsSeeder implements CommandLineRunner {
         //Category higieneReptiles = categoryRepository.findBySlugAndParent_Slug("higiene", "reptiles").orElseThrow();
 
 // 🔹 COMIDA
-        createProduct("Exo Terra Grillos secos", "Alimento natural", new BigDecimal("9.99"), 40, false, "10x5x5 cm", "Exo Terra", "productos/reptiles/grillos.jpg", comidaReptiles, "Exo Terra", "Insectos", null);
+        createProduct("Trixie Grillos secos", "Alimento natural", new BigDecimal("9.99"), 40, false, "10x5x5 cm", "Trixie", "productos/reptiles/grillos.jpg", comidaReptiles, "Trixie", "Insectos", null);
         createProduct("Tetra ReptoMin sticks", "Comida para tortugas", new BigDecimal("11.99"), 35, false, "10x5x5 cm", "Tetra", "productos/reptiles/reptomin.jpg", comidaReptiles, "Tetra", "Sticks", null);
         createProduct("JBL Insectos deshidratados", "Proteína alta", new BigDecimal("12.49"), 30, false, "10x5x5 cm", "JBL", "productos/reptiles/insectos.jpg", comidaReptiles, "JBL", "Insectos", null);
         createProduct("Exo Terra Pienso reptiles", "Alimento completo", new BigDecimal("13.99"), 25, true, "10x5x5 cm", "Exo Terra", "productos/reptiles/pienso.jpg", comidaReptiles, "Exo Terra", "Pienso", null);
@@ -372,10 +372,10 @@ public class ProductsSeeder implements CommandLineRunner {
         //createProduct("Tetra Spray humedad", "Control ambiental", new BigDecimal("8.49"), 25, false, "10x5 cm", "Tetra", "productos/reptiles/spray.jpg", saludReptiles, "Tetra", "Humedad", null);
         createProduct("Exo Terra Planta decorativa", "Decoración terrario", new BigDecimal("12.99"), 1, true, "20x10 cm", "Exo Terra", "productos/reptiles/planta.jpg", accesoriosReptiles, "Exo Terra", "Decoración", null);
 
-        createProduct("Exo Terra Alimento tortugas", "Comida equilibrada", new BigDecimal("12.99"), 30, false, "10x5x5 cm", "Exo Terra", "productos/reptiles/alimento-tortugas.jpg", comidaReptiles, "Exo Terra", "Pienso", null);
+        createProduct("Exo Terra Alimento tortugas Junior", "Comida equilibrada", new BigDecimal("12.99"), 30, false, "10x5x5 cm", "Exo Terra", "productos/reptiles/alimento-tortugas.jpg", comidaReptiles, "Exo Terra", "Pienso", "Cachorro");
         createProduct("JBL Insectos naturales secos", "Fuente de proteína", new BigDecimal("11.49"), 25, false, "10x5x5 cm", "JBL", "productos/reptiles/insectos-secos.jpg", comidaReptiles, "JBL", "Insectos", null);
         createProduct("Tetra Lámpara calor reptiles", "Calor constante", new BigDecimal("27.99"), 15, false, "20x5 cm", "Tetra", "productos/reptiles/lampara-calor.jpg", accesoriosReptiles, "Tetra", "Iluminación", null);
-        createProduct("Exo Terra Suplemento vitaminas", "Refuerzo nutricional", new BigDecimal("9.49"), 20, true, "5x5x10 cm", "Exo Terra", "productos/reptiles/vitaminas.jpg", saludReptiles, "Exo Terra", "Suplementos", null);
+        createProduct("Exo Terra Suplemento vitaminas", "Refuerzo nutricional", new BigDecimal("9.49"), 20, true, "5x5x10 cm", "Exo Terra", "productos/reptiles/vitaminas1.jpg", saludReptiles, "Exo Terra", "Suplementos", null);
 
         createProduct("Tetra Alimento completo reptiles", "Nutrición equilibrada", new BigDecimal("11.99"), 30, false, "10x5x5 cm", "Tetra", "productos/reptiles/alimento-completo.jpg", comidaReptiles, "Tetra", "Pienso", null);
         createProduct("JBL Grillos vivos conservados", "Proteína natural", new BigDecimal("13.49"), 25, false, "10x5x5 cm", "JBL", "productos/reptiles/grillos-vivos.jpg", comidaReptiles, "JBL", "Insectos", null);
