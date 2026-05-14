@@ -1,0 +1,46 @@
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.category-card {
+    height: 100%;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Wrapper */
+.category-img-wrapper {
+    position: relative;
+    /*height: 140px;*/
+    overflow: hidden;
+}
+
+/* Fondo blur */
+.category-img-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(12px);
+    transform: scale(1.1); /* evita bordes feos del blur */
+    z-index: 1;
+}
+
+/* Imagen real */
+.category-img {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    min-height: 200px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+/* Body consistente */
+.category-card .card-body {
+    flex-grow: 1;
+}

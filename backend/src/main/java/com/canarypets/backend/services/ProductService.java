@@ -261,4 +261,8 @@ public class ProductService {
                 parentId
         );
     }
+
+    public List<Product> getRecommendedProducts() {
+        return productRepository.findRandomProducts();
+    }
 }

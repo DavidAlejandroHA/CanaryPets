@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-  <title>CanaryPets</title>
+  <title>Home - CanaryPets</title>
   <meta charset="UTF-8">
+  <!-- Estas librerías son para poder ver las páginas desde el ide -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
   <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <link th:href="@{/css/categories_cards.css}" rel="stylesheet">
+  <link th:href="@{/css/catalog/product-cards-styles.css}" rel="stylesheet">
   <link th:href="@{/css/fragments/header.css}" rel="stylesheet">
+
+  <meta name="_csrf" th:content="${_csrf.token}">
+  <meta name="_csrf_header" th:content="${_csrf.headerName}">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -18,44 +26,291 @@
 
   <!-- HERO -->
   <div class="mt-4">
-    <div class="p-5 bg-light text-center">
-      <h1>Todo para tu mascota</h1>
-      <p>Descubre los mejores productos para cuidar de ellos</p>
+    <div class="banner position-relative text-center p-5 bg-light">
+
+      <!-- Fondo blur -->
+      <div class="banner-bg"></div>
+
+      <!-- Contenido -->
+      <div class="banner-content position-relative text-white">
+        <h1 class="display-3 fw-bold">Todo para tu mascota</h1>
+        <p class="lead">Descubre los mejores productos para cuidar de ellos</p>
+
+        <!-- Frase solidaria con fondo -->
+        <div class="banner-text-box mx-auto p-4 mt-5">
+          <p class="lead mb-0 text-light-gray">
+            <!--Cada compra cuenta: el 50% de nuestros productos solidarios se destina a ayudar a protectoras y animales que lo necesitan.-->
+            En CanaryPets encontrarás productos de calidad para el cuidado y bienestar de tu mascota.
+            Pero nuestra misión va más allá: queremos ayudar también a quienes más lo necesitan.
+            Por eso, el 50% de los beneficios de nuestros productos solidarios se destina a protectoras y organizaciones locales.
+            Cuidar de tu mascota también puede marcar la diferencia en la vida de otros animales.
+          </p>
+        </div>
+      </div>
     </div>
+    <!--<p class="lead text-center mt-4">Descubre los mejores productos para cuidar de ellos</p>-->
   </div>
 
   <!-- CATEGORÍAS DESTACADAS -->
   <div class="mt-5">
-    <h3 class="text-center">Categorías</h3>
+    <h2 class="text-center mb-4">Categorías</h2>
 
     <div class="row justify-content-center g-4">
 
-      <div class="col-6 col-md-3 col-lg-2"> <!--Móvil → 2 por fila / Tablet → 3-4 / Desktop → más compactos-->
-        <a th:href="@{/categoria/perros}" class="card p-3 text-center">Perros</a>
+      <!-- PERROS -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a th:href="@{/categoria/perros}" class="card h-100 text-decoration-none text-dark category-card">
+          <div class="category-img-wrapper">
+            <div class="category-img-bg" th:style="'background-image: url(/images/perros.jpg)'"></div>
+            <img th:src="@{'/images/perros.jpg'}" class="card-img-top category-img" alt="Perros">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-1">Perros</h5>
+            <small class="text-muted">Alimentación, juguetes y accesorios</small>
+          </div>
+
+        </a>
       </div>
 
-      <div class="col-6 col-md-3 col-lg-2">
-        <a th:href="@{/categoria/gatos}" class="card p-3 text-center">Gatos</a>
+      <!-- GATOS -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a th:href="@{/categoria/gatos}" class="card h-100 text-decoration-none text-dark category-card">
+          <div class="category-img-wrapper">
+            <div class="category-img-bg" th:style="'background-image: url(/images/gatos.jpg)'"></div>
+            <img th:src="@{'/images/gatos.jpg'}" class="card-img-top category-img" alt="Gatos">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-1">Gatos</h5>
+            <small class="text-muted">Arena, rascadores y comida</small>
+          </div>
+
+        </a>
       </div>
 
-      <div class="col-6 col-md-3 col-lg-2">
-        <a th:href="@{/categoria/roedores}" class="card p-3 text-center">Roedores</a>
+      <!-- ROEDORES -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a th:href="@{/categoria/roedores}" class="card h-100 text-decoration-none text-dark category-card">
+          <div class="category-img-wrapper">
+            <div class="category-img-bg" th:style="'background-image: url(/images/roedores.jpg)'"></div>
+            <img th:src="@{'/images/roedores.jpg'}" class="card-img-top category-img" alt="Roedores">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-1">Roedores</h5>
+            <small class="text-muted">Jaulas, comida y cuidados</small>
+          </div>
+
+        </a>
       </div>
 
-      <div class="col-6 col-md-3 col-lg-2">
-        <a th:href="@{/categoria/peces}" class="card p-3 text-center">Peces</a>
+      <!-- PECES -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a th:href="@{/categoria/peces}" class="card h-100 text-decoration-none text-dark category-card">
+          <div class="category-img-wrapper">
+            <div class="category-img-bg" th:style="'background-image: url(/images/peces.jpg)'"></div>
+            <img th:src="@{'/images/peces.jpg'}" class="card-img-top category-img" alt="Peces">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-1">Peces</h5>
+            <small class="text-muted">Acuarios y accesorios</small>
+          </div>
+
+        </a>
       </div>
 
-      <div class="col-6 col-md-3 col-lg-2">
-        <a th:href="@{/categoria/pajaros}" class="card p-3 text-center">Pájaros</a>
+      <!-- PÁJAROS -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a th:href="@{/categoria/pajaros}" class="card h-100 text-decoration-none text-dark category-card">
+          <div class="category-img-wrapper">
+            <div class="category-img-bg" th:style="'background-image: url(/images/pajaros.jpg)'"></div>
+            <img th:src="@{'/images/pajaros.jpg'}" class="card-img-top category-img" alt="Pájaros">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-1">Pájaros</h5>
+            <small class="text-muted">Semillas y jaulas</small>
+          </div>
+
+        </a>
       </div>
 
-      <div class="col-6 col-md-3 col-lg-2">
-        <a th:href="@{/categoria/reptiles}" class="card p-3 text-center">Reptiles</a>
+      <!-- REPTILES -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a th:href="@{/categoria/reptiles}" class="card h-100 text-decoration-none text-dark category-card">
+          <div class="category-img-wrapper">
+            <div class="category-img-bg" th:style="'background-image: url(/images/reptiles.jpg)'"></div>
+            <img th:src="@{'/images/reptiles.jpg'}" class="card-img-top category-img" alt="Reptiles">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-1">Reptiles</h5>
+            <small class="text-muted">Terrarios y alimentación</small>
+          </div>
+
+        </a>
       </div>
 
     </div>
   </div>
+
+  <section class="container my-5">
+    <h3 class="text-center mb-4">⭐ Productos recomendados</h3>
+
+    <div class="row g-3 mb-4">
+
+      <div class="col-6 col-md-4 col-lg-3"
+           th:each="product : ${recommendedProducts}">
+
+        <article class="card h-100 product-card position-relative"
+                 th:attr="data-slug=${product.slug}">
+
+          <!--Favorito-->
+          <form class="favorite-form position-absolute top-0 end-0 m-2"
+                th:action="@{/profile/favorites/toggle}"
+                method="post"
+                onclick="event.stopPropagation()">
+
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <input type="hidden" name="productId" th:value="${product.id}">
+
+            <button type="submit"
+                    class="favorite-btn btn p-0 bg-transparent"
+                    th:data-id="${product.id}"
+                    th:classappend="${#lists.contains(favoritesIds, product.id)} ? 'active'">
+
+                            <span class="fav-icon"
+                                  th:text="${#lists.contains(favoritesIds, product.id)} ? '❤️' : '🤍'">
+                            ❤️
+                            </span>
+
+            </button>
+          </form>
+
+          <!-- ADMIN: Editar producto -->
+          <div sec:authorize="hasRole('ADMIN')"
+               class="position-absolute top-0 start-0 m-2"
+               style="z-index: 3;">
+
+            <a th:href="@{'/admin/products/edit/' + ${product.id}}"
+               class="btn btn-sm btn-warning"
+               onclick="event.stopPropagation()">
+              ✏️
+            </a>
+          </div>
+
+          <!--Overlay clickable-->
+          <a th:href="@{'/producto/' + ${product.slug}}"
+             class="stretched-link"></a>
+
+          <!-- HEADER (IMAGEN) -->
+          <header>
+            <a th:href="@{'/producto/' + ${product.slug}}">
+              <img th:src="@{'/images/' + ${product.imageUrl}}"
+                   class="card-img-top product-img"
+                   alt="Imagen de producto">
+            </a>
+          </header>
+
+          <!-- BODY -->
+          <div class="card-body d-flex flex-column">
+
+            <h2 th:text="${product.name}" class="fs-5"></h2>
+
+            <small class="text-muted"
+                   th:text="${product.getTagValue('marca')}">
+            </small>
+
+            <p class="card-text flex-grow-1"
+               th:text="${product.description}">
+            </p>
+
+            <strong class="mt-auto"
+                    th:text="${product.price + ' €'}">
+            </strong>
+
+            <span th:if="${product.solidaryProduct}"
+                  class="badge bg-success border border-success-subtle mb-2 text-wrap align-self-start"> <!--badge bg-success-subtle text-success mb-2 align-self-start-->
+                                        Producto solidario
+                                    </span>
+          </div>
+          <!-- FOOTER --> <!--Importante el position-relative para poder clickar luego el boton-->
+          <footer class="card-footer bg-white border-0 position-relative">
+            <a class="btn btn-primary add-to-cart-btn w-100 position-relative"
+               th:href="@{'/producto/' + ${product.slug}}"
+               th:data-id="${product.id}"
+               style="z-index: 2;">
+              Añadir al carrito
+            </a>
+          </footer>
+
+        </article>
+
+
+        <div class="modal fade"
+             th:id="'addToCartModal__' + ${product.id}"
+             tabindex="-1">
+
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+              <!-- HEADER -->
+              <div class="modal-header">
+                <h5 class="modal-title">Añadir al carrito</h5>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+              </div>
+
+              <!-- BODY -->
+              <div class="modal-body d-flex align-items-center">
+
+                <!-- Imagen -->
+                <img th:src="@{'/images/' + ${product.imageUrl}}"
+                     style="width: 80px; height: 80px; object-fit: cover;"
+                     class="me-3">
+
+                <div>
+                  <strong th:text="${product.name}"></strong>
+                  <br>
+
+                  <a th:href="@{'/producto/' + ${product.slug}}">
+                    Ir a la ficha del producto
+                  </a>
+                </div>
+
+              </div>
+
+              <!-- FOOTER -->
+              <div class="modal-footer d-flex justify-content-between">
+
+                <!-- Cantidad -->
+                <input type="number"
+                       min="1"
+                       th:max="${product.stock}"
+                       value="1"
+                       class="form-control w-25"
+                       th:id="'qty__' + ${product.id}">
+
+                <!-- Botón -->
+                <form method="post" th:action="@{/cart/add}">
+                  <input type="hidden"
+                         th:name="${_csrf.parameterName}"
+                         th:value="${_csrf.token}"/>
+
+                  <input type="hidden" name="productId" th:value="${product.id}">
+                  <input type="hidden" name="quantity"
+                         th:id="'hiddenQty__' + ${product.id}">
+
+                  <!--IMPORTANTE: type="button" evita submit automático-->
+                  <button type="button" class="btn btn-success"
+                          th:onclick="addToCart([[${product.id}]])">
+                    Añadir
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 </main>
 

@@ -34,6 +34,48 @@
     animation: bounce 0.5s ease;
 }
 
+/* Banner */
+.banner {
+    min-height: 480px; /* altura adaptable del banner */
+    height: auto;
+    padding: 100px 0; /* espacio interno */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*overflow: hidden;*/
+}
 
+/* Fondo con blur */
+.banner-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/banner.jpg');
+    /*background-size: contain;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; /* evita cortar arriba */
+    /*filter: blur(10px);*/
+    /*transform: scale(1.1);*/
+    z-index: 1;
+}
 
+/* Contenido encima */
+.banner-content {
+    z-index: 2;
+    /*max-width: 800px;*/
+}
 
+/* Opcional: mejorar legibilidad */
+.banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3); /* oscurecer ligeramente */
+    z-index: 1;
+}
+
+/* Caja de texto inferior */
+.banner-text-box {
+    background: rgba(0, 0, 0, 0.3); /* fondo semitransparente */
+    border-radius: 10px;
+}

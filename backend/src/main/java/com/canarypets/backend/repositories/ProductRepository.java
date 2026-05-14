@@ -39,4 +39,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
     // el campo tags como Lazy
     //@Query("SELECT p FROM Product p LEFT JOIN FETCH p.tags WHERE p.id = :id")
     //Optional<Product> findByIdWithTags(Long id);
+
+    @Query(value = "SELECT * FROM PRODUCTOS ORDER BY RAND() LIMIT 4", nativeQuery = true)
+    List<Product> findRandomProducts();
 }

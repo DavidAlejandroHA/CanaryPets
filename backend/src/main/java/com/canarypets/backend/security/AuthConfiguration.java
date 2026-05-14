@@ -46,9 +46,9 @@ public class AuthConfiguration {
 
         //Filtro para evitar que usuarios autenticados puedan acceder al formulario de login al introducir la url
         // Importante definirlo antes que el resto de métodos
-        //httpSecurity.addFilterBefore(new LoginPageFilter(), UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(new LoginPageFilter(), UsernamePasswordAuthenticationFilter.class);
         // Lo mismo pero para /register
-        //httpSecurity.addFilterBefore(new RegisterPageFilter(), UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(new RegisterPageFilter(), UsernamePasswordAuthenticationFilter.class);
         //Nota: también se puede cambiar por DefaultLoginPageGeneratingFilter.class);
 
 
@@ -60,7 +60,7 @@ public class AuthConfiguration {
                     .requestMatchers("/cart/add-ajax").permitAll()
                     .requestMatchers("/cart/**").authenticated()
             .requestMatchers("/", "/home", "/auth/login", "/auth/register",
-                            "/auth/logout", "/css/**", "/js/**",
+                            "/auth/logout", "/css/**", "/js/**", "/bootstrap/**",
                             "/categoria/**", "/categoria", "/images/**",
                             "/producto/**", "/checkout/**", "/order/**", "/profile/**").permitAll()
                     .anyRequest().authenticated();
