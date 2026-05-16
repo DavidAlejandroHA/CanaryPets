@@ -21,6 +21,7 @@ Aplicación web de tienda online canaria de productos para mascotas que colabora
 
 - Docker
 - Docker Compose
+- Servidor Ubuntu/Linux para el servidor DNS (opcional)
 
 ---
 
