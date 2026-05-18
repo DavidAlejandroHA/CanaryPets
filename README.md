@@ -112,7 +112,14 @@ openssl req -x509 -nodes -days 365 \
 
 ### 5.3. Configurar Nginx
 
-Sustituye el archivo `nginx.conf` en la raíz del proyecto por la versión HTTPS (`nginx.conf_https`).  
+Sustituye el archivo `nginx.conf` en la raíz del proyecto por la versión HTTPS (`nginx.conf_https`). 
+
+Por ejemplo, ejecuta los siguientes comandos para realizar los cambios de nombres y así aplicar la configuración https de producción a la aplicación:
+
+```
+sudo mv nginx.conf nginx.conf_dev
+sudo mv nginx.conf_https nginx.conf
+```
 
 ---  
 
