@@ -35,4 +35,9 @@ public class MainController {
     public String home(@NotNull Model model) {
         return "redirect:/";
     }
+
+    @GetMapping("/") // Para el healthcheck (no es necesario del todo_ pero por si acaso)
+    public String health() {
+        return "OK";
+    }
 }
