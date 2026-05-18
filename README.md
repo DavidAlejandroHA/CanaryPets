@@ -9,9 +9,14 @@ Aplicación web de tienda online canaria de productos para mascotas que colabora
 ## 🚀 Funcionalidades principales
 
 - Catálogo de productos con filtros (categoría, subcategoría, tags, búsqueda)
+- Página de detalle de producto para cada uno de ellos
 - Sistema de pedidos y gestión de usuarios
+- Sistema de favoritos
+- Checkout de pedido
 - Panel de administración (CRUD productos, pedidos, etc.)
 - Paginación avanzada
+- Usuarios/roles de usuario BASIC, PREMIUM y ADMIN.
+- Carrito de compra
 - Arquitectura basada en Spring Boot + JPA
 - Despliegue con Docker + Nginx
 
